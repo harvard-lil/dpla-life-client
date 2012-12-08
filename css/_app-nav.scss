@@ -1,0 +1,14 @@
+.app-nav {
+  color:$appNavColor;
+  float:right;
+
+  > li {
+    float:left;
+    line-height:48px;
+  }
+
+  a {
+    color:$appNavColor;
+    text-decoration:none;
+  }
+}

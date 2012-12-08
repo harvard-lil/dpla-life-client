@@ -55,12 +55,32 @@ body {
 h1 {
   font-size: 48px; }
 
+.clearfix, .app-header {
+  *zoom: 1; }
+  .clearfix:before, .app-header:before, .clearfix:after, .app-header:after {
+    content: " ";
+    display: table; }
+  .clearfix:after, .app-header:after {
+    clear: both; }
+
 .app-container {
   min-height: 100%; }
 
 .app-header {
   background: black;
-  padding: 10px 20px; }
-  .app-header h1 > a {
+  padding: 10px 40px; }
+  .app-header h1 {
+    float: left; }
+    .app-header h1 > a {
+      color: white;
+      text-decoration: none; }
+
+.app-nav {
+  color: white;
+  float: right; }
+  .app-nav > li {
+    float: left;
+    line-height: 48px; }
+  .app-nav a {
     color: white;
     text-decoration: none; }

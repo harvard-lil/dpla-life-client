@@ -25,12 +25,9 @@ require.config({
 
 require([
   'jquery',
-  'backbone',
-  'JSON',
-  'router'
-], function($, Backbone) {
-
+  'views/app'
+], function($, app) {
   $(function() {
-    Backbone.history.start();
+    app.init();
   });
 });
