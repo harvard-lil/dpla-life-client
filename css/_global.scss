@@ -1,0 +1,28 @@
+$sansFontStack: 'Helvetica Neue', sans-serif;
+
+html {
+  height:100%;
+}
+
+body {
+  font-family:$sansFontStack;
+  height:100%;
+}
+
+h1 {
+  font-size:48px;
+}
+
+.app-container {
+  min-height:100%;
+}
+
+.app-header {
+  background:$appHeaderBackground;
+  padding:10px 20px;
+
+  h1 > a {
+    color:$logoColor;
+    text-decoration:none;
+  }
+}

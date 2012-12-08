@@ -33,7 +33,8 @@ require([
   'jquery',
   'backbone',
   'JSON',
-  'router'
+  'router',
+  'spec/views/base'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
   var htmlReporter = new jasmine.HtmlReporter();
