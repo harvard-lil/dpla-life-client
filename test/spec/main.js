@@ -34,7 +34,9 @@ require([
   'backbone',
   'JSON',
   'router',
-  'spec/views/base'
+  'spec/views/appNav',
+  'spec/views/base',
+  'spec/views/index'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
   var htmlReporter = new jasmine.HtmlReporter();

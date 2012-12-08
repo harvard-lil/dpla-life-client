@@ -75,6 +75,9 @@ h1 {
       color: white;
       text-decoration: none; }
 
+.app-main {
+  padding: 10px 40px; }
+
 .app-nav {
   color: white;
   float: right; }
@@ -84,3 +87,9 @@ h1 {
   .app-nav a {
     color: white;
     text-decoration: none; }
+
+.stack-view {
+  width: 300px;
+  height: 400px;
+  background: #000;
+  color: #fff; }

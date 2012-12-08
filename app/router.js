@@ -1,6 +1,7 @@
 define([
-  'backbone'
-], function(Backbone) {
+  'backbone',
+  'views/index'
+], function(Backbone, IndexView) {
   
   var Router = Backbone.Router.extend({
     routes: {
@@ -8,7 +9,7 @@ define([
     },
 
     index: function() {
-      
+      new IndexView();
     }
   });
   var appRouter = new Router();
