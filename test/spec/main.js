@@ -7,7 +7,8 @@ require.config({
     underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',
-    JSON: 'libs/json2/json2'
+    JSON: 'libs/json2/json2',
+    stackview: 'libs/stackview/stackview'
   },
 
   shim: {
@@ -22,6 +23,10 @@ require.config({
 
     JSON: {
       exports: 'JSON'
+    },
+
+    stackview: {
+      deps: ['jquery']
     }
   },
 
@@ -35,6 +40,7 @@ require([
   'JSON',
   'router',
   'spec/views/appNav',
+  'spec/views/appSearch',
   'spec/views/base',
   'spec/views/index'
 ], function($, Backbone) {

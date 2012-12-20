@@ -55,12 +55,12 @@ body {
 h1 {
   font-size: 48px; }
 
-.clearfix, .app-header {
+.clearfix, .app-header, .app-search {
   *zoom: 1; }
-  .clearfix:before, .app-header:before, .clearfix:after, .app-header:after {
+  .clearfix:before, .app-header:before, .app-search:before, .clearfix:after, .app-header:after, .app-search:after {
     content: " ";
     display: table; }
-  .clearfix:after, .app-header:after {
+  .clearfix:after, .app-header:after, .app-search:after {
     clear: both; }
 
 .app-container {
@@ -88,8 +88,13 @@ h1 {
     color: white;
     text-decoration: none; }
 
-.stack-view {
-  width: 300px;
-  height: 400px;
-  background: #000;
-  color: #fff; }
+.app-search {
+  padding: 0 40px; }
+  .app-search > form {
+    float: left;
+    background: black;
+    color: white;
+    padding: 5px 10px; }
+
+.stackview {
+  width: 340px; }

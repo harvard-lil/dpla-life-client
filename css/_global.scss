@@ -1,4 +1,5 @@
 $sansFontStack: 'Helvetica Neue', sans-serif;
+$appGutterWidth: 40px;
 
 html {
   height:100%;
@@ -33,7 +34,7 @@ h1 {
 .app-header {
   @extend .clearfix;
   background:$appHeaderBackground;
-  padding:10px 40px;
+  padding:10px $appGutterWidth;
 
   h1 {
     float:left;
@@ -46,5 +47,5 @@ h1 {
 }
 
 .app-main {
-  padding:10px 40px;
+  padding:10px $appGutterWidth;
 }

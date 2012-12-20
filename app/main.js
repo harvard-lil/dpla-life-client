@@ -1,17 +1,14 @@
 require.config({
   paths: {
-    jquery: 'libs/jquery/jquery',
-    underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
+    jquery: 'libs/jquery/jquery',
+    JSON: 'libs/json2/json2',
+    stackview: 'libs/stackview/stackview',
     text: 'libs/require/text',
-    JSON: 'libs/json2/json2'
+    underscore: 'libs/underscore/underscore'
   },
 
   shim: {
-    underscore: {
-      exports: '_'
-    },
-
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
@@ -19,6 +16,14 @@ require.config({
 
     JSON: {
       exports: 'JSON'
+    },
+
+    stackview: {
+      deps: ['jquery']
+    },
+
+    underscore: {
+      exports: '_'
     }
   }
 });

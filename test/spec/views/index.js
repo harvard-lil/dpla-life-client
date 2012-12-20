@@ -11,7 +11,13 @@ define([
     });
 
     it('renders the index template', function() {
-      expect(index.$('.stack-view')).toExist();
+      expect(index.$('.stackview')).toExist();
+    });
+
+    it('creates the default homepage StackView', function() {
+      waitsFor(function() {
+        return $('.stackview li').length;
+      }, 'StackView items to load');
     });
   });
 });

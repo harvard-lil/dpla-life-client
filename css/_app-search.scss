@@ -1,0 +1,11 @@
+.app-search {
+  @extend .clearfix;
+  padding:0 $appGutterWidth;
+
+  > form {
+    float:left;
+    background:$appSearchBackground;
+    color:$appSearchColor;
+    padding:5px 10px;
+  }
+}
