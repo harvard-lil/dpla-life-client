@@ -42,7 +42,8 @@ require([
   'spec/views/appNav',
   'spec/views/appSearch',
   'spec/views/base',
-  'spec/views/index'
+  'spec/views/index',
+  'spec/views/searchResults'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
   var htmlReporter = new jasmine.HtmlReporter();

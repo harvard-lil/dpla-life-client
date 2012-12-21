@@ -14,6 +14,7 @@ define([
       BaseView.prototype.render.call(this);
       this.$('.stackview').stackView({
         url: settings.get('indexStackURL'),
+        query: settings.get('indexSearchTerm'),
         jsonp: true,
         ribbon: settings.get('indexStackRibbon')
       });

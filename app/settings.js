@@ -23,8 +23,11 @@ passed as additional arguments to .get:
 
 define(['underscore'], function(_) {
   var settings = {
-    indexStackURL: 'http://localhost:3000/search/?query=Index%20Stack',
-    indexStackRibbon: 'Index Stack'
+    indexSearchTerm: 'foo',
+    indexStackURL: 'http://localhost:3000/search',
+    indexStackRibbon: 'Index Stack',
+
+    searchURL: 'http://localhost:3000/search'
   };
 
   return {
