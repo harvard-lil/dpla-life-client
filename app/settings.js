@@ -22,13 +22,26 @@ passed as additional arguments to .get:
 */
 
 define(['underscore'], function(_) {
+  // Production and all-environment settings
   var settings = {
     indexSearchTerm: 'foo',
-    indexStackURL: 'http://localhost:3000/search',
-    indexStackRibbon: 'Index Stack',
-
-    searchURL: 'http://localhost:3000/search'
+    indexStackRibbon: 'Index Stack'
   };
+
+  // Dev settings
+  if (window.location.host.indexOf('localhost') !== -1) {
+    _.extend(settings, {
+      indexStackURL: 'http://localhost:3000/search',
+      searchURL: 'http://localhost:3000/search'
+    });
+  }
+  // GH staging settings
+  else if (window.location.host.indexOf('imakewebthings.com') !== -1) {
+    _.extend(settings, {
+      indexStackURL: 'http://dpla-life-service-dev.herokuapp.com/search',
+      searchURL: 'http://dpla-life-service-dev.herokuapp.com/search'
+    });
+  }
 
   return {
     get: function(key) {
