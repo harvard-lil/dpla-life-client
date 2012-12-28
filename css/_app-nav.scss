@@ -4,11 +4,17 @@
 
   > li {
     float:left;
-    line-height:48px;
   }
 
   a {
     color:$appNavColor;
     text-decoration:none;
+    display:block;
+    padding:0 15px;
+    line-height:48px;
+
+    &:hover, &:focus {
+      text-decoration:underline;
+    }
   }
 }

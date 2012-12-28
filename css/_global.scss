@@ -29,6 +29,8 @@ h1 {
 
 .app-container {
   min-height:100%;
+  position:relative;
+  z-index:1;
 }
 
 .app-header {

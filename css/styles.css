@@ -64,7 +64,9 @@ h1 {
     clear: both; }
 
 .app-container {
-  min-height: 100%; }
+  min-height: 100%;
+  position: relative;
+  z-index: 1; }
 
 .app-header {
   background: black;
@@ -82,11 +84,15 @@ h1 {
   color: white;
   float: right; }
   .app-nav > li {
-    float: left;
-    line-height: 48px; }
+    float: left; }
   .app-nav a {
     color: white;
-    text-decoration: none; }
+    text-decoration: none;
+    display: block;
+    padding: 0 15px;
+    line-height: 48px; }
+    .app-nav a:hover, .app-nav a:focus {
+      text-decoration: underline; }
 
 .app-search {
   padding: 0 40px; }
@@ -98,3 +104,19 @@ h1 {
 
 .stackview {
   width: 340px; }
+
+.app-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #000;
+  display: none;
+  z-index: 2; }
+  .app-modal.showing {
+    display: block; }
+
+.modal-container {
+  position: absolute;
+  background: #fff; }

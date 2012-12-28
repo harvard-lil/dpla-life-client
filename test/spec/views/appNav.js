@@ -1,6 +1,8 @@
 define([
-  'views/appNav'
-], function(AppNavView) {
+  'mediator',
+  'views/appNav',
+  'views/login'
+], function(mediator, AppNavView, LoginView) {
 
   describe('App Nav View', function() {
     var nav;
@@ -12,6 +14,13 @@ define([
 
     it('renders the app-nav template', function() {
       expect(nav.$('li')).toExist();
+    });
+
+    it('launches login modal when login link clicked', function() {
+      var spy = jasmine.createSpy('on login modal');
+      mediator.on('modal:show', spy);
+      nav.$('.app-login').click();
+      expect(spy).toHaveBeenCalledWith(LoginView);
     });
   });
 });

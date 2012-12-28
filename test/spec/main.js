@@ -43,6 +43,8 @@ require([
   'spec/views/appSearch',
   'spec/views/base',
   'spec/views/index',
+  'spec/views/login',
+  'spec/views/modal',
   'spec/views/searchResults'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
