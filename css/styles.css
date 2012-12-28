@@ -45,6 +45,39 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* Snippets from normalize.css - git.io/normalize */
+button, input {
+  line-height: normal; }
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled], html input[disabled] {
+  cursor: default; }
+
+input[type="checkbox"], input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
 html {
   height: 100%; }
 
@@ -54,6 +87,17 @@ body {
 
 h1 {
   font-size: 48px; }
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.5; }
+
+input[type="text"], input[type="email"], input[type="password"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px; }
 
 .clearfix, .app-header, .app-search {
   *zoom: 1; }
@@ -80,6 +124,10 @@ h1 {
 .app-main {
   padding: 10px 40px; }
 
+.form-row {
+  display: block;
+  padding: 8px 0; }
+
 .app-nav {
   color: white;
   float: right; }
@@ -93,6 +141,9 @@ h1 {
     line-height: 48px; }
     .app-nav a:hover, .app-nav a:focus {
       text-decoration: underline; }
+
+.modal-container .signup-form, .modal-container .login-form {
+  width: 180px; }
 
 .app-search {
   padding: 0 40px; }
@@ -117,6 +168,34 @@ h1 {
   .app-modal.showing {
     display: block; }
 
-.modal-container {
+.modal-wrapper {
   position: absolute;
-  background: #fff; }
+  background: #fff;
+  padding: 40px 30px 10px 30px; }
+  .modal-wrapper > .modal-close {
+    position: absolute;
+    z-index: 9;
+    top: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    line-height: 13px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    background: #000;
+    color: #fff;
+    text-decoration: none; }
+  .modal-wrapper .modal-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    text-indent: 30px; }

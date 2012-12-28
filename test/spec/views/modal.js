@@ -44,7 +44,7 @@ define([
         expect(modal.subviews[0] instanceof ViewClass).toBeTruthy();
       });
 
-      it('centers the container', function() {
+      it('centers the wrapper', function() {
         expect(spy).toHaveBeenCalled();
       });
 
@@ -62,34 +62,35 @@ define([
         modal.show(ViewClass, {
           model: new Backbone.Model({ foo: 'bar' })
         });
-        modal.hide();
       });
 
       it('clears out the modal container', function() {
+        modal.hide();
         expect(modal.$('.modal-container')).toBeEmpty();
       });
 
       it('removes all subviews', function() {
+        modal.hide();
         expect(modal.subviews.length).toEqual(0);
       });
 
       it('removes showing class from modal', function() {
+        modal.hide();
         expect(modal.$el).not.toHaveClass('showing');
       });
 
       it('can be triggered through modal:hide event', function() {
-        modal.show(ViewClass, {
-          model: new Backbone.Model({ foo: 'bar' })
-        });
         mediator.trigger('modal:hide');
         expect(modal.$el).not.toHaveClass('showing');
       });
 
       it('can be triggered by clicking the overlay', function() {
-        modal.show(ViewClass, {
-          model: new Backbone.Model({ foo: 'bar' })
-        });
         modal.$el.click();
+        expect(modal.$el).not.toHaveClass('showing');
+      });
+
+      it('can be triggered by clicking close', function() {
+        modal.$('.modal-close').click();
         expect(modal.$el).not.toHaveClass('showing');
       });
     });
@@ -103,7 +104,7 @@ define([
           width: 100,
           height: 100
         });
-        modal.$('.modal-container').css({
+        modal.$('.modal-wrapper').css({
           width: 50,
           height: 50,
           position: 'absolute'
@@ -111,8 +112,8 @@ define([
         modal.center();
       });
 
-      it('centers container within the modal', function() {
-        expect(modal.$('.modal-container')).toHaveCss({
+      it('centers wrapper within the modal', function() {
+        expect(modal.$('.modal-wrapper')).toHaveCss({
           left: '25px',
           top: '25px'
         });
@@ -124,7 +125,7 @@ define([
           height: 30
         });
         modal.center();
-        expect(modal.$('.modal-container')).toHaveCss({
+        expect(modal.$('.modal-wrapper')).toHaveCss({
           left: '0px',
           top: '0px'
         });
@@ -136,7 +137,7 @@ define([
           height: 60
         });
         mediator.trigger('modal:center');
-        expect(modal.$('.modal-container')).toHaveCss({
+        expect(modal.$('.modal-wrapper')).toHaveCss({
           left: '5px',
           top: '5px'
         });

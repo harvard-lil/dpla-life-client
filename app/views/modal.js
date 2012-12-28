@@ -10,8 +10,6 @@ define([
     el: '.app-modal',
     template: _.template(ModalTemplate),
 
-    container: '.modal-container',
-
     events: {
       'click': '_handleClick'
     },
@@ -26,7 +24,7 @@ define([
     },
 
     show: function(ViewClass, options) {
-      var opts = _.extend({ el: this.container }, options);
+      var opts = _.extend({ el: '.modal-container' }, options);
 
       this.subviews.push(new ViewClass(opts));
       this.$el.addClass('showing');
@@ -42,25 +40,28 @@ define([
     },
 
     center: function() {
-      var $container = this.$(this.container);
+      var $wrapper = this.$('.modal-wrapper');
       var modalWidth = this.$el.width();
       var modalHeight = this.$el.height();
-      var containerWidth = $container.width();
-      var containerHeight = $container.height();
-      var left = (modalWidth - containerWidth) / 2;
-      var top = (modalHeight - containerHeight) / 2;
+      var wrapperWidth = $wrapper.width();
+      var wrapperHeight = $wrapper.height();
+      var left = (modalWidth - wrapperWidth) / 2;
+      var top = (modalHeight - wrapperHeight) / 2;
 
       left = left < 0 ? 0 : left;
       top = top < 0 ? 0 : top;
 
-      $container.css({
+      $wrapper.css({
         left: left,
         top: top
       });
     },
 
     _handleClick: function(event) {
-      if (event.target === this.el) {
+      var overlayClicked = event.target === this.el;
+      var closeClicked = $(event.target).is('.modal-close');
+
+      if (overlayClicked || closeClicked) {
         this.hide();
       }
     }

@@ -45,7 +45,8 @@ require([
   'spec/views/index',
   'spec/views/login',
   'spec/views/modal',
-  'spec/views/searchResults'
+  'spec/views/searchResults',
+  'spec/views/signup'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
   var htmlReporter = new jasmine.HtmlReporter();
