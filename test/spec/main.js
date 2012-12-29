@@ -4,6 +4,7 @@ require.config({
     spec: '../test/spec',
     mock: '../test/mock',
     jquery: 'libs/jquery/jquery',
+    'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',
@@ -19,6 +20,10 @@ require.config({
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+
+    'jquery.serialize-object': {
+      deps: ['jquery']
     },
 
     JSON: {
