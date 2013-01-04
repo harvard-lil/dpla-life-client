@@ -3,6 +3,7 @@ require.config({
     backbone: 'libs/backbone/backbone',
     jquery: 'libs/jquery/jquery',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
+    'jquery.cookie': 'libs/jquery/jquery.cookie',
     JSON: 'libs/json2/json2',
     stackview: 'libs/stackview/stackview',
     text: 'libs/require/text',
@@ -17,6 +18,10 @@ require.config({
 
     'jquery.serialize-object': {
       deps: ['jquery']
+    },
+
+    'jquery.cookie': {
+      deps: ['jquery', 'JSON']
     },
 
     JSON: {
@@ -35,9 +40,17 @@ require.config({
 
 require([
   'jquery',
-  'views/app'
-], function($, app) {
+  'mediator',
+  'router',
+  'jquery.cookie',
+  'views/appNav',
+  'views/modal',
+  'models/user'
+], function($, mediator) {
+  $.cookie.json = true;
+
   $(function() {
-    app.init();
+    mediator.trigger('app:init');
+    Backbone.history.start();
   });
 });

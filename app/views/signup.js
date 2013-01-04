@@ -1,11 +1,12 @@
 define([
   'underscore',
   'mediator',
+  'JSON',
   'models/user',
   'views/base',
   'text!templates/signup.html',
   'jquery.serialize-object'
-], function(_, mediator, UserModel, BaseView, SignupTemplate) {
+], function(_, mediator, JSON, UserModel, BaseView, SignupTemplate) {
 
   var SignupView = BaseView.extend({
     template: _.template(SignupTemplate),
@@ -32,7 +33,13 @@ define([
     },
 
     error: function(model, xhr, options) {
-      this.$('.form-errors').text('Some Error!');
+      var errors = JSON.parse(xhr.responseText).errors;
+      var $formErrors = this.$('.form-errors');
+      
+      _.each(errors, function(error) {
+        $formErrors.append('<li>' + error.message + '</li>');
+      });
+      mediator.trigger('modal:center');
     },
 
     clearErrors: function() {

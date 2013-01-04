@@ -67,5 +67,9 @@ define([
     }
   });
 
+  mediator.on('app:init', function() {
+    new ModalView();
+  });
+
   return ModalView;
 });

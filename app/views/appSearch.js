@@ -23,5 +23,9 @@ define([
     }
   });
 
+  mediator.on('app:init', function() {
+    new AppSearchView();
+  });
+
   return AppSearchView;
 });
