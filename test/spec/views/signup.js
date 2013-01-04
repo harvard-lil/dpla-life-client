@@ -6,8 +6,7 @@ define([
 ], function(mediator, UserMock, UserModel, SignupView) {
 
   describe('Signup View', function() {
-    var signup;
-    var user;
+    var signup, user;
 
     beforeEach(function() {
       setFixtures('<div class="test-target" />');

@@ -2,7 +2,8 @@ define([
   'backbone',
   'settings',
   'mediator',
-  'jquery'
+  'jquery',
+  'jquery.cookie'
 ], function(Backbone, settings, mediator, $) {
   var UserModel = Backbone.Model.extend({
     urlRoot: settings.get('userURL')
@@ -16,10 +17,25 @@ define([
       return mediator.trigger('user:logout');
     }
 
-    mediator.trigger('user:login', new UserModel(userJSON));
+    $.ajax({
+      url: settings.get('sessionURL'),
+      type: 'GET',
+      headers: {
+        'Authorization': 'Token token=' + userJSON.token
+      },
+      complete: function(xhr) {
+        if (xhr.status === 200) {
+          mediator.trigger('user:login', new UserModel(userJSON));
+        }
+        else {
+          mediator.trigger('user:logout');
+        }
+      }
+    });
   });
 
   mediator.on('user:login', function(user) {
+    user.unset('password').unset('password_confirmation');
     appUser = user;
     $.cookie('user', user);
   });

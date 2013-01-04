@@ -5,6 +5,7 @@ require.config({
     mock: '../test/mock',
     jquery: 'libs/jquery/jquery',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
+    'jquery.cookie': 'libs/jquery/jquery.cookie',
     underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',
@@ -24,6 +25,10 @@ require.config({
 
     'jquery.serialize-object': {
       deps: ['jquery']
+    },
+
+    'jquery.cookie': {
+      deps: ['jquery', 'JSON']
     },
 
     JSON: {
