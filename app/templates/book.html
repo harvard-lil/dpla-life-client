@@ -1,0 +1,10 @@
+<div class="book-page layout-full-width">
+  <h2><%= model.get('title').join(' - ') %></h2>
+  <h3><%= model.get('creator') %></h3>
+
+  <p class="book-description"><%= model.get('description') %></p>
+
+  <p class="book-published">Published by: <%= model.get('publisher').join('; ') %></p>
+
+  <p class="book-source">Source: <a href="<%= model.get('dplaLocation') %>"><%= model.get('dplaLocation') %></a></p>
+</div>

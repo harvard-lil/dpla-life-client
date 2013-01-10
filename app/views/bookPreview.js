@@ -8,7 +8,16 @@ define([
 
   var BookPreviewView = BaseView.extend({
     el: '.app-preview',
-    template: _.template(BookPreviewTemplate)
+    template: _.template(BookPreviewTemplate),
+
+    events: {
+      'click .view-book': 'navigateToBook'
+    },
+
+    navigateToBook: function(event) {
+      mediator.trigger('navigate:book', this.model.get('_id'));
+      event.preventDefault();
+    }
   });
   var currentPreview;
 

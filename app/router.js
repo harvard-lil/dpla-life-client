@@ -2,9 +2,19 @@ define([
   'underscore',
   'backbone',
   'mediator',
+  'models/book',
   'views/index',
-  'views/searchResults'
-], function(_, Backbone, mediator, IndexView, SearchResultsView) {
+  'views/searchResults',
+  'views/book'
+], function(
+  _,
+  Backbone,
+  mediator,
+  BookModel,
+  IndexView,
+  SearchResultsView,
+  BookView
+) {
   var mainView;
 
   var switchMain = function(MainClass, options) {
@@ -17,7 +27,8 @@ define([
   var Router = Backbone.Router.extend({
     routes: {
       '': 'index',
-      'search/:term': 'search'
+      'search/:term': 'search',
+      'books/:id': 'showBook'
     },
 
     index: function() {
@@ -26,6 +37,19 @@ define([
 
     search: function(term) {
       switchMain(SearchResultsView, { query: term });
+    },
+
+    showBook: function(id) {
+      var book = new BookModel({ id: id });
+
+      book.fetch({
+        success: function(model, response, options) {
+          switchMain(BookView, { model: model });
+        },
+        error: function(model, xhr, options) {
+          // TODO
+        }
+      });
     }
   });
 
@@ -40,6 +64,10 @@ define([
 
     'navigate:search': function(term) {
       appRouter.navigate('search/' + term, { trigger: true });
+    },
+
+    'navigate:book': function(id) {
+      appRouter.navigate('books/' + id, { trigger: true });
     }
   });
 

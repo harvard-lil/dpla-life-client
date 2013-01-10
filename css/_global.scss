@@ -8,10 +8,11 @@ html {
 body {
   font-family:$sansFontStack;
   height:100%;
+  line-height:1.5;
 }
 
 h1 {
-  font-size:48px;
+  font-size:36px;
 }
 
 label {
@@ -48,7 +49,6 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .app-header {
   background:$appHeaderBackground;
-  margin-bottom:32px;
 
   h1 {
     float:left;
@@ -60,7 +60,25 @@ input[type="text"], input[type="email"], input[type="password"] {
   }
 }
 
+.app-main {
+  padding-top:32px;
+}
+
 .form-row {
   display:block;
   padding:8px 0;
+}
+
+.button {
+  display:inline-block;
+  padding:5px 10px;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  border:1px solid #000;
+
+  &:hover, &:focus {
+    background:#fff;
+    color:#000;
+  }
 }

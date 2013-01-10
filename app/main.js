@@ -44,6 +44,7 @@ require([
   'router',
   'jquery.cookie',
   'views/appNav',
+  'views/appSearch',
   'views/modal',
   'models/user'
 ], function($, mediator) {

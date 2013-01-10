@@ -1,7 +1,8 @@
 <div class="book-preview">
-  <h2><%= model.get('title') %></h2>
+  <h2><%= model.get('title').join(' - ') %></h2>
+  <h3><%= model.get('creator') %></h3>
 
   <p><%= model.get('description') %></p>
 
-  <p><a href="#" class="button">View</a></p>
+  <p><a href="#" class="button view-book">View</a></p>
 </div>

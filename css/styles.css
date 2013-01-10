@@ -83,10 +83,11 @@ html {
 
 body {
   font-family: "Helvetica Neue", sans-serif;
-  height: 100%; }
+  height: 100%;
+  line-height: 1.5; }
 
 h1 {
-  font-size: 48px; }
+  font-size: 36px; }
 
 label {
   display: block;
@@ -113,17 +114,30 @@ input[type="text"], input[type="email"], input[type="password"] {
   z-index: 1; }
 
 .app-header {
-  background: black;
-  margin-bottom: 32px; }
+  background: black; }
   .app-header h1 {
     float: left; }
     .app-header h1 > a {
       color: white;
       text-decoration: none; }
 
+.app-main {
+  padding-top: 32px; }
+
 .form-row {
   display: block;
   padding: 8px 0; }
+
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #000; }
+  .button:hover, .button:focus {
+    background: #fff;
+    color: #000; }
 
 .layout-wrapper {
   width: 640px;
@@ -159,6 +173,18 @@ input[type="text"], input[type="email"], input[type="password"] {
   background: black;
   color: white;
   padding: 5px 10px; }
+
+.book-page h2 {
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 4px; }
+.book-page h3 {
+  font-style: italic;
+  margin-bottom: 16px; }
+.book-page p {
+  margin-bottom: 16px; }
+.book-page .book-published, .book-page .book-source {
+  font-size: 12px; }
 
 .app-modal {
   position: fixed;
@@ -210,6 +236,11 @@ input[type="text"], input[type="email"], input[type="password"] {
 .book-preview h2 {
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 4px;
+  line-height: 1; }
+.book-preview h3 {
+  font-size: 16px;
+  font-style: italic;
   margin-bottom: 16px; }
 .book-preview p {
   margin-bottom: 16px; }

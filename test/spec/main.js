@@ -54,6 +54,7 @@ require([
   'spec/views/appNav',
   'spec/views/appSearch',
   'spec/views/base',
+  'spec/views/book',
   'spec/views/bookPreview',
   'spec/views/index',
   'spec/views/login',
