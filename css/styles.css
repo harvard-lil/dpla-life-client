@@ -99,12 +99,12 @@ input[type="text"], input[type="email"], input[type="password"] {
   width: 100%;
   padding: 5px; }
 
-.clearfix, .app-header, .app-search {
+.clearfix, .app-header, .app-main, .app-search {
   *zoom: 1; }
-  .clearfix:before, .app-header:before, .app-search:before, .clearfix:after, .app-header:after, .app-search:after {
+  .clearfix:before, .app-header:before, .app-main:before, .app-search:before, .clearfix:after, .app-header:after, .app-main:after, .app-search:after {
     content: " ";
     display: table; }
-  .clearfix:after, .app-header:after, .app-search:after {
+  .clearfix:after, .app-header:after, .app-main:after, .app-search:after {
     clear: both; }
 
 .app-container {
@@ -154,7 +154,8 @@ input[type="text"], input[type="email"], input[type="password"] {
     padding: 5px 10px; }
 
 .stackview {
-  width: 340px; }
+  width: 340px;
+  float: left; }
 
 .app-modal {
   position: fixed;
@@ -199,3 +200,21 @@ input[type="text"], input[type="email"], input[type="password"] {
     background: #000;
     color: #fff;
     text-indent: 30px; }
+
+.app-container .stack-book .spine-text {
+  height: 24px; }
+
+.app-preview {
+  float: right;
+  width: 320px;
+  margin: 64px 0 0 0; }
+
+.book-preview {
+  padding: 10px 15px 5px 15px;
+  border: 1px solid #000; }
+  .book-preview h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px; }
+  .book-preview p {
+    margin-bottom: 16px; }

@@ -31,6 +31,7 @@ define(['underscore'], function(_) {
   // Dev settings
   if (window.location.host.indexOf('localhost') !== -1) {
     _.extend(settings, {
+      bookURL: 'http://localhost:3000/books',
       indexStackURL: 'http://localhost:3000/search',
       searchURL: 'http://localhost:3000/search',
       userURL: 'http://localhost:3000/users',
@@ -40,6 +41,7 @@ define(['underscore'], function(_) {
   // GH staging settings
   else if (window.location.host.indexOf('imakewebthings.com') !== -1) {
     _.extend(settings, {
+      bookURL: 'http://dpla-life-service-dev.herokuapp.com/books',
       indexStackURL: 'http://dpla-life-service-dev.herokuapp.com/search',
       searchURL: 'http://dpla-life-service-dev.herokuapp.com/search',
       userURL: 'http://dpla-life-service-dev.herokuapp.com/users',
