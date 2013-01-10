@@ -28,6 +28,7 @@ define([
       BaseView.prototype.render.call(this);
 
       StackView.get_types().book.template = StackViewBookTemplate;
+      StackView.defaults.book.min_height_percentage = 85;
       this.$('.stackview').stackView({
         url: settings.get('indexStackURL'),
         query: settings.get('indexSearchTerm'),

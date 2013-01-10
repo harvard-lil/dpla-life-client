@@ -99,12 +99,12 @@ input[type="text"], input[type="email"], input[type="password"] {
   width: 100%;
   padding: 5px; }
 
-.clearfix, .app-header, .app-main, .app-search {
+.clearfix, .layout-wrapper {
   *zoom: 1; }
-  .clearfix:before, .app-header:before, .app-main:before, .app-search:before, .clearfix:after, .app-header:after, .app-main:after, .app-search:after {
+  .clearfix:before, .layout-wrapper:before, .clearfix:after, .layout-wrapper:after {
     content: " ";
     display: table; }
-  .clearfix:after, .app-header:after, .app-main:after, .app-search:after {
+  .clearfix:after, .layout-wrapper:after {
     clear: both; }
 
 .app-container {
@@ -114,48 +114,51 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .app-header {
   background: black;
-  padding: 10px 40px; }
+  margin-bottom: 32px; }
   .app-header h1 {
     float: left; }
     .app-header h1 > a {
       color: white;
       text-decoration: none; }
 
-.app-main {
-  padding: 10px 40px; }
-
 .form-row {
   display: block;
   padding: 8px 0; }
+
+.layout-wrapper {
+  width: 640px;
+  margin: 0 auto; }
+
+.layout-full-width {
+  width: 620px;
+  padding: 0 10px; }
+
+.layout-column {
+  float: left;
+  width: 300px;
+  padding: 0 10px; }
 
 .app-nav {
   color: white;
   float: right; }
   .app-nav > li {
-    float: left; }
+    float: left;
+    margin: 15px 0 0 15px; }
   .app-nav a {
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 0 15px;
-    line-height: 48px; }
+    display: block; }
     .app-nav a:hover, .app-nav a:focus {
       text-decoration: underline; }
 
 .modal-container .signup-form, .modal-container .login-form {
   width: 180px; }
 
-.app-search {
-  padding: 0 40px; }
-  .app-search > form {
-    float: left;
-    background: black;
-    color: white;
-    padding: 5px 10px; }
-
-.stackview {
-  width: 340px;
-  float: left; }
+.app-search > form {
+  float: left;
+  background: black;
+  color: white;
+  padding: 5px 10px; }
 
 .app-modal {
   position: fixed;
@@ -204,17 +207,9 @@ input[type="text"], input[type="email"], input[type="password"] {
 .app-container .stack-book .spine-text {
   height: 24px; }
 
-.app-preview {
-  float: right;
-  width: 320px;
-  margin: 64px 0 0 0; }
-
-.book-preview {
-  padding: 10px 15px 5px 15px;
-  border: 1px solid #000; }
-  .book-preview h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 16px; }
-  .book-preview p {
-    margin-bottom: 16px; }
+.book-preview h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px; }
+.book-preview p {
+  margin-bottom: 16px; }

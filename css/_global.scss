@@ -47,9 +47,8 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 .app-header {
-  @extend .clearfix;
   background:$appHeaderBackground;
-  padding:10px $appGutterWidth;
+  margin-bottom:32px;
 
   h1 {
     float:left;
@@ -59,11 +58,6 @@ input[type="text"], input[type="email"], input[type="password"] {
       text-decoration:none;
     }
   }
-}
-
-.app-main {
-  @extend .clearfix;
-  padding:10px $appGutterWidth;
 }
 
 .form-row {

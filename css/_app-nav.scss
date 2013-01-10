@@ -4,14 +4,13 @@
 
   > li {
     float:left;
+    margin:15px 0 0 15px;
   }
 
   a {
     color:$appNavColor;
     text-decoration:none;
     display:block;
-    padding:0 15px;
-    line-height:48px;
 
     &:hover, &:focus {
       text-decoration:underline;
