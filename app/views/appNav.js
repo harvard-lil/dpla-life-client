@@ -4,6 +4,7 @@ define([
   'views/base',
   'views/login',
   'views/signup',
+  'views/userSettings',
   'text!templates/appNav-loggedOut.html',
   'text!templates/appNav-loggedIn.html'
 ], function(
@@ -12,6 +13,7 @@ define([
   BaseView,
   LoginView,
   SignupView,
+  UserSettingsView,
   LoggedOutTemplate,
   LoggedInTemplate
 ) {
@@ -22,6 +24,7 @@ define([
     events: {
       'click .app-login': 'showLoginModal',
       'click .app-signup': 'showSignupModal',
+      'click .app-settings': 'showUserSettingsModal',
       'click .app-logout': 'logout'
     },
 
@@ -32,6 +35,13 @@ define([
 
     showSignupModal: function(event) {
       mediator.trigger('modal:show', SignupView);
+      event.preventDefault();
+    },
+
+    showUserSettingsModal: function(event) {
+      mediator.trigger('modal:show', UserSettingsView, {
+        model: this.model
+      });
       event.preventDefault();
     },
 

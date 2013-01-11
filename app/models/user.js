@@ -49,11 +49,29 @@ define([
           'Authorization': 'Token token=' + appUser.get('token')
         }
       });
+      appUser = null;
     }
     
-    appUser = null;
     $.removeCookie('user');
-  })
+  });
+
+  mediator.on('user:destroy', function(user) {
+    console.log(user.url());
+    user.destroy({
+      headers: {
+        'Authorization': 'Token token=' + user.get('token')
+      },
+
+      success: function() {
+        appUser = null;
+        mediator.trigger('user:logout');
+      },
+
+      error: function() {
+        // TODO
+      }
+    });
+  });
 
   return UserModel;
 });

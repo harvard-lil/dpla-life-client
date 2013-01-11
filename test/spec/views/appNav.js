@@ -4,6 +4,7 @@ define([
   'views/appNav',
   'views/login',
   'views/signup',
+  'views/userSettings',
   'models/user',
   'mock/user',
   'text!templates/appNav-loggedOut.html',
@@ -14,6 +15,7 @@ define([
   AppNavView,
   LoginView,
   SignupView,
+  UserSettingsView,
   UserModel,
   UserMock,
   LoggedOutTemplate,
@@ -68,6 +70,15 @@ define([
         mediator.on('user:logout', spy);
         nav.$('.app-logout').click();
         expect(spy).toHaveBeenCalled();
+      });
+
+      it('launches user settings modal when email clicked', function() {
+        var spy = jasmine.createSpy('on user settings modal');
+        mediator.on('modal:show', spy);
+        nav.$('.app-settings').click();
+        expect(spy).toHaveBeenCalledWith(UserSettingsView, {
+          model: nav.model
+        });
       });
     });
   });

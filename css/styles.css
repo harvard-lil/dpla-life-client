@@ -165,7 +165,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     .app-nav a:hover, .app-nav a:focus {
       text-decoration: underline; }
 
-.modal-container .signup-form, .modal-container .login-form {
+.modal-container .signup-form, .modal-container .login-form, .modal-container .user-settings {
   width: 180px; }
 
 .app-search > form {
