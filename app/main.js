@@ -4,6 +4,7 @@ require.config({
     jquery: 'libs/jquery/jquery',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
+    'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
     JSON: 'libs/json2/json2',
     stackview: 'libs/stackview/stackview',
     text: 'libs/require/text',
@@ -22,6 +23,10 @@ require.config({
 
     'jquery.cookie': {
       deps: ['jquery', 'JSON']
+    },
+
+    'jquery.infieldlabel': {
+      deps: ['jquery']
     },
 
     JSON: {

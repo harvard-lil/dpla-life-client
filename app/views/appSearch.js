@@ -2,7 +2,8 @@ define([
   'underscore',
   'mediator',
   'views/base',
-  'text!templates/appSearch.html'
+  'text!templates/appSearch.html',
+  'jquery.infieldlabel'
 ], function(_, mediator, BaseView, AppSearchTemplate) {
 
   var AppSearchView = BaseView.extend({
@@ -11,6 +12,11 @@ define([
 
     events: {
       'submit form': 'submit'
+    },
+
+    render: function() {
+      BaseView.prototype.render.call(this);
+      this.$('label').inFieldLabels();
     },
 
     submit: function(event) {

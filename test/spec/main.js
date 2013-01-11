@@ -6,6 +6,7 @@ require.config({
     jquery: 'libs/jquery/jquery',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
+    'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
     underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',
@@ -29,6 +30,10 @@ require.config({
 
     'jquery.cookie': {
       deps: ['jquery', 'JSON']
+    },
+
+    'jquery.infieldlabel': {
+      deps: ['jquery']
     },
 
     JSON: {

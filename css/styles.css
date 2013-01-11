@@ -173,6 +173,9 @@ input[type="text"], input[type="email"], input[type="password"] {
   background: black;
   color: white;
   padding: 5px 10px; }
+.app-search .infield {
+  color: #000;
+  padding: 3px 6px; }
 
 .book-page h2 {
   font-size: 24px;
