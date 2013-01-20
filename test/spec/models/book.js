@@ -10,7 +10,7 @@ define([
       spy = jasmine.createSpy('on error event');
       book = new BookModel();
       book.on('error', spy);
-      book.set(BookMock())
+      book.set(BookMock());
       expect(spy).not.toHaveBeenCalled();
     });
   });

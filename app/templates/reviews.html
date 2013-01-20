@@ -1,0 +1,45 @@
+<div class="reviews-list">
+  <h2>Reviews</h2>
+  <% collection.each(function(review) { %>
+    <div class="review">
+      <h3><%= review.get('user_id') %></h3>
+
+      <% if (review.get('rating')) { %>
+        <div class="star-rating">
+          <span>s<span>s<span>s<span>s<span>s</span></span></span></span></span>
+        </div>
+      <% } %>
+
+      <% if (review.get('comment')) { %>
+        <div class="review-comment"><%= review.get('comment') %></div>
+      <% } %>
+    </div>
+  <% }); %>
+</div>
+
+<% var currentUser = helpers.currentUser(); %>
+<% if (currentUser) { %>
+  <div class="new-review">
+    <form action="#" method="post">
+      <div class="form-row">
+        <label for="review_rating">Rating</label>
+        <select name="review[rating]" id="review_rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="review_comment">Comment</label>
+        <textarea name="review[comment]" id="review_comment"></textarea>
+      </div>
+
+      <div class="form-row">
+        <input type="submit" value="Submit" class="button">
+      </div>
+    </form>
+  </div>
+<% } %>

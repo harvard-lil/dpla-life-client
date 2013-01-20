@@ -22,30 +22,44 @@ passed as additional arguments to .get:
 */
 
 define(['underscore'], function(_) {
-  // Production and all-environment settings
+  // Environment agnostic settings
   var settings = {
     indexSearchTerm: 'foo',
-    indexStackRibbon: 'Index Stack'
+    indexStackRibbon: 'Index Stack',
+
+    bookURL: function() {
+      return settings.apiRoot + '/books';
+    },
+    bookReviewsURL: function(bookID) {
+      return [settings.bookURL(), bookID, 'reviews'].join('/');
+    },
+    indexStackURL: function() {
+      return settings.apiRoot + '/search';
+    },
+    reviewURL: function() {
+      return settings.apiRoot + '/reviews';
+    },
+    searchURL: function() {
+      return settings.apiRoot + '/search';
+    },
+    sessionURL: function() {
+      return settings.apiRoot + '/session';
+    },
+    userURL: function() {
+      return settings.apiRoot + '/users';
+    }
   };
 
   // Dev settings
   if (window.location.host.indexOf('localhost') !== -1) {
     _.extend(settings, {
-      bookURL: 'http://localhost:3000/books',
-      indexStackURL: 'http://localhost:3000/search',
-      searchURL: 'http://localhost:3000/search',
-      userURL: 'http://localhost:3000/users',
-      sessionURL: 'http://localhost:3000/session'
+      apiRoot: 'http://localhost:3000'
     });
   }
   // GH staging settings
   else if (window.location.host.indexOf('imakewebthings.com') !== -1) {
     _.extend(settings, {
-      bookURL: 'http://dpla-life-service-dev.herokuapp.com/books',
-      indexStackURL: 'http://dpla-life-service-dev.herokuapp.com/search',
-      searchURL: 'http://dpla-life-service-dev.herokuapp.com/search',
-      userURL: 'http://dpla-life-service-dev.herokuapp.com/users',
-      sessionURL: 'http://dpla-life-service-dev.herokuapp.com/session'
+      apiRoot: 'http://dpla-life-service-dev.herokuapp.com'
     });
   }
 

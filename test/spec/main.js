@@ -55,6 +55,7 @@ require([
   'JSON',
   'router',
   'spec/models/book',
+  'spec/models/review',
   'spec/models/user',
   'spec/views/appNav',
   'spec/views/appSearch',
@@ -64,6 +65,7 @@ require([
   'spec/views/index',
   'spec/views/login',
   'spec/views/modal',
+  'spec/views/reviews',
   'spec/views/searchResults',
   'spec/views/signup',
   'spec/views/userSettings'

@@ -63,6 +63,7 @@ define([
 
       if (overlayClicked || closeClicked) {
         this.hide();
+        event.preventDefault();
       }
     }
   });

@@ -9,7 +9,7 @@ define([
 
     beforeEach(function() {
       setFixtures('<div class="app-main" />');
-      book= new BookView({ model: new BookModel(BookMock()) });
+      book = new BookView({ model: new BookModel(BookMock()) });
     });
 
     it('renders the book template', function() {

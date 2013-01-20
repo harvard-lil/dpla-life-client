@@ -5,10 +5,14 @@ define([
   'jquery',
   'jquery.cookie'
 ], function(Backbone, settings, mediator, $) {
+  var appUser;
   var UserModel = Backbone.Model.extend({
     urlRoot: settings.get('userURL')
   });
-  var appUser;
+  
+  UserModel.currentUser = function() {
+    return appUser;
+  };
 
   mediator.on('app:init', function() {
     var userJSON = $.cookie('user');
@@ -56,7 +60,6 @@ define([
   });
 
   mediator.on('user:destroy', function(user) {
-    console.log(user.url());
     user.destroy({
       headers: {
         'Authorization': 'Token token=' + user.get('token')
