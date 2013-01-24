@@ -18,9 +18,10 @@
 </div>
 
 <% var currentUser = helpers.currentUser(); %>
-<% if (currentUser) { %>
+<% if (currentUser && !helpers.userHasReview()) { %>
   <div class="new-review">
     <form action="#" method="post">
+      <ul class="form-errors"></ul>
       <div class="form-row">
         <label for="review_rating">Rating</label>
         <select name="review[rating]" id="review_rating">

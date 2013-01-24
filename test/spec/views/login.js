@@ -36,7 +36,7 @@ define([
 
     describe('#error', function() {
       it('displays form errors', function() {
-        login.error({responseText:'{"errors":[{"message":"Lorem"}]}'});
+        login.error();
         expect(login.$('.form-errors')).not.toBeEmpty();
       });
     });

@@ -21,7 +21,6 @@ define([
     if (mainView && mainView.clear) {
       mainView.clear();
     }
-    console.log(MainClass);
     mainView = new MainClass(options);
   }
 

@@ -1,6 +1,7 @@
 define([
   'underscore',
   'mediator',
+  'JSON',
   'settings',
   'models/user',
   'models/review',
@@ -9,7 +10,8 @@ define([
   'jquery.serialize-object'
 ], function(
   _, 
-  mediator, 
+  mediator,
+  JSON,
   settings, 
   UserModel, 
   ReviewModel, 
@@ -26,18 +28,20 @@ define([
     },
 
     initialize: function(options) {
-      var self = this;
-
       this.helpers = {
         currentUser: function() {
           return UserModel.currentUser();
+        },
+        userHasReview: function() {
+          var user = UserModel.currentUser();
+          if (user) {
+            return options.collection.where({ user_id: user.id}).length;
+          }
         }
       };
       BaseView.prototype.initialize.call(this, options);
-      mediator.on('user:login user:logout', function() {
-        self.clear();
-        self.render();
-      });
+      mediator.on('user:login user:logout', _.bind(this.redraw, this));
+      options.collection.on('change', _.bind(this.redraw, this));
     },
 
     submitReview: function(event) {
@@ -49,8 +53,18 @@ define([
         headers: {
           'Authorization': 'Token token=' + userToken
         },
+        error: _.bind(this.error, this)
       });
       event.preventDefault();
+    },
+
+    error: function(model, xhr, options) {
+      var errors = JSON.parse(xhr.responseText).errors;
+      var $formErrors = this.$('.form-errors');
+      
+      _.each(errors, function(error) {
+        $formErrors.append('<li>' + error.message + '</li>');
+      });
     }
   });
 

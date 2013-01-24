@@ -32,6 +32,11 @@ define([
       _.invoke(this.subviews, 'destroy');
       this.undelegateEvents();
       this.$el.empty();
+    },
+
+    redraw: function() {
+      this.clear();
+      this.render();
     }
   });
 
