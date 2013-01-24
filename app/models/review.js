@@ -8,7 +8,7 @@ define([
     
     validate: function(attributes) {
       if (!attributes.rating && !attributes.comment) {
-        return 'Reviews must have a rating, a comment, or both.'
+        return 'Reviews must have a rating, a comment, or both.';
       }
     }
   });

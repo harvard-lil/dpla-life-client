@@ -48,6 +48,7 @@ define([
       var reviewObject = this.$('.new-review form').serializeObject().review;
       var userToken = UserModel.currentUser().get('token');
 
+      this.clearErrors();
       var ret = this.options.collection.create(reviewObject, {
         url: this.options.collection.url(),
         headers: {
@@ -58,13 +59,20 @@ define([
       event.preventDefault();
     },
 
-    error: function(model, xhr, options) {
-      var errors = JSON.parse(xhr.responseText).errors;
+    error: function(model, response, options) {
+      var errors = [{message: response}];
       var $formErrors = this.$('.form-errors');
       
+      if (response.responseText) {
+        errors = JSON.parse(response.responseText).errors;
+      }
       _.each(errors, function(error) {
         $formErrors.append('<li>' + error.message + '</li>');
       });
+    },
+
+    clearErrors: function() {
+      this.$('.form-errors').text('');
     }
   });
 

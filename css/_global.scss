@@ -32,7 +32,7 @@ label {
   line-height:1.5;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"], textarea {
   box-sizing:border-box;
   width:100%;
   padding:5px;
@@ -91,4 +91,16 @@ input[type="text"], input[type="email"], input[type="password"] {
     background:#fff;
     color:#000;
   }
+}
+
+/* From H5BP: http://html5boilerplate.com/ */
+.accessible-hide {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }

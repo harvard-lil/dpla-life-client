@@ -2,13 +2,18 @@
   <h2>Reviews</h2>
   <% collection.each(function(review) { %>
     <div class="review">
-      <h3><%= review.get('user_id') %></h3>
-
       <% if (review.get('rating')) { %>
         <div class="star-rating">
-          <span>s<span>s<span>s<span>s<span>s</span></span></span></span></span>
+          <% _.times(review.get('rating'), function() { %>
+            &#xf005;
+          <% }); %>
+          <% _.times(5 - review.get('rating'), function() { %>
+            &#xf006;
+          <% }); %>
         </div>
       <% } %>
+
+      <h3><%= review.get('user_id') %></h3>
 
       <% if (review.get('comment')) { %>
         <div class="review-comment"><%= review.get('comment') %></div>
@@ -25,6 +30,7 @@
       <div class="form-row">
         <label for="review_rating">Rating</label>
         <select name="review[rating]" id="review_rating">
+          <option value="">None</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
