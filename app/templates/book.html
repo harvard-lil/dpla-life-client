@@ -6,7 +6,19 @@
 
   <p class="book-published">Published by: <%= model.get('publisher').join('; ') %></p>
 
-  <p class="book-source">Source: <a href="<%= model.get('dplaLocation') %>"><%= model.get('dplaLocation') %></a></p>
+  <% if (model.get('dplaLocation')) { %>
+    <p class="book-source">Source:
+      <a href="<%= model.get('dplaLocation') %>">
+        <%= model.get('dplaLocation') %>
+      </a>
+    </p>
+  <% } %>
 
+  <% if (model.get('viewer_url')) { %>
+    <p class="book-viewer">
+      <a href="<%= model.get('viewer_url') %>" target="_blank">Read Book</a>
+    </p>
+  <% } %>
+  
   <div class="book-reviews"></div>
 </div>
