@@ -38,6 +38,11 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   padding:5px;
 }
 
+input[type="submit"], button {
+  margin:0;
+  font-family:$sansFontStack;
+}
+
 .clearfix {
   *zoom:1;
 
@@ -86,6 +91,7 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   color:#fff;
   text-decoration:none;
   border:1px solid #000;
+  line-height:normal;
 
   &:hover, &:focus {
     background:#fff;

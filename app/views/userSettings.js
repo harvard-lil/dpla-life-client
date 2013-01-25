@@ -9,11 +9,20 @@ define([
     template: _.template(UserSettingsTemplate),
 
     events: {
-      'click .delete-user': 'deleteUser'
+      'click .delete-user': 'deleteUser',
+      'submit .user-update-form': 'updateUser'
     },
 
     deleteUser: function(event) {
       mediator.trigger('user:destroy', this.model);
+      mediator.trigger('modal:hide');
+      event && event.preventDefault();
+    },
+
+    updateUser: function(event) {
+      var userAttrs = this.$('.user-update-form').serializeObject();
+
+      mediator.trigger('user:update', userAttrs);
       mediator.trigger('modal:hide');
       event && event.preventDefault();
     }

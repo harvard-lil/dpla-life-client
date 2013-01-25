@@ -76,5 +76,23 @@ define([
     });
   });
 
+  mediator.on('user:update', function(attrs) {
+    if (!appUser) return;
+
+    appUser.save(attrs, {
+      headers: {
+        'Authorization': 'Token token=' + appUser.get('token')
+      },
+
+      success: function() {
+        $.cookie('user', appUser);
+      },
+
+      error: function() {
+        // TODO
+      }
+    });
+  });
+
   return UserModel;
 });

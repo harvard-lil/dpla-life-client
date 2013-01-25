@@ -107,6 +107,10 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   width: 100%;
   padding: 5px; }
 
+input[type="submit"], button {
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif; }
+
 .clearfix, .layout-wrapper {
   *zoom: 1; }
   .clearfix:before, .layout-wrapper:before, .clearfix:after, .layout-wrapper:after {
@@ -141,7 +145,8 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
   background: #000;
   color: #fff;
   text-decoration: none;
-  border: 1px solid #000; }
+  border: 1px solid #000;
+  line-height: normal; }
   .button:hover, .button:focus {
     background: #fff;
     color: #000; }
@@ -250,6 +255,14 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
     background: #000;
     color: #fff;
     text-indent: 30px; }
+  .modal-wrapper .modal-footer {
+    width: 100%;
+    padding: 0 30px;
+    position: relative;
+    top: 10px;
+    margin-left: -30px;
+    background: #000;
+    color: #fff; }
 
 .app-container .stack-book .spine-text {
   height: 24px; }
@@ -284,3 +297,9 @@ input[type="text"], input[type="email"], input[type="password"], textarea {
 
 .new-review textarea {
   height: 116px; }
+
+.user-settings .delete-user {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: 'FontAwesome'; }

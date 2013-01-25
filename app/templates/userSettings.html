@@ -1,5 +1,18 @@
 <div class="user-settings">
   <h2 class="modal-header">Settings</h2>
   
-  <a href="#" class="button delete-user">Delete Account</a>
+  <form action="#" method="post" class="user-update-form">
+    <div class="form-row">
+      <label for="user_display_name">Display Name</label>
+      <input type="text" name="user[display_name]" id="user_display_name" value="<%= model.get('display_name') %>">
+    </div>
+
+    <div class="form-row">
+      <input type="submit" class="button" value="Save">
+    </div>
+  </form>
+
+  <div class="modal-footer">
+    <a href="#" class="button delete-user" title="Delete Account">&#xf056;</a>
+  </div>
 </div>

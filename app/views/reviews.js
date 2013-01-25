@@ -35,7 +35,9 @@ define([
         userHasReview: function() {
           var user = UserModel.currentUser();
           if (user) {
-            return options.collection.where({ user_id: user.id}).length;
+            return options.collection.some(function(review) {
+              return review.get('user').id === user.id;
+            });
           }
         }
       };
