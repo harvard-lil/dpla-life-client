@@ -1,4 +1,6 @@
 .app-search {
+  position:relative;
+  
   > form {
     float:left;
     background:$appSearchBackground;

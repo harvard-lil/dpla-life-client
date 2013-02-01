@@ -39,11 +39,17 @@ define(['underscore'], function(_) {
     reviewURL: function() {
       return settings.apiRoot + '/reviews';
     },
+    shelfURL: function() {
+      return settings.apiRoot + '/shelves'
+    },
     searchURL: function() {
       return settings.apiRoot + '/search';
     },
     sessionURL: function() {
       return settings.apiRoot + '/session';
+    },
+    userShelvesURL: function(userID) {
+      return [settings.userURL(), userID, 'shelves'].join('/');
     },
     userURL: function() {
       return settings.apiRoot + '/users';

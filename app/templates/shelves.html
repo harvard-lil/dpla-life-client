@@ -1,0 +1,31 @@
+<div class="layout-wrapper">
+  <h2 class="layout-column top-level-header">Shelves</h2>
+
+  <form action="#" method="post" class="new-shelf-form layout-column">
+    <label for="shelf_name">Shelf Name</label>
+    <input type="text" name="shelf[name]" id="shelf_name">
+    <input type="submit" value="+" title="New Shelf" class="button">
+  </form>
+</div>
+
+<div class="shelves-list">
+  <% _.each(collection, function(shelf, ndx) { %>
+    <% if (ndx % 2) { %>
+      <div class="layout-wrapper">
+    <% } %>
+
+    <div class="layout-column">
+      <div class="shelf-overview">
+        <h3><%= shelf.name %></h3>
+      </div>
+    </div>
+
+    <% if (!(ndx % 2) || ndx === collection.legnth - 1) { %>
+      </div>
+    <% } %>
+  <% }); %>
+
+  <% if (!collection.length) { %>
+    <p class="layout-full-width no-shelves-message">You don't have any shelves yet. Create a new shelf above to get started.</p>
+  <% } %>
+</div>

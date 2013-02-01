@@ -72,7 +72,7 @@ define([
         expect(spy).toHaveBeenCalled();
       });
 
-      it('launches user settings modal when email clicked', function() {
+      it('launches user settings modal when settings clicked', function() {
         var spy = jasmine.createSpy('on user settings modal');
         mediator.on('modal:show', spy);
         nav.$('.app-settings').click();

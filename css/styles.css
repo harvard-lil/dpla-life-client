@@ -102,10 +102,16 @@ label {
   font-weight: bold;
   line-height: 1.5; }
 
-input[type="text"], input[type="email"], input[type="password"], textarea {
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
   box-sizing: border-box;
   width: 100%;
-  padding: 5px; }
+  padding: 5px;
+  border: 1px solid black;
+  margin: 0;
+  font-family: "Helvetica Neue", sans-serif; }
 
 input[type="submit"], button {
   margin: 0;
@@ -145,11 +151,16 @@ input[type="submit"], button {
   background: #000;
   color: #fff;
   text-decoration: none;
-  border: 1px solid #000;
+  border: 1px solid black;
   line-height: normal; }
   .button:hover, .button:focus {
     background: #fff;
     color: #000; }
+
+.top-level-header {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1; }
 
 /* From H5BP: http://html5boilerplate.com/ */
 .accessible-hide, .reviews-list h2 {
@@ -191,14 +202,16 @@ input[type="submit"], button {
 .modal-container .signup-form, .modal-container .login-form, .modal-container .user-settings {
   width: 180px; }
 
-.app-search > form {
-  float: left;
-  background: black;
-  color: white;
-  padding: 5px 10px; }
-.app-search .infield {
-  color: #000;
-  padding: 3px 6px; }
+.app-search {
+  position: relative; }
+  .app-search > form {
+    float: left;
+    background: black;
+    color: white;
+    padding: 5px 10px; }
+  .app-search .infield {
+    color: #000;
+    padding: 3px 6px; }
 
 .book-page .book-title {
   font-size: 24px;
@@ -211,6 +224,24 @@ input[type="submit"], button {
   margin-bottom: 16px; }
 .book-page .book-published, .book-page .book-source {
   font-size: 12px; }
+
+.dropdown {
+  position: relative; }
+  .dropdown > ul {
+    display: none;
+    position: absolute;
+    right: -10px;
+    top: 100%;
+    padding: 10px;
+    min-width: 100%;
+    background: #000;
+    color: #fff; }
+    .dropdown > ul > li {
+      margin: 0; }
+  .dropdown a {
+    color: #fff; }
+  .dropdown:hover > ul, .dropdown:focus > ul {
+    display: block; }
 
 .app-modal {
   position: fixed;
@@ -280,7 +311,7 @@ input[type="submit"], button {
   margin-bottom: 16px; }
 
 .review {
-  border: 1px solid #000;
+  border: 1px solid black;
   padding: 10px;
   margin-bottom: 16px; }
   .review h3 {
@@ -297,6 +328,18 @@ input[type="submit"], button {
 
 .new-review textarea {
   height: 116px; }
+
+.new-shelf-form {
+  position: relative;
+  text-align: right; }
+  .new-shelf-form input[type="text"] {
+    width: 200px;
+    display: inline-block; }
+  .new-shelf-form label.infield {
+    padding: 4px 6px; }
+
+.no-shelves-message {
+  margin-top: 32px; }
 
 .user-settings .delete-user {
   position: absolute;

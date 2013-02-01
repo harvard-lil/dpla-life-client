@@ -1,0 +1,17 @@
+.new-shelf-form {
+  position:relative;
+  text-align:right;
+
+  input[type="text"] {
+    width:200px;
+    display:inline-block;
+  }
+
+  label.infield {
+    padding:4px 6px;
+  }
+}
+
+.no-shelves-message {
+  margin-top:32px;
+}

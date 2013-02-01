@@ -4,12 +4,10 @@ define(['underscore'], function(_) {
   return function(attributes) {
     return _.extend({
       id: idNdx++,
-      rating: 5,
-      comment: 'Lorem Ipsum Dolor',
-      user: {
-        id: 1,
-        display_name: 'Mock User'
-      }
+      name: "Mock Shelf",
+      description: 'Lorem Ipsum Dolor',
+      user_id: 1,
+      book_ids: [1,2,3,4,5]
     }, attributes);
   };
 });

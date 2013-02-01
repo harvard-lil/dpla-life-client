@@ -1,0 +1,28 @@
+.dropdown {
+  position:relative;
+
+  > ul {
+    display:none;
+    position:absolute;
+    right:-10px;
+    top:100%;
+    padding:10px;
+    min-width:100%;
+    background:#000;
+    color:#fff;
+
+    > li {
+      margin:0;
+    }
+  }
+
+  a {
+    color:#fff;
+  }
+
+  &:hover, &:focus {
+    > ul {
+      display:block;
+    }
+  }
+}

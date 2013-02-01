@@ -56,7 +56,12 @@ require([
   $.cookie.json = true;
 
   $(function() {
+    // Need to load or not load the user before we can init the router
+    var start = function() {
+      Backbone.history.start();
+      mediator.off('user:login user:logout', start);
+    };
+    mediator.on('user:login user:logout', start);
     mediator.trigger('app:init');
-    Backbone.history.start();
   });
 });

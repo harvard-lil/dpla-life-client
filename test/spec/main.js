@@ -56,6 +56,7 @@ require([
   'router',
   'spec/models/book',
   'spec/models/review',
+  'spec/models/shelf',
   'spec/models/user',
   'spec/views/appNav',
   'spec/views/appSearch',
@@ -67,6 +68,7 @@ require([
   'spec/views/modal',
   'spec/views/reviews',
   'spec/views/searchResults',
+  'spec/views/shelves',
   'spec/views/signup',
   'spec/views/userSettings'
 ], function($, Backbone) {

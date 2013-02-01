@@ -25,7 +25,8 @@ define([
       'click .app-login': 'showLoginModal',
       'click .app-signup': 'showSignupModal',
       'click .app-settings': 'showUserSettingsModal',
-      'click .app-logout': 'logout'
+      'click .app-logout': 'logout',
+      'click .app-shelves': 'showShelves'
     },
 
     showLoginModal: function(event) {
@@ -47,6 +48,11 @@ define([
 
     logout: function(event) {
       mediator.trigger('user:logout');
+      event.preventDefault();
+    },
+
+    showShelves: function(event) {
+      mediator.trigger('navigate:shelves');
       event.preventDefault();
     }
   });

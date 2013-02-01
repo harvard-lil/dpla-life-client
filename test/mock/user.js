@@ -5,7 +5,8 @@ define(['underscore'], function(_) {
     return _.extend({
       id: id_ndx++,
       email: 'user@example.org',
-      token: '1234567890abcdef'
+      token: '1234567890abcdef',
+      display_name: 'Anonymous'
     }, attributes);
   };
 });
