@@ -360,14 +360,19 @@ input[type="submit"], button {
     padding-left: 5px;
     font-size: 18px;
     font-weight: bold; }
+    .shelf-overview-header > h3 a {
+      color: #fff;
+      text-decoration: none; }
 
 .shelf-actions {
   float: right; }
   .shelf-actions li {
-    float: left;
+    float: right;
     margin-right: 5px; }
   .shelf-actions a {
-    color: #fff; }
+    font-family: 'FontAwesome';
+    color: #fff;
+    text-decoration: none; }
 
 .user-settings .delete-user {
   position: absolute;

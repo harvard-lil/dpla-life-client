@@ -1,7 +1,7 @@
 define([
   'collections/review',
   'mock/review',
-  'views/reviews',
+  'views/reviews'
 ], function(ReviewCollection, ReviewMock, ReviewsView) {
 
   describe('Reviews View', function() {

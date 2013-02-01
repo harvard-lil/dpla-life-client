@@ -68,6 +68,7 @@ require([
   'spec/views/modal',
   'spec/views/reviews',
   'spec/views/searchResults',
+  'spec/views/shelf',
   'spec/views/shelves',
   'spec/views/signup',
   'spec/views/userSettings'

@@ -45,6 +45,11 @@
     padding-left:5px;
     font-size:18px;
     font-weight:bold;
+
+    a {
+      color:#fff;
+      text-decoration:none;
+    }
   }
 }
 
@@ -52,11 +57,13 @@
   float:right;
 
   li {
-    float:left;
+    float:right;
     margin-right:5px;
   }
 
   a {
+    font-family:'FontAwesome';
     color:#fff;
+    text-decoration:none;
   }
 }

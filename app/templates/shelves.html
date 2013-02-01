@@ -2,7 +2,7 @@
   <h2 class="layout-column top-level-header">Shelves</h2>
 
   <form action="#" method="post" class="new-shelf-form layout-column">
-    <label for="shelf_name">Shelf Name</label>
+    <label for="shelf_name">New Shelf Name</label>
     <input type="text" name="shelf[name]" id="shelf_name">
     <input type="submit" value="+" title="New Shelf" class="button">
   </form>
@@ -18,10 +18,10 @@
       <div class="shelf-overview" data-shelfid="<%= shelf.get('id') %>">
         <div class="shelf-overview-content">
           <div class="shelf-overview-header">
-            <h3><%= shelf.get('name') %></h3>
+            <h3><a href="#" class="view-shelf"><%= shelf.get('name') %></a></h3>
             <ul class="shelf-actions">
-              <li><a href="#" class="edit-shelf" title="Edit">E</a></li>
-              <li><a href="#" class="delete-shelf" title="Delete">D</a></li>
+              <li><a href="#" class="edit-shelf" title="Edit">&#xf044;</a></li>
+              <li><a href="#" class="delete-shelf" title="Delete">&#xf056;</a></li>
             </ul>
           </div>
           <p><%= helpers.shelfDescription(shelf) %></p>

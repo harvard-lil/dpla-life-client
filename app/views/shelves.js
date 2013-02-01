@@ -1,6 +1,7 @@
 define([
   'underscore',
   'jquery',
+  'mediator',
   'models/user',
   'views/base',
   'text!templates/shelves.html',
@@ -8,6 +9,7 @@ define([
 ], function(
   _,
   $,
+  mediator,
   UserModel,
   BaseView,
   ShelvesTemplate
@@ -21,7 +23,9 @@ define([
     events: {
       'submit .new-shelf-form': 'createShelf',
       'click .edit-shelf': 'editShelf',
-      'submit .update-shelf-form': 'updateShelf'
+      'submit .update-shelf-form': 'updateShelf',
+      'click .delete-shelf': 'deleteShelf',
+      'click .view-shelf': 'viewShelf'
     },
 
     initialize: function(options) {
@@ -34,7 +38,7 @@ define([
         }
       };
       BaseView.prototype.initialize.call(this, options);
-      options.collection.on('change', _.bind(this.redraw, this));
+      options.collection.on('remove change', _.bind(this.redraw, this));
     },
 
     render: function() {
@@ -78,6 +82,28 @@ define([
           console.log(arguments);
         }
       });
+      event.preventDefault();
+    },
+
+    deleteShelf: function(event) {
+      var shelfID = $(event.target).closest('.shelf-overview').data('shelfid');
+      var userToken = UserModel.currentUser().get('token');
+
+      this.options.collection.get(shelfID).destroy({
+        headers: {
+          'Authorization': 'Token token=' + userToken
+        },
+        error: function(model, xhr, options) {
+          console.log(arguments);
+        }
+      });
+      event.preventDefault();
+    },
+
+    viewShelf: function(event) {
+      var shelfID = $(event.target).closest('.shelf-overview').data('shelfid');
+
+      mediator.trigger('navigate:shelf', shelfID);
       event.preventDefault();
     }
   });

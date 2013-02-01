@@ -4,22 +4,26 @@ define([
   'mediator',
   'models/book',
   'models/user',
+  'models/shelf',
   'collections/shelves',
   'views/index',
   'views/searchResults',
   'views/book',
-  'views/shelves'
+  'views/shelves',
+  'views/shelf'
 ], function(
   _,
   Backbone,
   mediator,
   BookModel,
   UserModel,
+  ShelfModel,
   ShelfCollection,
   IndexView,
   SearchResultsView,
   BookView,
-  ShelvesView
+  ShelvesView,
+  ShelfView
 ) {
   var mainView;
 
@@ -35,7 +39,8 @@ define([
       '': 'index',
       'search/:term': 'search',
       'books/:id': 'showBook',
-      'shelves/': 'showShelves'
+      'shelves/': 'showShelves',
+      'shelves/:id': 'showShelf'
     },
 
     index: function() {
@@ -76,6 +81,19 @@ define([
           // TODO
         }
       });
+    },
+
+    showShelf: function(id) {
+      var shelf = new ShelfModel({ id: id });
+
+      shelf.fetch({
+        success: function(model, response, options) {
+          switchMain(ShelfView, { model: model });
+        },
+        error: function(model, xhr, options) {
+          // TODO
+        }
+      });
     }
   });
 
@@ -98,6 +116,10 @@ define([
 
     'navigate:shelves': function() {
       appRouter.navigate('shelves/', { trigger: true });
+    },
+
+    'navigate:shelf': function(id) {
+      appRouter.navigate('shelves/' + id, { trigger: true });
     }
   });
 
