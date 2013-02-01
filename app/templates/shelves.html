@@ -9,18 +9,43 @@
 </div>
 
 <div class="shelves-list">
-  <% _.each(collection, function(shelf, ndx) { %>
-    <% if (ndx % 2) { %>
+  <% collection.each(function(shelf, ndx) { %>
+    <% if (!(ndx % 2)) { %>
       <div class="layout-wrapper">
     <% } %>
 
     <div class="layout-column">
-      <div class="shelf-overview">
-        <h3><%= shelf.name %></h3>
+      <div class="shelf-overview" data-shelfid="<%= shelf.get('id') %>">
+        <div class="shelf-overview-content">
+          <div class="shelf-overview-header">
+            <h3><%= shelf.get('name') %></h3>
+            <ul class="shelf-actions">
+              <li><a href="#" class="edit-shelf" title="Edit">E</a></li>
+              <li><a href="#" class="delete-shelf" title="Delete">D</a></li>
+            </ul>
+          </div>
+          <p><%= helpers.shelfDescription(shelf) %></p>
+        </div>
+
+        <form action="#" method="post" class="update-shelf-form">
+          <div class="form-row">
+            <label for="shelf_<%= shelf.get('id') %>_name">Name</label>
+            <input type="text" value="<%= shelf.get('name') %>" name="shelf[name]" id="shelf_<%= shelf.get('id') %>_name">
+          </div>
+
+          <div class="form-row">
+            <label for="shelf_<%= shelf.get('id') %>_descritpion">Description</label>
+            <textarea name="shelf[description]" id="shelf_<%= shelf.get('id') %>_description"><%= shelf.get('description') %></textarea>
+          </div>
+
+          <div class="form-row">
+            <input type="submit" class="button" value="Update">
+          </div>
+        </form>
       </div>
     </div>
 
-    <% if (!(ndx % 2) || ndx === collection.legnth - 1) { %>
+    <% if (ndx % 2 || ndx === collection.length - 1) { %>
       </div>
     <% } %>
   <% }); %>

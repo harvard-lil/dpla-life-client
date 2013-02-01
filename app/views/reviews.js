@@ -51,7 +51,7 @@ define([
       var userToken = UserModel.currentUser().get('token');
 
       this.clearErrors();
-      var ret = this.options.collection.create(reviewObject, {
+      this.options.collection.create(reviewObject, {
         url: this.options.collection.url(),
         headers: {
           'Authorization': 'Token token=' + userToken

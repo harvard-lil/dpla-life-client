@@ -1,23 +1,18 @@
 define([
+  'collections/shelves',
   'views/shelves'
-], function(ShelvesView) {
+], function(ShelfCollection, ShelvesView) {
 
   describe('Shelves View', function() {
     var shelves;
 
     beforeEach(function() {
       setFixtures('<div class="app-main" />');
-      shelves = new ShelvesView();
+      shelves = new ShelvesView({ collection: new ShelfCollection() });
     });
 
     it('renders the shelves template', function() {
       expect(shelves.$('.shelves-list')).toExist();
-    });
-
-    describe('#createShelf', function() {
-      it ('needs specs', function() {
-        expect('Implemented').toBeFalsy();
-      });
     });
 
     describe('#updateShelf', function() {
@@ -26,16 +21,16 @@ define([
       });
     });
 
-    describe('#deleteShelf', function() {
-      it ('needs specs', function() {
-        expect('Implemented').toBeFalsy();
-      });
-    });
+    // describe('#deleteShelf', function() {
+    //   it ('needs specs', function() {
+    //     expect('Implemented').toBeFalsy();
+    //   });
+    // });
 
-    describe('#viewShelf', function() {
-      it ('needs specs', function() {
-        expect('Implemented').toBeFalsy();
-      });
-    });
+    // describe('#viewShelf', function() {
+    //   it ('needs specs', function() {
+    //     expect('Implemented').toBeFalsy();
+    //   });
+    // });
   });
 });

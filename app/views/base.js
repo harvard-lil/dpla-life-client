@@ -37,6 +37,7 @@ define([
     redraw: function() {
       this.clear();
       this.render();
+      this.delegateEvents();
     }
   });
 

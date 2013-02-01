@@ -117,12 +117,12 @@ input[type="submit"], button {
   margin: 0;
   font-family: "Helvetica Neue", sans-serif; }
 
-.clearfix, .layout-wrapper {
+.clearfix, .layout-wrapper, .shelf-overview-header {
   *zoom: 1; }
-  .clearfix:before, .layout-wrapper:before, .clearfix:after, .layout-wrapper:after {
+  .clearfix:before, .layout-wrapper:before, .shelf-overview-header:before, .clearfix:after, .layout-wrapper:after, .shelf-overview-header:after {
     content: " ";
     display: table; }
-  .clearfix:after, .layout-wrapper:after {
+  .clearfix:after, .layout-wrapper:after, .shelf-overview-header:after {
     clear: both; }
 
 .app-container {
@@ -338,8 +338,36 @@ input[type="submit"], button {
   .new-shelf-form label.infield {
     padding: 4px 6px; }
 
-.no-shelves-message {
+.shelves-list {
   margin-top: 32px; }
+
+.shelf-overview {
+  margin-bottom: 24px; }
+  .shelf-overview.editing .shelf-overview-content {
+    display: none; }
+
+.update-shelf-form {
+  display: none; }
+  .shelf-overview.editing .update-shelf-form {
+    display: block; }
+
+.shelf-overview-header {
+  background: #000;
+  color: #fff;
+  margin-bottom: 8px; }
+  .shelf-overview-header > h3 {
+    float: left;
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: bold; }
+
+.shelf-actions {
+  float: right; }
+  .shelf-actions li {
+    float: left;
+    margin-right: 5px; }
+  .shelf-actions a {
+    color: #fff; }
 
 .user-settings .delete-user {
   position: absolute;
