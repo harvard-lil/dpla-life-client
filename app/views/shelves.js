@@ -39,6 +39,9 @@ define([
       };
       BaseView.prototype.initialize.call(this, options);
       options.collection.on('remove change', _.bind(this.redraw, this));
+      options.collection.on('remove change', function() {
+        mediator.trigger('user:sync');
+      });
     },
 
     render: function() {

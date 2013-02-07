@@ -1,3 +1,5 @@
+<% var currentUser = helpers.currentUser(); %>
+
 <div class="book-page layout-full-width">
   <h2 class="book-title"><%= model.get('title').join(' - ') %></h2>
   <h3 class="book-author"><%= model.get('creator') %></h3>
@@ -18,6 +20,19 @@
     <p class="book-viewer">
       <a href="<%= model.get('viewer_url') %>" target="_blank">Read Book</a>
     </p>
+  <% } %>
+
+
+  <% if (currentUser) { %>
+    <form action="#" method="post" class="add-to-shelf-form">
+      <label for="push_shelf_id">Shelf</label>
+      <select name="shelf_id" id="push_shelf_id">
+        <% _.each(currentUser.get('shelves'), function(shelf) { %>
+          <option value="<%= shelf.id %>"><%= shelf.name %></option>
+        <% }); %>
+      </select>
+      <input type="submit" value="Add" class="button">
+    </form>
   <% } %>
   
   <div class="book-reviews"></div>

@@ -42,6 +42,9 @@ define(['underscore'], function(_) {
     shelfURL: function() {
       return settings.apiRoot + '/shelves'
     },
+    shelfPushURL: function(shelfID) {
+      return [settings.shelfURL(), shelfID, 'books'].join('/');
+    },
     searchURL: function() {
       return settings.apiRoot + '/search';
     },

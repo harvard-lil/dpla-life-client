@@ -3,18 +3,15 @@ define([
   'settings',
   'mediator',
   'jquery',
+  'JSON',
   'jquery.cookie'
-], function(Backbone, settings, mediator, $) {
+], function(Backbone, settings, mediator, $, JSON) {
   var appUser;
   var UserModel = Backbone.Model.extend({
     urlRoot: settings.get('userURL')
   });
-  
-  UserModel.currentUser = function() {
-    return appUser;
-  };
 
-  mediator.on('app:init', function() {
+  var syncAppUser = function() {
     var userJSON = $.cookie('user');
 
     if (!userJSON) {
@@ -28,6 +25,7 @@ define([
         'Authorization': 'Token token=' + userJSON.token
       },
       complete: function(xhr) {
+        userJSON = JSON.parse(xhr.responseText);
         if (xhr.status === 200) {
           mediator.trigger('user:login', new UserModel(userJSON));
         }
@@ -36,6 +34,14 @@ define([
         }
       }
     });
+  };
+  
+  UserModel.currentUser = function() {
+    return appUser;
+  };
+
+  mediator.on('app:init user:sync', function() {
+    syncAppUser();
   });
 
   mediator.on('user:login', function(user) {
