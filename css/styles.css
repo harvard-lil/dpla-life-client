@@ -374,6 +374,15 @@ input[type="submit"], button {
     color: #fff;
     text-decoration: none; }
 
+.stackview .stack-item-delete {
+  font-family: 'FontAwesome';
+  position: absolute;
+  display: block;
+  right: -24px;
+  top: 50%;
+  margin-top: -12px;
+  cursor: pointer; }
+
 .user-settings .delete-user {
   position: absolute;
   right: 0;

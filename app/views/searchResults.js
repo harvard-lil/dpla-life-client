@@ -20,7 +20,7 @@ define([
     template: _.template(SearchResultsTemplate),
 
     events: {
-      'click .stack-item': 'loadPreview'
+      'click .stack-item-link': 'loadPreview'
     },
 
     render: function() {

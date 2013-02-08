@@ -21,7 +21,7 @@ define([
     template: _.template(IndexTemplate),
 
     events: {
-      'click .stack-item': 'loadPreview'
+      'click .stack-item-link': 'loadPreview'
     },
 
     render: function() {
