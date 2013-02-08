@@ -18,6 +18,7 @@ define([
     notify: function(options) {
       var $notification = $(notificationTemplate(options));
 
+      $notification.hide();
       this.$('.app-notifications').append($notification);
       $notification.fadeIn(300).delay(3000).fadeOut(300, function() {
         $notification.remove();
