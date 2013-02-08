@@ -4,8 +4,9 @@ define([
   'mediator',
   'jquery',
   'JSON',
+  'views/appNotify',
   'jquery.cookie'
-], function(Backbone, settings, mediator, $, JSON) {
+], function(Backbone, settings, mediator, $, JSON, appNotify) {
   var appUser;
   var UserModel = Backbone.Model.extend({
     urlRoot: settings.get('userURL')
@@ -77,7 +78,10 @@ define([
       },
 
       error: function() {
-        // TODO
+        appNotify.notify({
+          type: 'error',
+          message: 'Something went wrong trying to delete your account.'
+        });
       }
     });
   });
@@ -92,10 +96,17 @@ define([
 
       success: function() {
         $.cookie('user', appUser);
+        appNotify.notify({
+          type: 'success',
+          message: 'Settings updated.'
+        });
       },
 
       error: function() {
-        // TODO
+        appNotify.notify({
+          type: 'error',
+          message: 'Something went wrong trying to update your settings.'
+        });
       }
     });
   });

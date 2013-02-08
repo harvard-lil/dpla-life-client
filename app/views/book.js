@@ -7,6 +7,7 @@ define([
   'collections/review',
   'views/base',
   'views/reviews',
+  'views/appNotify',
   'text!templates/book.html'
 ], function(
   _,
@@ -17,6 +18,7 @@ define([
   ReviewCollection,
   BaseView,
   ReviewsView,
+  appNotify,
   BookTemplate
 ) {
 
@@ -44,14 +46,20 @@ define([
           self.subviews.push(new ReviewsView({ collection: collection }));
         },
         error: function(collection, xhr, options) {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load reviews.'
+          });
         }
       });
     },
 
     addBookToShelf: function(event) {
-      var shelfID = this.$('.add-to-shelf-form [name="shelf_id"]').val();
+      var $shelfFormElement = this.$('.add-to-shelf-form [name="shelf_id"]')
+      var shelfID = $shelfFormElement.val();
+      var shelfName = $shelfFormElement.find('option:selected').text();
       var bookID = this.model.get('_id');
+      var bookName = this.model.get('title').join(' - ');
       var userToken = UserModel.currentUser().get('token');
 
       $.ajax({
@@ -62,10 +70,17 @@ define([
           'Authorization': 'Token token=' + userToken
         },
         success: function() {
-          // TODO: App notify
+          appNotify.notify({
+            type: 'success',
+            message: bookName + ' added to ' + shelfName + ' shelf.'
+          });
         },
         error: function() {
-          // TODO: App notify
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to add ' + bookName +
+                     ' to ' + shelfName + ' shelf.'
+          });
         }
       });
       event.preventDefault();

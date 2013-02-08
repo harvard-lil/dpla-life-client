@@ -4,6 +4,7 @@ define([
   'mediator',
   'models/user',
   'views/base',
+  'views/appNotify',
   'text!templates/shelves.html',
   'jquery.serialize-object'
 ], function(
@@ -12,6 +13,7 @@ define([
   mediator,
   UserModel,
   BaseView,
+  appNotify,
   ShelvesTemplate
 ) {
 
@@ -59,7 +61,10 @@ define([
           'Authorization': 'Token token=' + userToken
         },
         error: function(model, xhr, options) {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong creating that shelf.'
+          });
         }
       });
       event.preventDefault();

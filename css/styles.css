@@ -202,6 +202,25 @@ input[type="submit"], button {
 .modal-container .signup-form, .modal-container .login-form, .modal-container .user-settings {
   width: 180px; }
 
+.app-notify {
+  position: fixed;
+  z-index: 5;
+  right: 0;
+  top: 64px; }
+
+.app-notifications {
+  width: 0;
+  overflow: visible; }
+  .app-notifications > li {
+    background: #000;
+    color: #fff;
+    margin-bottom: 4px;
+    padding: 5px 10px;
+    float: right;
+    clear: right;
+    width: 220px;
+    font-size: 12px; }
+
 .app-search {
   position: relative; }
   .app-search > form {

@@ -3,8 +3,9 @@ define([
   'mediator',
   'models/book',
   'views/base',
+  'views/appNotify',
   'text!templates/bookPreview.html'
-], function(_, mediator, BookModel, BaseView, BookPreviewTemplate) {
+], function(_, mediator, BookModel, BaseView, appNotify, BookPreviewTemplate) {
 
   var BookPreviewView = BaseView.extend({
     el: '.app-preview',
@@ -33,7 +34,10 @@ define([
       },
 
       error: function(model, xhr, options) {
-        // TODO
+        appNotify.notify({
+          type: 'error',
+          message: 'Something went wrong trying to load that book.'
+        });
       }
     });
   });

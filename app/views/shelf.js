@@ -5,6 +5,7 @@ define([
   'settings',
   'models/user',
   'views/base',
+  'views/appNotify',
   'text!templates/shelf.html',
   'text!templates/stackview-book.html',
   'text!templates/stackview-shelf-book.html',
@@ -18,6 +19,7 @@ define([
   settings,
   UserModel,
   BaseView,
+  appNotify,
   ShelfTemplate,
   StackViewBookTemplate,
   StackViewShelfBookTemplate
@@ -72,7 +74,10 @@ define([
           }
         },
         error: function() {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load the books for this shelf.'
+          });
         }
       });
     },
@@ -101,7 +106,10 @@ define([
           self.$('.stackview').stackView('remove', $target);
         },
         error: function() {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to remove that book from this shelf.'
+          });
         }
       });
 
@@ -142,10 +150,12 @@ define([
             },
             success: function() {
               $stackItems.sortable('enable');
-              // TODO
             },
             error: function() {
-              // TODO
+              appNotify.notify({
+                type: 'error',
+                message: 'Something went wrong sorting the books on this shelf. Sorting is disabled until the page is reloaded.'
+              });
             }
           });
 

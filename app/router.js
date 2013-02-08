@@ -10,7 +10,8 @@ define([
   'views/searchResults',
   'views/book',
   'views/shelves',
-  'views/shelf'
+  'views/shelf',
+  'views/appNotify'
 ], function(
   _,
   Backbone,
@@ -23,7 +24,8 @@ define([
   SearchResultsView,
   BookView,
   ShelvesView,
-  ShelfView
+  ShelfView,
+  appNotify
 ) {
   var mainView;
 
@@ -59,7 +61,10 @@ define([
           switchMain(BookView, { model: model });
         },
         error: function(model, xhr, options) {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load that book.'
+          });
         }
       });
     },
@@ -78,7 +83,10 @@ define([
           switchMain(ShelvesView, { collection: shelves });
         },
         error: function(collection, xhr, options) {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load your shelves.'
+          });
         }
       });
     },
@@ -91,7 +99,10 @@ define([
           switchMain(ShelfView, { model: model });
         },
         error: function(model, xhr, options) {
-          // TODO
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load that shelf.'
+          });
         }
       });
     }
