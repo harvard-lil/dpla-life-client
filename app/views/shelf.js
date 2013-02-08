@@ -9,7 +9,8 @@ define([
   'text!templates/stackview-book.html',
   'text!templates/stackview-shelf-book.html',
   'stackview',
-  'views/bookPreview'
+  'views/bookPreview',
+  'jquery-ui'
 ], function(
   _,
   $,
@@ -37,8 +38,8 @@ define([
     },
 
     render: function() {
-      var user = UserModel.currentUser();
       BaseView.prototype.render.call(this);
+      var user = UserModel.currentUser();
 
       if (user && user.get('id') === this.model.get('user_id')) {
         StackView.get_types().book.template = StackViewShelfBookTemplate;
@@ -60,10 +61,15 @@ define([
           ids: self.model.get('book_ids')
         },
         success: function(data) {
+          var user = UserModel.currentUser();
+          
           self.$('.stackview').stackView({
             data: data,
             ribbon: self.model.get('name')
           });
+          if (user && user.get('id') === self.model.get('user_id')) {
+            self.makeShelfSortable();
+          }
         },
         error: function() {
           // TODO
@@ -100,6 +106,52 @@ define([
       });
 
       event.preventDefault();
+    },
+
+    makeShelfSortable: function() {
+      var self = this;
+      var $stackview = this.$('.stackview');
+      var $stackItems = $stackview.find('.stack-items');
+
+      $stackItems.disableSelection();
+      $stackItems.sortable({
+        containment: 'parent',
+
+        start: function(event, ui) {
+          $stackItems.css('overflow-x', 'hidden');
+        },
+
+        stop: function(event, ui) {
+          $stackItems.css('overflow-x', 'auto');
+        },
+
+        update: function(event, ui) {
+          var book_ids = [];
+          var userToken = UserModel.currentUser().get('token');
+
+          $stackItems.sortable('disable');
+          $stackItems.find('.stack-item').each(function() {
+            book_ids.push($(this).data('stackviewItem')['_id']);
+          });
+
+          self.model.save({
+            book_ids: book_ids
+          }, {
+            headers: {
+              'Authorization': 'Token token=' + userToken
+            },
+            success: function() {
+              $stackItems.sortable('enable');
+              // TODO
+            },
+            error: function() {
+              // TODO
+            }
+          });
+
+          $stackview.stackView('zIndex');
+        }
+      });
     }
   });
 

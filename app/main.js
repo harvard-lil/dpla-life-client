@@ -2,6 +2,7 @@ require.config({
   paths: {
     backbone: 'libs/backbone/backbone',
     jquery: 'libs/jquery/jquery',
+    'jquery-ui': 'libs/jquery/jquery-ui',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
@@ -15,6 +16,10 @@ require.config({
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+
+    'jquery-ui': {
+      deps: ['jquery']
     },
 
     'jquery.serialize-object': {
