@@ -50,7 +50,8 @@ define([
     },
 
     search: function(term) {
-      switchMain(SearchResultsView, { query: term });
+      var decodedTerm = decodeURIComponent(term);
+      switchMain(SearchResultsView, { query: decodedTerm });
     },
 
     showBook: function(id) {
@@ -118,7 +119,8 @@ define([
     },
 
     'navigate:search': function(term) {
-      appRouter.navigate('search/' + term, { trigger: true });
+      var encodedTerm = encodeURIComponent(term);
+      appRouter.navigate('search/' + encodedTerm, { trigger: true });
     },
 
     'navigate:book': function(id) {
