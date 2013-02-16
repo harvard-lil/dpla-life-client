@@ -4,6 +4,7 @@ require.config({
     spec: '../test/spec',
     mock: '../test/mock',
     jquery: 'libs/jquery/jquery',
+    'jquery-ui': 'libs/jquery/jquery-ui',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
@@ -22,6 +23,10 @@ require.config({
     backbone: {
       deps: ['underscore', 'jquery'],
       exports: 'Backbone'
+    },
+
+    'jquery-ui': {
+      deps: ['jquery']
     },
 
     'jquery.serialize-object': {
@@ -63,6 +68,7 @@ require([
   'spec/views/base',
   'spec/views/book',
   'spec/views/bookPreview',
+  'spec/views/appConfirm',
   'spec/views/index',
   'spec/views/login',
   'spec/views/modal',

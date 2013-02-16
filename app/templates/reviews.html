@@ -1,7 +1,9 @@
+<% var currentUser = helpers.currentUser(); %>
+
 <div class="reviews-list">
   <h2>Reviews</h2>
   <% collection.each(function(review) { %>
-    <div class="review">
+    <div class="review" data-reviewid="<%= review.id %>">
       <% if (review.get('rating')) { %>
         <div class="star-rating">
           <% _.times(review.get('rating'), function() { %>
@@ -18,11 +20,14 @@
       <% if (review.get('comment')) { %>
         <div class="review-comment"><%= review.get('comment') %></div>
       <% } %>
+
+      <% if (currentUser && review.get('user').id === currentUser.get('id')) { %>
+        <a href="#" class="delete-review">Delete</a>
+      <% } %>
     </div>
   <% }); %>
 </div>
 
-<% var currentUser = helpers.currentUser(); %>
 <% if (currentUser && !helpers.userHasReview()) { %>
   <div class="new-review">
     <form action="#" method="post">

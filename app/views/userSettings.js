@@ -14,8 +14,8 @@ define([
     },
 
     deleteUser: function(event) {
-      mediator.trigger('user:destroy', this.model);
       mediator.trigger('modal:hide');
+      mediator.trigger('user:destroy', this.model);
       event && event.preventDefault();
     },
 

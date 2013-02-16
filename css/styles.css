@@ -199,7 +199,7 @@ input[type="submit"], button {
     .app-nav a:hover, .app-nav a:focus {
       text-decoration: underline; }
 
-.modal-container .signup-form, .modal-container .login-form, .modal-container .user-settings {
+.modal-container .signup-form, .modal-container .login-form {
   width: 180px; }
 
 .app-notify {
@@ -402,8 +402,10 @@ input[type="submit"], button {
   margin-top: -12px;
   cursor: pointer; }
 
-.user-settings .delete-user {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-family: 'FontAwesome'; }
+.user-settings {
+  width: 180px; }
+  .user-settings .delete-user {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: 'FontAwesome'; }

@@ -14,7 +14,7 @@ define([
     });
 
     it('renders the shelf template', function() {
-      expect(shelfView.$('.shelf-stackview')).toExist();
+      expect(shelfView.$('.stackview')).toExist();
     });
   });
 });

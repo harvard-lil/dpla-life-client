@@ -5,6 +5,7 @@ define([
   'models/user',
   'views/base',
   'views/appNotify',
+  'views/appConfirm',
   'text!templates/shelves.html',
   'jquery.serialize-object'
 ], function(
@@ -14,6 +15,7 @@ define([
   UserModel,
   BaseView,
   appNotify,
+  appConfirm,
   ShelvesTemplate
 ) {
 
@@ -94,15 +96,32 @@ define([
     },
 
     deleteShelf: function(event) {
-      var shelfID = $(event.target).closest('.shelf-overview').data('shelfid');
       var userToken = UserModel.currentUser().get('token');
+      var shelfID = $(event.target).closest('.shelf-overview').data('shelfid');
+      var shelf = this.options.collection.get(shelfID);
+      var shelfName = shelf.get('name');
 
-      this.options.collection.get(shelfID).destroy({
-        headers: {
-          'Authorization': 'Token token=' + userToken
-        },
-        error: function(model, xhr, options) {
-          console.log(arguments);
+      appConfirm({
+        message: 'Are you sure you want to delete this shelf?',
+        confirmText: 'Yes, Delete Shelf',
+        onConfirm: function() {
+          shelf.destroy({
+            headers: {
+              'Authorization': 'Token token=' + userToken
+            },
+            success: function() {
+              appNotify.notify({
+                type: 'notice',
+                message: shelfName + ' shelf has been deleted.'
+              });
+            },
+            error: function(model, xhr, options) {
+              appNotify.notify({
+                type: 'error',
+                message: 'There was a problem deleting this shelf.'
+              });
+            }
+          });
         }
       });
       event.preventDefault();

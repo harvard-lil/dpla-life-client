@@ -1,7 +1,10 @@
 define([
   'underscore',
   'mediator',
+  'jquery',
   'JSON',
+  'views/appNotify',
+  'views/appConfirm',
   'settings',
   'models/user',
   'models/review',
@@ -11,7 +14,10 @@ define([
 ], function(
   _, 
   mediator,
+  $,
   JSON,
+  appNotify,
+  appConfirm,
   settings, 
   UserModel, 
   ReviewModel, 
@@ -24,7 +30,8 @@ define([
     template: _.template(ReviewsTemplate),
 
     events: {
-      'submit .new-review form': 'submitReview'
+      'submit .new-review form': 'submitReview',
+      'click .delete-review': 'deleteReview'
     },
 
     initialize: function(options) {
@@ -43,7 +50,7 @@ define([
       };
       BaseView.prototype.initialize.call(this, options);
       mediator.on('user:login user:logout', _.bind(this.redraw, this));
-      options.collection.on('change', _.bind(this.redraw, this));
+      options.collection.on('remove change', _.bind(this.redraw, this));
     },
 
     submitReview: function(event) {
@@ -75,6 +82,39 @@ define([
 
     clearErrors: function() {
       this.$('.form-errors').text('');
+    },
+
+    deleteReview: function(event) {
+      var userToken = UserModel.currentUser().get('token');
+      var reviewID = $(event.target).closest('.review').data('reviewid');
+      var review = this.options.collection.get(reviewID);
+
+      appConfirm({
+        message: 'Are you sure you want to delete your review?',
+        confirmText: 'Yes, Delete Review',
+        onConfirm: function() {
+          review.destroy({
+            headers: {
+              'Authorization': 'Token token=' + userToken
+            },
+
+            success: function() {
+              appNotify.notify({
+                type: 'notice',
+                message: 'Your review has been deleted.'
+              });
+            },
+
+            error: function() {
+              appNotify.notify({
+                type: 'error',
+                message: 'Something went wrong when trying to delete your review.'
+              });
+            }
+          });
+        }
+      });
+      event.preventDefault();
     }
   });
 

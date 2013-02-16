@@ -67,20 +67,26 @@ define([
   });
 
   mediator.on('user:destroy', function(user) {
-    user.destroy({
-      headers: {
-        'Authorization': 'Token token=' + user.get('token')
-      },
+    mediator.trigger('confirm', {
+      message: 'Are you sure you want to delete your account?',
+      confirmText: 'Yes, Delete Account',
+      onConfirm: function() {
+        user.destroy({
+          headers: {
+            'Authorization': 'Token token=' + user.get('token')
+          },
 
-      success: function() {
-        appUser = null;
-        mediator.trigger('user:logout');
-      },
+          success: function() {
+            appUser = null;
+            mediator.trigger('user:logout');
+          },
 
-      error: function() {
-        appNotify.notify({
-          type: 'error',
-          message: 'Something went wrong trying to delete your account.'
+          error: function() {
+            appNotify.notify({
+              type: 'error',
+              message: 'Something went wrong trying to delete your account.'
+            });
+          }
         });
       }
     });
