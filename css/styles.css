@@ -91,7 +91,8 @@ html {
 body {
   font-family: "Helvetica Neue", sans-serif;
   height: 100%;
-  line-height: 1.5; }
+  line-height: 1.5;
+  color: black; }
 
 h1 {
   font-size: 36px; }
@@ -148,14 +149,15 @@ input[type="submit"], button {
 .button {
   display: inline-block;
   padding: 5px 10px;
-  background: #000;
-  color: #fff;
+  background: black;
+  color: white;
   text-decoration: none;
   border: 1px solid black;
   line-height: normal; }
   .button:hover, .button:focus {
-    background: #fff;
-    color: #000; }
+    background: white;
+    color: black;
+    border-color: black; }
 
 .top-level-header {
   font-size: 24px;
@@ -212,14 +214,21 @@ input[type="submit"], button {
   width: 0;
   overflow: visible; }
   .app-notifications > li {
-    background: #000;
-    color: #fff;
     margin-bottom: 4px;
     padding: 5px 10px;
     float: right;
     clear: right;
     width: 220px;
     font-size: 12px; }
+    .app-notifications > li.notice {
+      background: black;
+      color: white; }
+    .app-notifications > li.success {
+      background: black;
+      color: white; }
+    .app-notifications > li.error {
+      background: black;
+      color: white; }
 
 .app-search {
   position: relative; }
@@ -229,7 +238,7 @@ input[type="submit"], button {
     color: white;
     padding: 5px 10px; }
   .app-search .infield {
-    color: #000;
+    color: black;
     padding: 3px 6px; }
 
 .book-page .book-title {
@@ -253,12 +262,12 @@ input[type="submit"], button {
     top: 100%;
     padding: 10px;
     min-width: 100%;
-    background: #000;
-    color: #fff; }
+    background: black;
+    color: white; }
     .dropdown > ul > li {
       margin: 0; }
   .dropdown a {
-    color: #fff; }
+    color: white; }
   .dropdown:hover > ul, .dropdown:focus > ul {
     display: block; }
 
@@ -268,7 +277,7 @@ input[type="submit"], button {
   right: 0;
   top: 0;
   bottom: 0;
-  background: #000;
+  background: black;
   display: none;
   z-index: 2; }
   .app-modal.showing {
@@ -276,7 +285,7 @@ input[type="submit"], button {
 
 .modal-wrapper {
   position: absolute;
-  background: #fff;
+  background: white;
   padding: 40px 30px 10px 30px; }
   .modal-wrapper > .modal-close {
     position: absolute;
@@ -290,8 +299,8 @@ input[type="submit"], button {
     font-weight: bold;
     text-align: center;
     display: block;
-    background: #000;
-    color: #fff;
+    background: black;
+    color: white;
     text-decoration: none; }
   .modal-wrapper .modal-header {
     position: absolute;
@@ -302,8 +311,8 @@ input[type="submit"], button {
     line-height: 30px;
     font-size: 16px;
     font-weight: bold;
-    background: #000;
-    color: #fff;
+    background: black;
+    color: white;
     text-indent: 30px; }
   .modal-wrapper .modal-footer {
     width: 100%;
@@ -311,8 +320,8 @@ input[type="submit"], button {
     position: relative;
     top: 10px;
     margin-left: -30px;
-    background: #000;
-    color: #fff; }
+    background: black;
+    color: white; }
 
 .app-container .stack-book .spine-text {
   height: 24px; }
@@ -371,8 +380,8 @@ input[type="submit"], button {
     display: block; }
 
 .shelf-overview-header {
-  background: #000;
-  color: #fff;
+  background: black;
+  color: white;
   margin-bottom: 8px; }
   .shelf-overview-header > h3 {
     float: left;
@@ -380,7 +389,7 @@ input[type="submit"], button {
     font-size: 18px;
     font-weight: bold; }
     .shelf-overview-header > h3 a {
-      color: #fff;
+      color: white;
       text-decoration: none; }
 
 .shelf-actions {
@@ -390,7 +399,7 @@ input[type="submit"], button {
     margin-right: 5px; }
   .shelf-actions a {
     font-family: 'FontAwesome';
-    color: #fff;
+    color: white;
     text-decoration: none; }
 
 .stackview .stack-item-delete {

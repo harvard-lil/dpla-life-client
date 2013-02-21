@@ -4,7 +4,7 @@
   right:0;
   top:0;
   bottom:0;
-  background:#000;
+  background:$modalOverlayBackground;
   display:none;
   z-index:2;
 
@@ -15,7 +15,7 @@
 
 .modal-wrapper {
   position:absolute;
-  background:#fff;
+  background:$modalWrapperBackground;
   padding:40px 30px 10px 30px;
 
   > .modal-close {
@@ -30,8 +30,8 @@
     font-weight:bold;
     text-align:center;
     display:block;
-    background:#000;
-    color:#fff;
+    background:$modalCloseBackground;
+    color:$modalCloseColor;
     text-decoration:none;
   }
 
@@ -44,8 +44,8 @@
     line-height:30px;
     font-size:16px;
     font-weight:bold;
-    background:#000;
-    color:#fff;
+    background:$modalHeaderBackground;
+    color:$modalHeaderColor;
     text-indent:30px;
   }
 
@@ -55,8 +55,8 @@
     position:relative;
     top:10px;
     margin-left:-30px;
-    background:#000;
-    color:#fff;
+    background:$modalFooterBackground;
+    color:$modalFooterColor;
   }
 }
 

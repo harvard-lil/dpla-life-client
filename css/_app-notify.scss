@@ -10,13 +10,26 @@
   overflow:visible;
 
   > li {
-    background:#000;
-    color:#fff;
     margin-bottom:4px;
     padding:5px 10px;
     float:right;
     clear:right;
     width:220px;
     font-size:12px;
+
+    &.notice {
+      background:$notificationNoticeBackground;
+      color:$notificationNoticeColor;
+    }
+
+    &.success {
+      background:$notificationSuccessBackground;
+      color:$notificationSuccessColor;
+    }
+
+    &.error {
+      background:$notificationErrorBackground;
+      color:$notificationErrorColor;
+    }
   }
 }

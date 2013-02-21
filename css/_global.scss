@@ -19,6 +19,7 @@ body {
   font-family:$sansFontStack;
   height:100%;
   line-height:1.5;
+  color:$bodyColor;
 }
 
 h1 {
@@ -39,7 +40,7 @@ textarea {
   box-sizing:border-box;
   width:100%;
   padding:5px;
-  border:1px solid #000;
+  border:1px solid $formFieldBorder;
   margin:0;
   font-family:$sansFontStack;
 }
@@ -93,15 +94,16 @@ input[type="submit"], button {
 .button {
   display:inline-block;
   padding:5px 10px;
-  background:#000;
-  color:#fff;
+  background:$buttonDefaultBackground;
+  color:$buttonDefaultColor;
   text-decoration:none;
-  border:1px solid #000;
+  border:1px solid $buttonDefaultBorder;
   line-height:normal;
 
   &:hover, &:focus {
-    background:#fff;
-    color:#000;
+    background:$buttonDefaultHoverBackground;
+    color:$buttonDefaultHoverColor;
+    border-color:$buttonDefaultHoverBorder;
   }
 }
 
@@ -113,12 +115,12 @@ input[type="submit"], button {
 
 /* From H5BP: http://html5boilerplate.com/ */
 .accessible-hide {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
