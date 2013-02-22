@@ -6,10 +6,31 @@
     background:$appSearchBackground;
     color:$appSearchColor;
     padding:5px 10px;
+    height:24px;
   }
 
   .infield {
     color:$infieldLabelColor;
     padding:3px 6px;
+  }
+
+  input[type="search"] {
+    float:left;
+    width:218px;
+    height:100%;
+    border-right-width:0;
+  }
+
+  input[type="submit"] {
+    float:left;
+    background:$appSearchButtonBackground;
+    border:0;
+    color:$appSearchButtonColor;
+    height:100%;
+    font-weight:bold;
+
+    &:hover, &:focus {
+      background:$appSearchButtonHoverBackground;
+    }
   }
 }

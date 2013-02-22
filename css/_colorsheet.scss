@@ -1,11 +1,27 @@
-$appHeaderBackground: #000;
+$baseWhite: #fff;
+$crimson: #a41034;
+$ribbonYellow: #fe4;
+$mainBlue: rgb(0,122,204);
+$baseText: #035;
+$thinBlue: transparentize($mainBlue, .7);
+$thinWhite: transparentize($baseWhite, .7);
+$thinText: transparentize($baseText, .7);
 
-$appNavColor: #fff;
+// ---------------------------
 
-$appSearchBackground: #000;
-$appSearchColor: #fff;
+$appHeaderBackground: $mainBlue;
 
-$bodyColor: #000;
+$appNavColor: $baseWhite;
+$appNavHoverBackground: $thinWhite;
+
+$appSearchBackground: $mainBlue;
+$appSearchColor: $baseText;
+$appSearchButtonBackground: $thinWhite;
+$appSearchButtonColor: $baseWhite;
+$appSearchButtonHoverBackground: $thinText;
+
+$bodyBackground: $baseWhite;
+$bodyColor: $baseText;
 
 $buttonDefaultBackground: #000;
 $buttonDefaultColor: #fff;
@@ -17,11 +33,11 @@ $buttonDefaultHoverBorder: #000;
 $dropdownBackground: #000;
 $dropdownColor: #fff;
 
-$formFieldBorder: #000;
+$formFieldBorder: $thinBlue;
 
-$infieldLabelColor: #000;
+$infieldLabelColor: $baseText;
 
-$logoColor: #fff;
+$logoColor: $baseWhite;
 
 $modalCloseBackground: #000;
 $modalCloseColor: #fff;

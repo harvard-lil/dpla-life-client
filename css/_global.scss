@@ -20,6 +20,7 @@ body {
   height:100%;
   line-height:1.5;
   color:$bodyColor;
+  background:$bodyBackground;
 }
 
 h1 {
@@ -36,6 +37,7 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="password"],
+input[type="search"],
 textarea {
   box-sizing:border-box;
   width:100%;
