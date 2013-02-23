@@ -1,21 +1,40 @@
 .reviews-list {
+  padding-top:16px;
+  margin-top:16px;
+  border-top:1px solid $reviewsListBorder;
+
   h2 {
-    @extend .accessible-hide;
+    font-size:24px;
+    font-weight:normal;
+    margin-bottom:8px;
   }
 }
 
 .review {
-  border:1px solid $reviewBorder;
   padding:10px;
   margin-bottom:16px;
+  background:$reviewBackground;
 
   h3 {
     font-size:18px;
     font-weight:bold;
+    margin-bottom:8px;
   }
 
   .star-rating {
     float:right;
+    margin-left:12px;
+  }
+}
+
+.delete-review {
+  float:right;
+  font-family:'FontAwesome';
+  text-decoration:none;
+  color:$deleteReviewColor;
+
+  &:hover, &:focus {
+    color:$deleteReviewHoverColor;
   }
 }
 
@@ -25,6 +44,7 @@
 
 .review-comment {
   white-space:pre-wrap;
+  font-size:14px;
 }
 
 .new-review {

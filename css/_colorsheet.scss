@@ -1,62 +1,93 @@
+// $ribbonYellow: #fe4;
+
 $baseWhite: #fff;
-$crimson: #a41034;
-$ribbonYellow: #fe4;
-$mainBlue: rgb(0,122,204);
-$baseText: #035;
-$thinBlue: transparentize($mainBlue, .7);
+$baseBlue: rgb(0,122,204);
+$baseOrange: rgb(255,102,0);
+$baseDark: #135;
+$baseGreen: #2fbd05;
+$baseRed: #a41034;
+
+$thinBlue: transparentize($baseBlue, .7);
 $thinWhite: transparentize($baseWhite, .7);
-$thinText: transparentize($baseText, .7);
+$thinDark: transparentize($baseDark, .7);
+$thinOrange: transparentize($baseOrange, .7);
+$thinGreen: transparentize($baseGreen, .7);
+$thinRed: transparentize($baseRed, .7);
+
+$thickBlue: transparentize($baseBlue, .3);
+$thickWhite: transparentize($baseWhite, .3);
+$thickDark: transparentize($baseDark, .3);
+$thickOrange: transparentize($baseOrange, .3);
+$thickGreen: transparentize($baseGreen, .3);
+$thickRed: transparentize($baseRed, .3);
 
 // ---------------------------
 
-$appHeaderBackground: $mainBlue;
+$appHeaderBackground: $baseBlue;
 
 $appNavColor: $baseWhite;
-$appNavHoverBackground: $thinWhite;
+$appNavHoverBackground: $thinDark;
 
-$appSearchBackground: $mainBlue;
-$appSearchColor: $baseText;
+$appSearchBackground: $baseBlue;
+$appSearchColor: $baseDark;
 $appSearchButtonBackground: $thinWhite;
 $appSearchButtonColor: $baseWhite;
-$appSearchButtonHoverBackground: $thinText;
+$appSearchButtonHoverBackground: $thinDark;
 
 $bodyBackground: $baseWhite;
-$bodyColor: $baseText;
+$bodyColor: $baseDark;
 
-$buttonDefaultBackground: #000;
-$buttonDefaultColor: #fff;
-$buttonDefaultBorder: #000;
-$buttonDefaultHoverBackground: #fff;
-$buttonDefaultHoverColor: #000;
-$buttonDefaultHoverBorder: #000;
+$bookPreviewTitleColor:$baseBlue;
+
+$buttonDefaultBackground: $thickBlue;
+$buttonDefaultColor: $baseWhite;
+$buttonDefaultBorder: $thinBlue;
+$buttonDefaultHoverBackground: $baseBlue;
+$buttonDefaultHoverColor: $baseWhite;
+$buttonDefaultHoverBorder: $baseBlue;
+
+$deleteReviewColor: $thinRed;
+$deleteReviewHoverColor: $baseRed;
+$deleteUserHoverBackground: $thickRed;
+$deleteUserHoverBorder: $thinRed;
 
 $dropdownBackground: #000;
 $dropdownColor: #fff;
 
+$formErrorColor: $baseRed;
 $formFieldBorder: $thinBlue;
 
-$infieldLabelColor: $baseText;
+$infieldLabelColor: $baseDark;
+
+$linkColor: $baseBlue;
 
 $logoColor: $baseWhite;
 
-$modalCloseBackground: #000;
-$modalCloseColor: #fff;
-$modalHeaderBackground: #000;
-$modalHeaderColor: #fff;
-$modalFooterBackground: #000;
-$modalFooterColor: #fff;
-$modalOverlayBackground: #000;
-$modalWrapperBackground: #fff;
+$modalCloseBackground: $thinDark;
+$modalCloseColor: $baseWhite;
+$modalCloseHoverBackground: $thickDark;
+$modalHeaderBackground: $baseBlue;
+$modalHeaderColor: $baseWhite;
+$modalFooterBackground: $thinBlue;
+$modalFooterColor: $baseDark;
+$modalOverlayBackground: $thickDark;
+$modalWrapperBackground: $baseWhite;
 
-$notificationErrorBackground: #000;
-$notificationErrorColor: #fff;
-$notificationNoticeBackground: #000;
-$notificationNoticeColor: #fff;
-$notificationSuccessBackground: #000;
-$notificationSuccessColor: #fff;
+$notificationErrorBackground: $baseRed;
+$notificationErrorColor: $baseWhite;
+$notificationNoticeBackground: $baseBlue;
+$notificationNoticeColor: $baseWhite;
+$notificationSuccessBackground: $baseGreen;
+$notificationSuccessColor: $baseWhite;
 
-$reviewBorder: #000;
+$reviewsListBorder: $thinBlue;
+$reviewBackground: transparentize($baseBlue, .9);
 
-$shelfActionsColor: #fff;
-$shelfOverviewHeaderBackground: #000;
-$shelfOverviewHeaderColor: #fff;
+$shelfActionsColor: $thickWhite;
+$shelfActionsHoverColor: $baseWhite;
+$shelfOverviewHeaderBackground: $thickBlue;
+$shelfOverviewHeaderHoverBackground: $baseBlue;
+$shelfOverviewHeaderColor: $baseWhite;
+
+$stackItemDeleteColor: $thinRed;
+$stackItemDeleteHoverColor: $baseRed;

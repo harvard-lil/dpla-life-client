@@ -57,6 +57,9 @@ define([
       var shelfObject = this.$('.new-shelf-form').serializeObject().shelf;
       var userToken = UserModel.currentUser().get('token');
 
+      event.preventDefault();
+      if (!shelfObject.name) return;
+
       this.options.collection.create(shelfObject, {
         url: this.options.collection.url(),
         headers: {
@@ -69,7 +72,6 @@ define([
           });
         }
       });
-      event.preventDefault();
     },
 
     editShelf: function(event) {

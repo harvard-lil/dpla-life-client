@@ -15,14 +15,14 @@
         </div>
       <% } %>
 
+      <% if (currentUser && review.get('user').id === currentUser.get('id')) { %>
+        <a href="#" class="delete-review" title="Delete Review">&#xf056;</a>
+      <% } %>
+
       <h3><%= review.get('user').display_name %></h3>
 
       <% if (review.get('comment')) { %>
         <div class="review-comment"><%= review.get('comment') %></div>
-      <% } %>
-
-      <% if (currentUser && review.get('user').id === currentUser.get('id')) { %>
-        <a href="#" class="delete-review">Delete</a>
       <% } %>
     </div>
   <% }); %>

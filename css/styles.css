@@ -92,7 +92,7 @@ body {
   font-family: "Helvetica Neue", sans-serif;
   height: 100%;
   line-height: 1.5;
-  color: #003355;
+  color: #113355;
   background: white; }
 
 h1 {
@@ -100,9 +100,10 @@ h1 {
 
 label {
   display: block;
-  font-size: 12px;
   font-weight: bold;
   line-height: 1.5; }
+  label.infield {
+    line-height: 1.1; }
 
 input[type="text"],
 input[type="email"],
@@ -114,18 +115,23 @@ textarea {
   padding: 5px;
   border: 1px solid rgba(0, 122, 204, 0.3);
   margin: 0;
-  font-family: "Helvetica Neue", sans-serif; }
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: inherit; }
 
 input[type="submit"], button {
   margin: 0;
-  font-family: "Helvetica Neue", sans-serif; }
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: inherit; }
 
-.clearfix, .layout-wrapper, .shelf-overview-header {
+a {
+  color: #007acc; }
+
+.clearfix, .layout-wrapper {
   *zoom: 1; }
-  .clearfix:before, .layout-wrapper:before, .shelf-overview-header:before, .clearfix:after, .layout-wrapper:after, .shelf-overview-header:after {
+  .clearfix:before, .layout-wrapper:before, .clearfix:after, .layout-wrapper:after {
     content: " ";
     display: table; }
-  .clearfix:after, .layout-wrapper:after, .shelf-overview-header:after {
+  .clearfix:after, .layout-wrapper:after {
     clear: both; }
 
 .app-container {
@@ -151,15 +157,15 @@ input[type="submit"], button {
 .button {
   display: inline-block;
   padding: 5px 10px;
-  background: black;
+  background: rgba(0, 122, 204, 0.7);
   color: white;
   text-decoration: none;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 122, 204, 0.3);
   line-height: normal; }
   .button:hover, .button:focus {
-    background: white;
-    color: black;
-    border-color: black; }
+    background: #007acc;
+    color: white;
+    border-color: #007acc; }
 
 .top-level-header {
   font-size: 24px;
@@ -167,7 +173,7 @@ input[type="submit"], button {
   line-height: 1; }
 
 /* From H5BP: http://html5boilerplate.com/ */
-.accessible-hide, .reviews-list h2 {
+.accessible-hide {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -176,6 +182,12 @@ input[type="submit"], button {
   padding: 0;
   position: absolute;
   width: 1px; }
+
+.form-errors {
+  color: #a41034;
+  font-size: 12px;
+  line-height: 1.25;
+  margin-top: 8px; }
 
 .layout-wrapper {
   width: 640px;
@@ -189,6 +201,12 @@ input[type="submit"], button {
   float: left;
   width: 300px;
   padding: 0 10px; }
+
+.app-confirm {
+  width: 220px;
+  margin-top: -24px; }
+  .app-confirm .modal-footer {
+    padding: 5px 30px; }
 
 .app-nav {
   color: white;
@@ -207,7 +225,7 @@ input[type="submit"], button {
     line-height: 54px;
     padding: 0 8px; }
     .app-nav a:hover, .app-nav a:focus {
-      background: rgba(255, 255, 255, 0.3); }
+      background: rgba(17, 51, 85, 0.3); }
 
 .modal-container .signup-form, .modal-container .login-form {
   width: 180px; }
@@ -227,15 +245,16 @@ input[type="submit"], button {
     float: right;
     clear: right;
     width: 220px;
-    font-size: 12px; }
+    font-size: 12px;
+    line-height: 1.25; }
     .app-notifications > li.notice {
-      background: black;
+      background: #007acc;
       color: white; }
     .app-notifications > li.success {
-      background: black;
+      background: #2fbd05;
       color: white; }
     .app-notifications > li.error {
-      background: black;
+      background: #a41034;
       color: white; }
 
 .app-search {
@@ -243,11 +262,11 @@ input[type="submit"], button {
   .app-search > form {
     float: left;
     background: #007acc;
-    color: #003355;
+    color: #113355;
     padding: 5px 10px;
     height: 24px; }
   .app-search .infield {
-    color: #003355;
+    color: #113355;
     padding: 3px 6px; }
   .app-search input[type="search"] {
     float: left;
@@ -262,7 +281,7 @@ input[type="submit"], button {
     height: 100%;
     font-weight: bold; }
     .app-search input[type="submit"]:hover, .app-search input[type="submit"]:focus {
-      background: rgba(0, 51, 85, 0.3); }
+      background: rgba(17, 51, 85, 0.3); }
 
 .book-page .book-title {
   font-size: 24px;
@@ -300,9 +319,10 @@ input[type="submit"], button {
   right: 0;
   top: 0;
   bottom: 0;
-  background: black;
+  background: rgba(17, 51, 85, 0.7);
   display: none;
-  z-index: 2; }
+  z-index: 2;
+  font-size: 14px; }
   .app-modal.showing {
     display: block; }
 
@@ -313,38 +333,42 @@ input[type="submit"], button {
   .modal-wrapper > .modal-close {
     position: absolute;
     z-index: 9;
-    top: 5px;
+    top: 8px;
     right: 5px;
-    width: 15px;
-    height: 15px;
-    line-height: 13px;
-    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
     font-weight: bold;
     text-align: center;
     display: block;
-    background: black;
+    background: rgba(17, 51, 85, 0.3);
     color: white;
     text-decoration: none; }
-  .modal-wrapper .modal-header {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 30px;
-    line-height: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    background: black;
-    color: white;
-    text-indent: 30px; }
-  .modal-wrapper .modal-footer {
-    width: 100%;
-    padding: 0 30px;
-    position: relative;
-    top: 10px;
-    margin-left: -30px;
-    background: black;
-    color: white; }
+    .modal-wrapper > .modal-close:hover, .modal-wrapper > .modal-close:focus {
+      background: rgba(17, 51, 85, 0.7); }
+
+.modal-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  background: #007acc;
+  color: white;
+  text-indent: 30px; }
+
+.modal-footer {
+  width: 100%;
+  padding: 0 30px;
+  position: relative;
+  top: 10px;
+  margin-left: -30px;
+  background: rgba(0, 122, 204, 0.3);
+  color: #113355;
+  overflow: hidden; }
 
 .app-container .stack-book .spine-text {
   height: 24px; }
@@ -353,7 +377,8 @@ input[type="submit"], button {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 4px;
-  line-height: 1; }
+  line-height: 1;
+  color: #007acc; }
 .book-preview h3 {
   font-size: 16px;
   font-style: italic;
@@ -361,33 +386,55 @@ input[type="submit"], button {
 .book-preview p {
   margin-bottom: 16px; }
 
+.reviews-list {
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid rgba(0, 122, 204, 0.3); }
+  .reviews-list h2 {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 8px; }
+
 .review {
-  border: 1px solid black;
   padding: 10px;
-  margin-bottom: 16px; }
+  margin-bottom: 16px;
+  background: rgba(0, 122, 204, 0.1); }
   .review h3 {
     font-size: 18px;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-bottom: 8px; }
   .review .star-rating {
-    float: right; }
+    float: right;
+    margin-left: 12px; }
+
+.delete-review {
+  float: right;
+  font-family: 'FontAwesome';
+  text-decoration: none;
+  color: rgba(164, 16, 52, 0.3); }
+  .delete-review:hover, .delete-review:focus {
+    color: #a41034; }
 
 .star-rating {
   font-family: 'FontAwesome'; }
 
 .review-comment {
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+  font-size: 14px; }
 
 .new-review textarea {
   height: 116px; }
 
-.new-shelf-form {
-  position: relative;
-  text-align: right; }
-  .new-shelf-form input[type="text"] {
-    width: 200px;
-    display: inline-block; }
-  .new-shelf-form label.infield {
-    padding: 4px 6px; }
+.new-shelf-form input[type="text"] {
+  width: 200px;
+  float: right;
+  border-right-width: 0; }
+.new-shelf-form input[type="submit"] {
+  float: right;
+  font-family: sans-serif;
+  font-weight: bold; }
+.new-shelf-form label.infield {
+  padding: 6px; }
 
 .shelves-list {
   margin-top: 32px; }
@@ -403,27 +450,38 @@ input[type="submit"], button {
     display: block; }
 
 .shelf-overview-header {
-  background: black;
-  color: white;
-  margin-bottom: 8px; }
-  .shelf-overview-header > h3 {
-    float: left;
-    padding-left: 5px;
+  margin-bottom: 8px;
+  position: relative; }
+  .shelf-overview-header > h3 > a {
+    display: block;
     font-size: 18px;
-    font-weight: bold; }
-    .shelf-overview-header > h3 a {
-      color: white;
-      text-decoration: none; }
+    font-weight: bold;
+    text-decoration: none;
+    background: rgba(0, 122, 204, 0.7);
+    color: white;
+    padding: 0 50px 0 5px; }
+    .shelf-overview-header > h3 > a:hover, .shelf-overview-header > h3 > a:focus {
+      background: #007acc; }
 
 .shelf-actions {
-  float: right; }
+  position: absolute;
+  right: 0;
+  top: 3px;
+  z-index: 3; }
   .shelf-actions li {
     float: right;
     margin-right: 5px; }
   .shelf-actions a {
     font-family: 'FontAwesome';
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none; }
+    .shelf-actions a:hover, .shelf-actions a:focus {
+      color: white; }
+  .shelf-actions .delete-shelf {
+    position: relative;
+    top: -1px; }
+    .shelf-actions .delete-shelf:hover, .shelf-actions .delete-shelf:focus {
+      color: rgba(164, 16, 52, 0.7); }
 
 .stackview .stack-item-delete {
   font-family: 'FontAwesome';
@@ -432,12 +490,18 @@ input[type="submit"], button {
   right: -24px;
   top: 50%;
   margin-top: -12px;
-  cursor: pointer; }
+  cursor: pointer;
+  color: rgba(164, 16, 52, 0.3); }
+  .stackview .stack-item-delete:hover, .stackview .stack-item-delete:focus {
+    color: #a41034; }
 
 .user-settings {
   width: 180px; }
+  .user-settings .modal-footer {
+    padding: 0 0 0 60px; }
   .user-settings .delete-user {
-    position: absolute;
-    right: 0;
-    top: 0;
+    float: right;
     font-family: 'FontAwesome'; }
+    .user-settings .delete-user:hover, .user-settings .delete-user:focus {
+      background: rgba(164, 16, 52, 0.7);
+      border-color: rgba(164, 16, 52, 0.3); }

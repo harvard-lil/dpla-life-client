@@ -34,7 +34,7 @@ define([
     },
 
     error: function(xhr) {
-      var message = "Your email or password is incorrect";
+      var message = "Your email or password is incorrect.";
 
       this.$('.form-errors').append('<li>' + message + '</li>');
       mediator.trigger('modal:center');

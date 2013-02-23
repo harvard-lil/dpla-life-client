@@ -1,14 +1,18 @@
 .new-shelf-form {
-  position:relative;
-  text-align:right;
-
   input[type="text"] {
     width:200px;
-    display:inline-block;
+    float:right;
+    border-right-width:0;
+  }
+
+  input[type="submit"] {
+    float:right;
+    font-family:sans-serif;
+    font-weight:bold;
   }
 
   label.infield {
-    padding:4px 6px;
+    padding:6px;
   }
 }
 
@@ -35,26 +39,29 @@
 }
 
 .shelf-overview-header {
-  @extend .clearfix;
-  background:$shelfOverviewHeaderBackground;
-  color:$shelfOverviewHeaderColor;
   margin-bottom:8px;
+  position:relative;
 
-  > h3 {
-    float:left;
-    padding-left:5px;
+  > h3 > a {
+    display:block;
     font-size:18px;
     font-weight:bold;
+    text-decoration:none;
+    background:$shelfOverviewHeaderBackground;
+    color:$shelfOverviewHeaderColor;
+    padding:0 50px 0 5px;
 
-    a {
-      color:$shelfOverviewHeaderColor;
-      text-decoration:none;
+    &:hover, &:focus {
+      background:$shelfOverviewHeaderHoverBackground;
     }
   }
 }
 
 .shelf-actions {
-  float:right;
+  position:absolute;
+  right:0;
+  top:3px;
+  z-index:3;
 
   li {
     float:right;
@@ -65,6 +72,19 @@
     font-family:'FontAwesome';
     color:$shelfActionsColor;
     text-decoration:none;
+
+    &:hover, &:focus {
+      color:$shelfActionsHoverColor;
+    }
+  }
+
+  .delete-shelf {
+    position:relative;
+    top:-1px;
+
+    &:hover, &:focus {
+      color:$thickRed;
+    }
   }
 }
 
@@ -76,4 +96,9 @@
   top:50%;
   margin-top:-12px;
   cursor:pointer;
+  color:$stackItemDeleteColor;
+
+  &:hover, &:focus {
+    color:$stackItemDeleteHoverColor;
+  }
 }

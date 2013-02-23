@@ -6,6 +6,7 @@ define([
   'models/user',
   'views/base',
   'views/appNotify',
+  'views/appConfirm',
   'text!templates/shelf.html',
   'text!templates/stackview-book.html',
   'text!templates/stackview-shelf-book.html',
@@ -20,6 +21,7 @@ define([
   UserModel,
   BaseView,
   appNotify,
+  appConfirm,
   ShelfTemplate,
   StackViewBookTemplate,
   StackViewShelfBookTemplate
@@ -55,31 +57,42 @@ define([
 
     loadShelfStack: function() {
       var self = this;
-
-      $.ajax({
-        url: settings.get('searchURL'),
-        datatype: 'json',
-        data: {
-          ids: self.model.get('book_ids')
-        },
-        success: function(data) {
-          var user = UserModel.currentUser();
+      var renderStack = function(data) {
+        var user = UserModel.currentUser();
           
-          self.$('.stackview').stackView({
-            data: data,
-            ribbon: self.model.get('name')
-          });
-          if (user && user.get('id') === self.model.get('user_id')) {
-            self.makeShelfSortable();
-          }
-        },
-        error: function() {
-          appNotify.notify({
-            type: 'error',
-            message: 'Something went wrong trying to load the books for this shelf.'
-          });
+        self.$('.stackview').stackView({
+          data: data,
+          ribbon: self.model.get('name')
+        });
+        if (user && user.get('id') === self.model.get('user_id')) {
+          self.makeShelfSortable();
         }
-      });
+      };
+
+      var onError = function() {
+        appNotify.notify({
+          type: 'error',
+          message: 'Something went wrong trying to load the books for this shelf.'
+        });
+      };
+
+      if (self.model.get('book_ids') && self.model.get('book_ids').length) {
+        $.ajax({
+          url: settings.get('searchURL'),
+          datatype: 'json',
+          data: { ids: self.model.get('book_ids') },
+          success: renderStack,
+          error: onError
+        });
+      }
+      else {
+        renderStack({
+          docs: [],
+          num_found: 0
+        })
+      }
+
+      
     },
 
     loadPreview: function(event) {
@@ -96,21 +109,29 @@ define([
       var id = $target.data('stackviewItem')['_id'];
       var userToken = UserModel.currentUser().get('token');
 
-      this.model.save({
-        book_ids: _.without(this.model.get('book_ids'), id)
-      }, {
-        headers: {
-          'Authorization': 'Token token=' + userToken
-        },
-        success: function() {
-          self.$('.stackview').stackView('remove', $target);
-        },
-        error: function() {
-          appNotify.notify({
-            type: 'error',
-            message: 'Something went wrong trying to remove that book from this shelf.'
-          });
-        }
+      var onConfirm = function() {
+        self.model.save({
+          book_ids: _.without(self.model.get('book_ids'), id)
+        }, {
+          headers: {
+            'Authorization': 'Token token=' + userToken
+          },
+          success: function() {
+            self.$('.stackview').stackView('remove', $target);
+          },
+          error: function() {
+            appNotify.notify({
+              type: 'error',
+              message: 'Something went wrong trying to remove that book from this shelf.'
+            });
+          }
+        });
+      }
+
+      appConfirm({
+        message: 'Are you sure you want to take that book off the shelf?',
+        confirmText: 'Yes, Remove Book',
+        onConfirm: onConfirm
       });
 
       event.preventDefault();

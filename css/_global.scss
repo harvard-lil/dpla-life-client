@@ -29,9 +29,12 @@ h1 {
 
 label {
   display:block;
-  font-size:12px;
   font-weight:bold;
   line-height:1.5;
+
+  &.infield {
+    line-height:1.1;
+  }
 }
 
 input[type="text"],
@@ -45,11 +48,17 @@ textarea {
   border:1px solid $formFieldBorder;
   margin:0;
   font-family:$sansFontStack;
+  font-size:inherit;
 }
 
 input[type="submit"], button {
   margin:0;
   font-family:$sansFontStack;
+  font-size:inherit;
+}
+
+a {
+  color:$linkColor;
 }
 
 .clearfix {
@@ -125,4 +134,11 @@ input[type="submit"], button {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+.form-errors {
+  color:$formErrorColor;
+  font-size:12px;
+  line-height:1.25;
+  margin-top:8px;
 }

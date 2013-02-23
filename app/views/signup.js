@@ -37,7 +37,7 @@ define([
       var $formErrors = this.$('.form-errors');
       
       _.each(errors, function(error) {
-        $formErrors.append('<li>' + error.message + '</li>');
+        $formErrors.append('<li>' + error.message + '.</li>');
       });
       mediator.trigger('modal:center');
     },

@@ -43,8 +43,8 @@ define([
       var $wrapper = this.$('.modal-wrapper');
       var modalWidth = this.$el.width();
       var modalHeight = this.$el.height();
-      var wrapperWidth = $wrapper.width();
-      var wrapperHeight = $wrapper.height();
+      var wrapperWidth = $wrapper.outerWidth();
+      var wrapperHeight = $wrapper.outerHeight();
       var left = (modalWidth - wrapperWidth) / 2;
       var top = (modalHeight - wrapperHeight) / 2;
 
