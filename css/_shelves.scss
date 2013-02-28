@@ -3,16 +3,19 @@
     width:200px;
     float:right;
     border-right-width:0;
+    height:33px;
   }
 
   input[type="submit"] {
     float:right;
     font-family:sans-serif;
     font-weight:bold;
+    height:33px;
+    width:36px;
   }
 
   label.infield {
-    padding:6px;
+    padding:8px 6px;
   }
 }
 
@@ -45,11 +48,12 @@
   > h3 > a {
     display:block;
     font-size:18px;
+    line-height:1;
     font-weight:bold;
     text-decoration:none;
     background:$shelfOverviewHeaderBackground;
     color:$shelfOverviewHeaderColor;
-    padding:0 50px 0 5px;
+    padding:8px 50px 8px 8px;
 
     &:hover, &:focus {
       background:$shelfOverviewHeaderHoverBackground;
@@ -60,7 +64,7 @@
 .shelf-actions {
   position:absolute;
   right:0;
-  top:3px;
+  top:6px;
   z-index:3;
 
   li {

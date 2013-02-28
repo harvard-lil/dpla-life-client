@@ -8,7 +8,17 @@
   font-style: normal;
 }
 
-$sansFontStack: 'Helvetica Neue', sans-serif;
+@font-face {
+  font-family: 'RedactedScript';
+  src: url('font/redacted-script.eot?v=0');
+  src: url('font/redacted-script.eot?#iefix&v=0') format('embedded-opentype'),
+    url('font/redacted-script.woff?v=0') format('woff'),
+    url('font/redacted-script.ttf?v=0') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$sansFontStack: 'Roboto', sans-serif;
 $appGutterWidth: 40px;
 
 html {
@@ -17,6 +27,7 @@ html {
 
 body {
   font-family:$sansFontStack;
+  font-weight:400;
   height:100%;
   line-height:1.5;
   color:$bodyColor;
@@ -25,6 +36,15 @@ body {
 
 h1 {
   font-size:36px;
+  font-weight:700;
+}
+
+h2 {
+  font-weight:700;
+}
+
+strong, b {
+  font-weight:700;
 }
 
 label {
@@ -49,6 +69,7 @@ textarea {
   margin:0;
   font-family:$sansFontStack;
   font-size:inherit;
+  border-radius:3px;
 }
 
 input[type="submit"], button {
@@ -119,8 +140,8 @@ a {
 }
 
 .top-level-header {
-  font-size:24px;
-  font-weight:bold;
+  font-size:32px;
+  font-weight:100;
   line-height:1;
 }
 
@@ -141,4 +162,8 @@ a {
   font-size:12px;
   line-height:1.25;
   margin-top:8px;
+}
+
+.redacted {
+  font-family:'RedactedScript';
 }

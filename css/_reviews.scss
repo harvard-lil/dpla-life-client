@@ -1,12 +1,17 @@
 .reviews-list {
   padding-top:16px;
-  margin-top:16px;
+  margin:16px 0;
   border-top:1px solid $reviewsListBorder;
 
   h2 {
-    font-size:24px;
-    font-weight:normal;
+    font-size:26px;
+    font-weight:100;
     margin-bottom:8px;
+
+    &:after {
+      content: " (" attr(data-reviewcount) ")";
+      font-size:22px;
+    }
   }
 }
 
@@ -48,6 +53,14 @@
 }
 
 .new-review {
+  border-top: 1px solid $reviewsListBorder;
+  padding-top:16px;
+
+  > h2 {
+    font-size:26px;
+    font-weight:100;
+  }
+
   textarea {
     height:116px;
   }

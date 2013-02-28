@@ -1,7 +1,7 @@
 <% var currentUser = helpers.currentUser(); %>
 
 <div class="reviews-list">
-  <h2>Reviews</h2>
+  <h2 data-reviewcount="<%= collection.length %>">Reviews</h2>
   <% collection.each(function(review) { %>
     <div class="review" data-reviewid="<%= review.id %>">
       <% if (review.get('rating')) { %>
@@ -30,6 +30,7 @@
 
 <% if (currentUser && !helpers.userHasReview()) { %>
   <div class="new-review">
+    <h2>Write a Review</h2>
     <form action="#" method="post">
       <ul class="form-errors"></ul>
       <div class="form-row">
