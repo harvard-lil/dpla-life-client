@@ -116,6 +116,7 @@ a {
 
 .app-main {
   padding-top:32px;
+  padding-bottom:16px;
 }
 
 .form-row {
@@ -130,6 +131,7 @@ a {
   color:$buttonDefaultColor;
   text-decoration:none;
   border:1px solid $buttonDefaultBorder;
+  border-radius:3px;
   line-height:normal;
 
   &:hover, &:focus {
@@ -166,4 +168,8 @@ a {
 
 .redacted {
   font-family:'RedactedScript';
+}
+
+.app-container .stack-book .spine-text {
+  height:24px;
 }

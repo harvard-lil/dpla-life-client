@@ -64,16 +64,6 @@ define([
         });
       });
 
-      it('clears out the modal container', function() {
-        modal.hide();
-        expect(modal.$('.modal-container')).toBeEmpty();
-      });
-
-      it('removes all subviews', function() {
-        modal.hide();
-        expect(modal.subviews.length).toEqual(0);
-      });
-
       it('removes showing class from modal', function() {
         modal.hide();
         expect(modal.$el).not.toHaveClass('showing');

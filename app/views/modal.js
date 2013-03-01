@@ -25,18 +25,18 @@ define([
 
     show: function(ViewClass, options) {
       var opts = _.extend({ el: '.modal-container' }, options);
-
-      this.subviews.push(new ViewClass(opts));
-      this.$el.addClass('showing');
-      this.center();
-    },
-
-    hide: function() {
-      this.$el.removeClass('showing');
       _.each(this.subviews, function(subview) {
         subview.clear();
       });
       this.subviews = [];
+      this.subviews.push(new ViewClass(opts));
+      this.$el.addClass('showing');
+      this.center();
+      this.$('input:not([type=hidden])').first().focus();
+    },
+
+    hide: function() {
+      this.$el.removeClass('showing');
     },
 
     center: function() {

@@ -14,8 +14,33 @@
   p {
     margin-bottom:16px;
   }
+}
+
+.book-meta {
+  float:right;
+  width:240px;
+  padding:10px;
+  background:$bookMetaBackground;
+  border-radius:3px;
+
+  .cover_large {
+    display:block;
+    width:100%;
+    margin-bottom:8px;
+  }
 
   .book-published, .book-source {
+    font-size:12px;
+    margin-bottom:2px;
+  }
+}
+
+#push_shelf_id {
+  max-width:220px;
+}
+
+.add-to-shelf-form {
+  .button {
     font-size:12px;
   }
 }

@@ -164,7 +164,8 @@ a {
       text-decoration: none; }
 
 .app-main {
-  padding-top: 32px; }
+  padding-top: 32px;
+  padding-bottom: 16px; }
 
 .form-row {
   display: block;
@@ -177,6 +178,7 @@ a {
   color: white;
   text-decoration: none;
   border: 1px solid rgba(0, 122, 204, 0.3);
+  border-radius: 3px;
   line-height: normal; }
   .button:hover, .button:focus {
     background: #007acc;
@@ -207,6 +209,9 @@ a {
 
 .redacted {
   font-family: 'RedactedScript'; }
+
+.app-container .stack-book .spine-text {
+  height: 24px; }
 
 .layout-wrapper {
   width: 640px;
@@ -315,7 +320,25 @@ a {
   color: rgba(17, 51, 85, 0.7); }
 .book-page p {
   margin-bottom: 16px; }
-.book-page .book-published, .book-page .book-source {
+
+.book-meta {
+  float: right;
+  width: 240px;
+  padding: 10px;
+  background: rgba(0, 122, 204, 0.3);
+  border-radius: 3px; }
+  .book-meta .cover_large {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px; }
+  .book-meta .book-published, .book-meta .book-source {
+    font-size: 12px;
+    margin-bottom: 2px; }
+
+#push_shelf_id {
+  max-width: 220px; }
+
+.add-to-shelf-form .button {
   font-size: 12px; }
 
 .dropdown {
@@ -355,11 +378,27 @@ a {
   font-size: 14px; }
   .app-modal.showing {
     display: block; }
+  .csstransitions .app-modal {
+    display: block;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -webkit-transition-property: opacity, -webkit-transform;
+    -webkit-transition-duration: 300ms;
+    transform: scale(0);
+    transition-property: opacity, transform;
+    transition-duration: 300ms;
+    pointer-events: none; }
+    .csstransitions .app-modal.showing {
+      -webkit-transform: scale(1);
+      opacity: 1;
+      pointer-events: auto; }
 
 .modal-wrapper {
   position: absolute;
   background: white;
-  padding: 40px 30px 10px 30px; }
+  padding: 40px 30px 10px 30px;
+  border-radius: 5px;
+  box-shadow: 0 0 300px 10px white; }
   .modal-wrapper > .modal-close {
     position: absolute;
     z-index: 9;
@@ -367,13 +406,14 @@ a {
     right: 5px;
     width: 20px;
     height: 20px;
-    line-height: 18px;
+    line-height: 20px;
     font-weight: bold;
     text-align: center;
     display: block;
     background: rgba(17, 51, 85, 0.3);
     color: white;
-    text-decoration: none; }
+    text-decoration: none;
+    border-radius: 5px; }
     .modal-wrapper > .modal-close:hover, .modal-wrapper > .modal-close:focus {
       background: rgba(17, 51, 85, 0.7); }
 
@@ -388,7 +428,8 @@ a {
   font-weight: bold;
   background: #007acc;
   color: white;
-  text-indent: 30px; }
+  text-indent: 30px;
+  border-radius: 5px 5px 0 0; }
 
 .modal-footer {
   width: 100%;
@@ -398,10 +439,8 @@ a {
   margin-left: -30px;
   background: rgba(0, 122, 204, 0.3);
   color: #113355;
-  overflow: hidden; }
-
-.app-container .stack-book .spine-text {
-  height: 24px; }
+  overflow: hidden;
+  border-radius: 0 0 5px 5px; }
 
 .book-preview h2 {
   font-size: 24px;
@@ -415,6 +454,10 @@ a {
   color: rgba(17, 51, 85, 0.7); }
 .book-preview p {
   margin-bottom: 16px; }
+.book-preview > img {
+  float: right;
+  width: 100px;
+  margin: 0 0 5px 10px; }
 
 .reviews-list {
   padding-top: 16px;
@@ -468,13 +511,15 @@ a {
   width: 200px;
   float: right;
   border-right-width: 0;
-  height: 33px; }
+  height: 33px;
+  border-radius: 3px 0 0 3px; }
 .new-shelf-form input[type="submit"] {
   float: right;
   font-family: sans-serif;
   font-weight: bold;
   height: 33px;
-  width: 36px; }
+  width: 36px;
+  border-radius: 0 3px 3px 0; }
 .new-shelf-form label.infield {
   padding: 8px 6px; }
 
@@ -502,7 +547,8 @@ a {
     text-decoration: none;
     background: rgba(0, 122, 204, 0.7);
     color: white;
-    padding: 8px 50px 8px 8px; }
+    padding: 8px 50px 8px 8px;
+    border-radius: 3px; }
     .shelf-overview-header > h3 > a:hover, .shelf-overview-header > h3 > a:focus {
       background: #007acc; }
 

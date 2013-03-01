@@ -1,39 +1,49 @@
 <% var currentUser = helpers.currentUser(); %>
 
-<div class="book-page layout-full-width">
-  <h2 class="book-title"><%= model.get('title').join(' - ') %></h2>
-  <h3 class="book-author"><%= model.get('creator') %></h3>
+<div class="book-page">
+  <div class="layout-wrapper">
+    <div class="layout-column">
+      <h2 class="book-title"><%= model.get('title').join(' - ') %></h2>
+      <h3 class="book-author"><%= model.get('creator') %></h3>
+      <p class="book-description"><%= model.get('description') %></p>
 
-  <p class="book-description"><%= model.get('description') %></p>
+      <% if (model.get('viewer_url')) { %>
+        <p class="book-viewer">
+          <a href="<%= model.get('viewer_url') %>" target="_blank" class="button">Read Book</a>
+        </p>
+      <% } %>
 
-  <p class="book-published">Published by: <%= model.get('publisher').join('; ') %></p>
+      <% if (currentUser) { %>
+        <form action="#" method="post" class="add-to-shelf-form">
+          <label for="push_shelf_id">Add to Shelf</label>
+          <select name="shelf_id" id="push_shelf_id">
+            <% _.each(currentUser.get('shelves'), function(shelf) { %>
+              <option value="<%= shelf.id %>"><%= shelf.name %></option>
+            <% }); %>
+          </select>
+          <input type="submit" value="Add" class="button">
+        </form>
+      <% } %>
+    </div>
 
-  <% if (model.get('dplaLocation')) { %>
-    <p class="book-source">Source:
-      <a href="<%= model.get('dplaLocation') %>">
-        <%= model.get('dplaLocation') %>
-      </a>
-    </p>
-  <% } %>
+    <div class="book-meta layout-column">
+      <% if (model.get('cover_large')) { %>
+        <img src="<%= model.get('cover_large') %>" alt="" class="cover_large">
+      <% } %>
 
-  <% if (model.get('viewer_url')) { %>
-    <p class="book-viewer">
-      <a href="<%= model.get('viewer_url') %>" target="_blank">Read Book</a>
-    </p>
-  <% } %>
+      <% if (model.get('publisher')) { %>
+        <p class="book-published">Published by: <%= model.get('publisher').join('; ') %></p>    
+      <% } %>
+      
+      <% if (model.get('dplaLocation')) { %>
+        <p class="book-source">Source:
+          <a href="<%= model.get('dplaLocation') %>">
+            <%= model.get('dplaLocation') %>
+          </a>
+        </p>
+      <% } %>
+    </div>
+  </div>
 
-
-  <% if (currentUser) { %>
-    <form action="#" method="post" class="add-to-shelf-form">
-      <label for="push_shelf_id">Shelf</label>
-      <select name="shelf_id" id="push_shelf_id">
-        <% _.each(currentUser.get('shelves'), function(shelf) { %>
-          <option value="<%= shelf.id %>"><%= shelf.name %></option>
-        <% }); %>
-      </select>
-      <input type="submit" value="Add" class="button">
-    </form>
-  <% } %>
-  
-  <div class="book-reviews"></div>
+  <div class="book-reviews layout-full-width"></div>
 </div>

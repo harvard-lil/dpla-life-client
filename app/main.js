@@ -6,6 +6,7 @@ require.config({
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
+    modernizr: 'libs/modernizr/modernizr',
     JSON: 'libs/json2/json2',
     stackview: 'libs/stackview/stackview',
     text: 'libs/require/text',
@@ -34,6 +35,10 @@ require.config({
       deps: ['jquery']
     },
 
+    modernizr: {
+      exports: 'Modernizr'
+    },
+
     JSON: {
       exports: 'JSON'
     },
@@ -56,7 +61,8 @@ require([
   'views/appNav',
   'views/appSearch',
   'views/modal',
-  'models/user'
+  'models/user',
+  'modernizr'
 ], function($, mediator) {
   $.cookie.json = true;
 

@@ -12,12 +12,32 @@
   &.showing {
     display:block;
   }
+
+  .csstransitions & {
+    display:block;
+    opacity:0;
+    -webkit-transform:scale(0);
+    -webkit-transition-property:opacity, -webkit-transform;
+    -webkit-transition-duration:300ms;
+    transform:scale(0);
+    transition-property:opacity, transform;
+    transition-duration:300ms;
+    pointer-events:none;
+
+    &.showing {
+      -webkit-transform:scale(1);
+      opacity:1;
+      pointer-events:auto;
+    }
+  }
 }
 
 .modal-wrapper {
   position:absolute;
   background:$modalWrapperBackground;
   padding:40px 30px 10px 30px;
+  border-radius:5px;
+  box-shadow:0 0 300px 10px #fff;
 
   > .modal-close {
     position:absolute;
@@ -26,14 +46,14 @@
     right:5px;
     width:20px;
     height:20px;
-    line-height:18px;
-    // font-size:14px;
+    line-height:20px;
     font-weight:bold;
     text-align:center;
     display:block;
     background:$modalCloseBackground;
     color:$modalCloseColor;
     text-decoration:none;
+    border-radius:5px;
 
     &:hover, &:focus {
       background:$modalCloseHoverBackground;
@@ -53,6 +73,7 @@
   background:$modalHeaderBackground;
   color:$modalHeaderColor;
   text-indent:30px;
+  border-radius:5px 5px 0 0;
 }
 
 .modal-footer {
@@ -64,8 +85,5 @@
   background:$modalFooterBackground;
   color:$modalFooterColor;
   overflow:hidden;
-}
-
-.app-container .stack-book .spine-text {
-  height:24px;
+  border-radius:0 0 5px 5px;
 }
