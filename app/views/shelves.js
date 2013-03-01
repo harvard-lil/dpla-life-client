@@ -76,7 +76,8 @@ define([
 
     editShelf: function(event) {
       $('.shelf-overview.editing').removeClass('editing');
-      $(event.target).closest('.shelf-overview').addClass('editing');
+      $(event.target).closest('.shelf-overview').addClass('editing')
+        .find('input:not([type=hidden])').first().focus();
       event.preventDefault();
     },
 
