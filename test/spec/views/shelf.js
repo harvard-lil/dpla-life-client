@@ -1,8 +1,9 @@
 define([
   'models/shelf',
   'mock/shelf',
-  'views/shelf'
-], function(ShelfModel, ShelfMock, ShelfView) {
+  'views/shelf',
+  'views/stack'
+], function(ShelfModel, ShelfMock, ShelfView, StackView) {
 
   describe('Shelf View', function() {
     var shelfModel = new ShelfModel(ShelfMock());
@@ -14,7 +15,7 @@ define([
     });
 
     it('renders the shelf template', function() {
-      expect(shelfView.$('.stackview')).toExist();
+      expect(shelfView.$('.stack-wrapper')).toExist();
     });
   });
 });

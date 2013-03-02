@@ -7,10 +7,9 @@ define([
   'views/base',
   'views/appNotify',
   'views/appConfirm',
+  'views/stack',
   'text!templates/shelf.html',
-  'text!templates/stackview-book.html',
   'text!templates/stackview-shelf-book.html',
-  'stackview',
   'views/bookPreview',
   'jquery-ui'
 ], function(
@@ -22,8 +21,8 @@ define([
   BaseView,
   appNotify,
   appConfirm,
+  StackView,
   ShelfTemplate,
-  StackViewBookTemplate,
   StackViewShelfBookTemplate
 ) {
 
@@ -43,32 +42,32 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
-      var user = UserModel.currentUser();
-
-      if (user && user.get('id') === this.model.get('user_id')) {
-        StackView.get_types().book.template = StackViewShelfBookTemplate;
-      }
-      else {
-        StackView.get_types().book.template = StackViewBookTemplate; 
-      }
-      StackView.defaults.book.min_height_percentage = 85;
       this.loadShelfStack();
     },
 
-    loadShelfStack: function() {
-      var self = this;
-      var renderStack = function(data) {
-        var user = UserModel.currentUser();
-          
-        self.$('.stackview').stackView({
-          data: data,
-          ribbon: self.model.get('name')
-        });
-        if (user && user.get('id') === self.model.get('user_id')) {
-          self.makeShelfSortable();
-        }
-      };
+    renderStack: function(data) {
+      var user = UserModel.currentUser();
+      var owned = user && user.get('id') === this.model.get('user_id');
+      var bookTemplate;
 
+      if (owned) {
+        bookTemplate = StackViewShelfBookTemplate;
+      }
+      _.invoke(this.subviews, 'clear');
+      this.subviews = [
+        new StackView({
+          el: '.stack-wrapper',
+          data: data,
+          ribbon: this.model.get('name'),
+          bookTemplate: bookTemplate
+        })
+      ];
+      if (owned) {
+        this.makeShelfSortable();
+      }
+    },
+
+    loadShelfStack: function() {
       var onError = function() {
         appNotify.notify({
           type: 'error',
@@ -76,23 +75,21 @@ define([
         });
       };
 
-      if (self.model.get('book_ids') && self.model.get('book_ids').length) {
+      if (this.model.get('book_ids') && this.model.get('book_ids').length) {
         $.ajax({
           url: settings.get('searchURL'),
           datatype: 'json',
-          data: { ids: self.model.get('book_ids') },
-          success: renderStack,
+          data: { ids: this.model.get('book_ids') },
+          success: _.bind(this.renderStack, this),
           error: onError
         });
       }
       else {
-        renderStack({
+        this.renderStack({
           docs: [],
           num_found: 0
         })
       }
-
-      
     },
 
     loadPreview: function(event) {

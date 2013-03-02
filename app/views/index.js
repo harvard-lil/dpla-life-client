@@ -3,15 +3,16 @@ define([
   'settings',
   'mediator',
   'views/base',
+  'views/stack',
   'text!templates/index.html',
   'text!templates/stackview-book.html',
-  'stackview',
   'views/bookPreview'
 ], function(
   _,
   settings,
   mediator,
   BaseView,
+  StackView,
   IndexTemplate,
   StackViewBookTemplate
 ) {
@@ -26,15 +27,16 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
-
-      StackView.get_types().book.template = StackViewBookTemplate;
-      StackView.defaults.book.min_height_percentage = 85;
-      this.$('.stackview').stackView({
-        url: settings.get('indexStackURL'),
-        query: settings.get('indexSearchTerm'),
-        jsonp: true,
-        ribbon: settings.get('indexStackRibbon')
-      });
+      _.invoke(this.subviews, 'clear');
+      this.subviews = [
+        new StackView({
+          el: '.stack-wrapper',
+          url: settings.get('indexStackURL'),
+          query: settings.get('indexSearchTerm'),
+          jsonp: true,
+          ribbon: settings.get('indexStackRibbon')
+        })
+      ];
     },
 
     loadPreview: function(event) {

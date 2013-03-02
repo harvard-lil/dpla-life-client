@@ -77,6 +77,7 @@ require([
   'spec/views/shelf',
   'spec/views/shelves',
   'spec/views/signup',
+  'spec/views/stack',
   'spec/views/userSettings'
 ], function($, Backbone) {
   var jasmineEnv = jasmine.getEnv();
