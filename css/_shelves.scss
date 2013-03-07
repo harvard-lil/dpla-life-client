@@ -109,3 +109,74 @@
     color:$stackItemDeleteHoverColor;
   }
 }
+
+.stack-layout-options {
+  @extend .clearfix;
+
+  li {
+    float:right;
+
+    &:first-child a {
+      border-radius:0 5px 5px 0;
+      border-right:0;
+      margin-right:15px;
+    }
+
+    &:last-child a {
+      border-radius:5px 0 0 5px;
+    }
+  }
+
+  a {
+    display:block;
+    padding:4px 8px;
+    background:$stackLayoutOptionsBackground;
+    color:$stackLayoutOptionsColor;
+    text-decoration:none;
+    border-right:1px solid $stackLayoutOptionsBorder;
+    font-size:14px;
+    font-weight:700;
+
+    &:hover, &:focus, &.active {
+      background:$stackLayoutOptionsHoverBackground;
+      color:$stackLayoutOptionsHoverColor;
+    }
+  }
+
+  .active {
+    cursor:default;
+  }
+}
+
+.coverview {
+  margin:12px 0 12px -12px;
+  max-height:430px;
+  overflow:auto;
+
+  li {
+    float:left;
+    width:90px;
+    margin:0 0 5px 8px;
+    cursor:pointer;
+  }
+
+  img {
+    display:block;
+    max-width:100%;
+  }
+}
+
+.cover-text {
+  height:146px;
+  background:$coverTextBackground;
+  text-align:center;
+  font-size:12px;
+  line-height:1;
+  word-wrap:break-word;
+
+  span {
+    display:block;
+    padding:15px 5px 5px 5px;
+  }
+}
+

@@ -11,7 +11,7 @@ define([
     });
 
     it('renders the index template', function() {
-      expect(index.$('.stackview')).toExist();
+      expect(index.$('.stack-wrapper')).toExist();
     });
 
     it('creates the default homepage StackView', function() {

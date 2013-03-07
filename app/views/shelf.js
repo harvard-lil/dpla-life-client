@@ -8,6 +8,7 @@ define([
   'views/appNotify',
   'views/appConfirm',
   'views/stack',
+  'views/covers',
   'text!templates/shelf.html',
   'text!templates/stackview-shelf-book.html',
   'views/bookPreview',
@@ -22,6 +23,7 @@ define([
   appNotify,
   appConfirm,
   StackView,
+  CoversView,
   ShelfTemplate,
   StackViewShelfBookTemplate
 ) {
@@ -32,10 +34,17 @@ define([
 
     events: {
       'click .stack-item-link': 'loadPreview',
-      'click .stack-item-delete': 'removeFromShelf'
+      'click .stack-item-delete': 'removeFromShelf',
+      'click .stack-layout-options a': 'layoutAs',
     },
 
     initialize: function(options) {
+      this.stackType = 'stackview';
+      this.helpers = {
+        isActiveType: _.bind(function(type) {
+          return this.stackType === type ? 'active' : '';
+        }, this)
+      };
       BaseView.prototype.initialize.call(this, options);
       mediator.on('user:login user:logout', _.bind(this.redraw, this));
     },
@@ -54,16 +63,24 @@ define([
         bookTemplate = StackViewShelfBookTemplate;
       }
       _.invoke(this.subviews, 'clear');
-      this.subviews = [
-        new StackView({
+      this.subviews = [];
+      if (this.stackType === 'stackview') {
+        this.subviews.push(new StackView({
           el: '.stack-wrapper',
           data: data,
           ribbon: this.model.get('name'),
           bookTemplate: bookTemplate
-        })
-      ];
-      if (owned) {
-        this.makeShelfSortable();
+        }));
+        if (owned) {
+          this.makeShelfSortable();
+        }
+      }
+      else if (this.stackType === 'covers') {
+        this.subviews.push(new CoversView({
+          el: '.stack-wrapper',
+          data: data,
+          ribbon: this.model.get('name')
+        }));
       }
     },
 
@@ -180,6 +197,19 @@ define([
           $stackview.stackView('zIndex');
         }
       });
+    },
+
+    layoutAs: function(event) {
+      var $target = $(event.target);
+      var type = $target.data('type');
+
+      event.preventDefault();
+      if ($target.hasClass('active')) return;
+
+      this.$('.stack-layout-options a').removeClass('active');
+      $target.addClass('active');
+      this.stackType = type;
+      this.loadShelfStack();
     }
   });
 

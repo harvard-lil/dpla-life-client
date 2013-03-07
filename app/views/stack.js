@@ -1,11 +1,10 @@
 define([
-  'jquery',
   'underscore',
   'views/base',
   'text!templates/stackview.html',
   'text!templates/stackview-book.html',
   'stackview'
-], function($, _, BaseView, StackTemplate, StackViewBookTemplate) {
+], function(_, BaseView, StackTemplate, StackViewBookTemplate) {
 
   var StackView = BaseView.extend({
     template: _.template(StackTemplate),
