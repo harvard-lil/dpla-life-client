@@ -40,7 +40,7 @@ define([
       var reviews = new ReviewCollection();
       var self = this;
 
-      reviews.bookID = this.model.get('_id');
+      reviews.bookID = this.model.get('source_id');
       reviews.fetch({
         success: function(collection, response, options) {
           self.subviews.push(new ReviewsView({ collection: collection }));
@@ -58,8 +58,8 @@ define([
       var $shelfFormElement = this.$('.add-to-shelf-form [name="shelf_id"]')
       var shelfID = $shelfFormElement.val();
       var shelfName = $shelfFormElement.find('option:selected').text();
-      var bookID = this.model.get('_id');
-      var bookName = this.model.get('title').join(' - ');
+      var bookID = this.model.get('source_id');
+      var bookName = this.model.get('title');
       var userToken = UserModel.currentUser().get('token');
 
       $.ajax({

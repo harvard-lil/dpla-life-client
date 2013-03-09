@@ -3,9 +3,9 @@
     <ul>
       <% collection.each(function(book) { %>
         <% if (book.get('cover_small')) { %>
-          <li><img alt="<%= book.get('title') %>" src="<%= book.get('cover_small') %>" data-bookid="<%= book.get('_id') %>" class="cover-item cover-image"></li>
+          <li><img alt="<%= book.get('title') %>" src="<%= book.get('cover_small') %>" data-bookid="<%= book.get('source_id') %>" class="cover-item cover-image"></li>
         <% } else { %>
-          <li class="cover-item cover-text" data-bookid="<%= book.get('_id') %>">
+          <li class="cover-item cover-text" data-bookid="<%= book.get('source_id') %>">
             <span><%= book.get('title') %></span>
           </li>
         <% } %>

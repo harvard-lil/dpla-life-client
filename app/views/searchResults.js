@@ -38,7 +38,7 @@ define([
 
     loadPreview: function(event) {
       var $target = $(event.target).closest('.stack-item');
-      var id = $target.data('stackviewItem')['_id'];
+      var id = $target.data('stackviewItem')['source_id'];
 
       mediator.trigger('preview:load', id);
       event.preventDefault();

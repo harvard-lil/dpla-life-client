@@ -7,11 +7,14 @@ define([
 
     beforeEach(function() {
       setFixtures('<div class="stack-wrapper" />');
-      covers = new CoversView();
+      covers = new CoversView({
+        el: '.stack-wrapper',
+        data: { docs: [] }
+      });
     });
 
     it('renders the covers template', function() {
-      expect('Implemented').toBeFalsy();
+      expect(covers.$('.coverview')).toExist();
     });
   });
 });

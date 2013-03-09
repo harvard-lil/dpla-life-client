@@ -16,7 +16,7 @@ define([
 
     it('creates the default homepage StackView', function() {
       waitsFor(function() {
-        return $('.stackview li').length;
+        return index.$('.stackview li').length;
       }, 'StackView items to load');
     });
   });

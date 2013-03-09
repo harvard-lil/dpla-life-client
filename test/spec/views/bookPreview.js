@@ -22,7 +22,7 @@ define([
       var spy = jasmine.createSpy('on book navigation');
       mediator.on('navigate:book', spy);
       preview.$('.view-book').click();
-      expect(spy).toHaveBeenCalledWith(book.get('_id'));
+      expect(spy).toHaveBeenCalledWith(book.get('source_id'));
     });
   });
 });

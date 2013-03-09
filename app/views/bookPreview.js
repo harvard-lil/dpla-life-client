@@ -16,7 +16,7 @@ define([
     },
 
     navigateToBook: function(event) {
-      mediator.trigger('navigate:book', this.model.get('_id'));
+      mediator.trigger('navigate:book', this.model.get('source_id'));
       event.preventDefault();
     }
   });

@@ -18,7 +18,7 @@ define([
 
     it('creates the search StackView', function() {
       waitsFor(function() {
-        return $('.stackview li').length;
+        return results.$('.stackview li').length;
       }, 'StackView items to load');
     });
   });

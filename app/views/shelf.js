@@ -111,7 +111,7 @@ define([
 
     loadPreview: function(event) {
       var $target = $(event.target).closest('.stack-item');
-      var id = $target.data('stackviewItem')['_id'];
+      var id = $target.data('stackviewItem')['source_id'];
 
       mediator.trigger('preview:load', id);
       event.preventDefault();
@@ -120,7 +120,7 @@ define([
     removeFromShelf: function(event) {
       var self = this;
       var $target = $(event.target).closest('.stack-item');
-      var id = $target.data('stackviewItem')['_id'];
+      var id = $target.data('stackviewItem')['source_id'];
       var userToken = UserModel.currentUser().get('token');
 
       var onConfirm = function() {
@@ -174,7 +174,7 @@ define([
 
           $stackItems.sortable('disable');
           $stackItems.find('.stack-item').each(function() {
-            book_ids.push($(this).data('stackviewItem')['_id']);
+            book_ids.push($(this).data('stackviewItem')['source_id']);
           });
 
           self.model.save({

@@ -3,7 +3,7 @@
 <div class="book-page">
   <div class="layout-wrapper">
     <div class="layout-column">
-      <h2 class="book-title"><%= model.get('title').join(' - ') %></h2>
+      <h2 class="book-title"><%= model.get('title') %></h2>
       <h3 class="book-author"><%= model.get('creator') %></h3>
       <p class="book-description"><%= model.get('description') %></p>
 
@@ -32,13 +32,13 @@
       <% } %>
 
       <% if (model.get('publisher')) { %>
-        <p class="book-published">Published by: <%= model.get('publisher').join('; ') %></p>    
+        <p class="book-published">Published by: <%= model.get('publisher') %></p>
       <% } %>
       
-      <% if (model.get('dplaLocation')) { %>
+      <% if (model.get('source_url')) { %>
         <p class="book-source">Source:
-          <a href="<%= model.get('dplaLocation') %>">
-            <%= model.get('dplaLocation') %>
+          <a href="<%= model.get('source_url') %>">
+            <%= model.get('source_url') %>
           </a>
         </p>
       <% } %>
