@@ -302,6 +302,8 @@ a, .button {
   .app-search .infield {
     color: #113355;
     padding: 5px 6px; }
+  .app-search select {
+    float: left; }
   .app-search input[type="search"] {
     float: left;
     width: 218px;
@@ -340,7 +342,7 @@ a, .button {
     display: block;
     width: 100%;
     margin-bottom: 8px; }
-  .book-meta .book-published, .book-meta .book-source {
+  .book-meta .book-published, .book-meta .book-source, .book-meta .book-subjects {
     font-size: 12px;
     margin-bottom: 2px; }
 

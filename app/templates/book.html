@@ -32,14 +32,28 @@
       <% } %>
 
       <% if (model.get('publisher')) { %>
-        <p class="book-published">Published by: <%= model.get('publisher') %></p>
+        <p class="book-published">
+          <strong>Published by:</strong>
+          <%= model.get('publisher') %>
+        </p>
       <% } %>
       
       <% if (model.get('source_url')) { %>
-        <p class="book-source">Source:
+        <p class="book-source">
+          <strong>Source:</strong>
           <a href="<%= model.get('source_url') %>">
             <%= model.get('source_url') %>
           </a>
+        </p>
+      <% } %>
+
+      <% if (model.get('subjects') && model.get('subjects').length) { %>
+        <p class="book-subjects">
+          <strong>Subjects:</strong>
+          <% _.each(model.get('subjects'), function(subject, index) { %>
+            <%= index ? ', ' : '' %>
+            <a href="#search/subject/<%= subject %>"><%= subject %></a>
+          <% }); %>
         </p>
       <% } %>
     </div>

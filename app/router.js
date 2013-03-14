@@ -39,7 +39,7 @@ define([
   var Router = Backbone.Router.extend({
     routes: {
       '': 'index',
-      'search/:term': 'search',
+      'search/:type/:term': 'search',
       'books/:id': 'showBook',
       'shelves/': 'showShelves',
       'shelves/:id': 'showShelf'
@@ -49,9 +49,12 @@ define([
       switchMain(IndexView);
     },
 
-    search: function(term) {
+    search: function(type, term) {
       var decodedTerm = decodeURIComponent(term);
-      switchMain(SearchResultsView, { query: decodedTerm });
+      switchMain(SearchResultsView, {
+        query: decodedTerm,
+        type: type
+      });
     },
 
     showBook: function(id) {
@@ -118,9 +121,12 @@ define([
       appRouter.navigate('', { trigger: true });
     },
 
-    'navigate:search': function(term) {
+    'navigate:search': function(type, term) {
       var encodedTerm = encodeURIComponent(term);
-      appRouter.navigate('search/' + encodedTerm, { trigger: true });
+      appRouter.navigate(
+        ['search', type, encodedTerm].join('/'),
+        { trigger: true }
+      );
     },
 
     'navigate:book': function(id) {

@@ -29,10 +29,11 @@ define([
       StackView.get_types().book.template = StackViewBookTemplate;
       StackView.defaults.book.min_height_percentage = 85;
       this.$('.stackview').stackView({
-        url: settings.get('searchURL'),
-        query: this.options.query,
         jsonp: true,
-        ribbon: this.options.query
+        url: settings.get('searchURL'),
+        ribbon: this.options.query,
+        query: this.options.query,
+        search_type: this.options.type
       });
     },
 

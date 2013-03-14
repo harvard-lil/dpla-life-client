@@ -21,11 +21,12 @@ define([
 
     submit: function(event) {
       var query = this.$('#id_query').val();
+      var type = this.$('#id_type').val();
 
       event.preventDefault();
       if (!query) return;
 
-      mediator.trigger('navigate:search', query);
+      mediator.trigger('navigate:search', type, query);
     }
   });
 
