@@ -47,12 +47,13 @@
         </p>
       <% } %>
 
-      <% if (model.get('subjects') && model.get('subjects').length) { %>
+      <% var subjects = model.get('subjects') %>
+      <% if (subjects && subjects.length) { %>
         <p class="book-subjects">
           <strong>Subjects:</strong>
-          <% _.each(model.get('subjects'), function(subject, index) { %>
-            <%= index ? ', ' : '' %>
+          <% _.each(subjects, function(subject, index) { %>
             <a href="#search/subject/<%= subject %>"><%= subject %></a>
+            <%= (index < subjects.length-1) ? '·' : '' %>
           <% }); %>
         </p>
       <% } %>

@@ -22,7 +22,6 @@ define([
     render: function() {
       BaseView.prototype.render.call(this);
       window.StackView.get_types().book.template = this.options.bookTemplate;
-      window.StackView.defaults.book.min_height_percentage = 85;
       this.$('.stackview').stackView(this.options);
     }
   });
