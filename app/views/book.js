@@ -7,6 +7,7 @@ define([
   'collections/review',
   'views/base',
   'views/reviews',
+  'views/bookReader',
   'views/appNotify',
   'text!templates/book.html'
 ], function(
@@ -18,6 +19,7 @@ define([
   ReviewCollection,
   BaseView,
   ReviewsView,
+  BookReaderView,
   appNotify,
   BookTemplate
 ) {
@@ -27,7 +29,8 @@ define([
     template: _.template(BookTemplate),
 
     events: {
-      'submit .add-to-shelf-form': 'addBookToShelf'
+      'submit .add-to-shelf-form': 'addBookToShelf',
+      'click .book-viewer a': 'loadBookReader'
     },
 
     initialize: function(options) {
@@ -55,7 +58,7 @@ define([
     },
 
     addBookToShelf: function(event) {
-      var $shelfFormElement = this.$('.add-to-shelf-form [name="shelf_id"]')
+      var $shelfFormElement = this.$('.add-to-shelf-form [name="shelf_id"]');
       var shelfID = $shelfFormElement.val();
       var shelfName = $shelfFormElement.find('option:selected').text();
       var bookID = this.model.get('source_id');
@@ -83,6 +86,11 @@ define([
           });
         }
       });
+      event.preventDefault();
+    },
+
+    loadBookReader: function(event) {
+      mediator.trigger('modal:show', BookReaderView, { model: this.model });
       event.preventDefault();
     }
   });

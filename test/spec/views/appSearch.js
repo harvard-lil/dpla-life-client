@@ -32,7 +32,7 @@ define([
       it('navigates to search if query is non-blank', function() {
         search.$('#id_query').val('foo');
         search.$('form').submit();
-        expect(spy).toHaveBeenCalledWith('foo');
+        expect(spy).toHaveBeenCalledWith('keyword', 'foo');
       });
     });
   });

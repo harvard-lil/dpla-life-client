@@ -69,6 +69,7 @@ require([
   'spec/views/base',
   'spec/views/book',
   'spec/views/bookPreview',
+  'spec/views/bookReader',
   'spec/views/covers',
   'spec/views/index',
   'spec/views/login',

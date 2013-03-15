@@ -352,6 +352,11 @@ a, .button {
 .add-to-shelf-form .button {
   font-size: 12px; }
 
+.book-reader {
+  display: block;
+  width: 600px;
+  height: 400px; }
+
 .dropdown {
   position: relative; }
   .dropdown > ul {

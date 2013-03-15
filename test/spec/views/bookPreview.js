@@ -2,7 +2,7 @@ define([
   'mediator',
   'models/book',
   'mock/book',
-  'views/bookPreview',
+  'views/bookPreview'
 ], function(mediator, BookModel, BookMock, BookPreviewView) {
 
   describe('Book Preview View', function() {

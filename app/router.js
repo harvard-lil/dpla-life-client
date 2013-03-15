@@ -34,7 +34,7 @@ define([
       mainView.clear();
     }
     mainView = new MainClass(options);
-  }
+  };
 
   var Router = Backbone.Router.extend({
     routes: {
