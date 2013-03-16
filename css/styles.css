@@ -1,3 +1,4 @@
+@import url(chosen/chosen.css);
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -303,12 +304,14 @@ a, .button {
     color: #113355;
     padding: 5px 6px; }
   .app-search select {
-    float: left; }
+    float: left;
+    width: 90px; }
   .app-search input[type="search"] {
     float: left;
     width: 218px;
     height: 100%;
     border-right-width: 0;
+    border-left-width: 0;
     border-radius: 3px 0 0 3px; }
   .app-search input[type="submit"] {
     float: left;
@@ -320,6 +323,17 @@ a, .button {
     border-radius: 0 3px 3px 0; }
     .app-search input[type="submit"]:hover, .app-search input[type="submit"]:focus {
       background: rgba(17, 51, 85, 0.3); }
+
+#id_type_chzn {
+  float: left;
+  height: 26px; }
+  #id_type_chzn > a {
+    display: block;
+    height: 26px;
+    border: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.7);
+    border-right: 0;
+    border-radius: 0; }
 
 .book-page .book-title {
   font-size: 24px;

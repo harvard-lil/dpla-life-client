@@ -4,6 +4,7 @@ require.config({
     jquery: 'libs/jquery/jquery',
     'jquery-ui': 'libs/jquery/jquery-ui',
     'jquery.serialize-object': 'libs/jquery/jquery.serialize-object',
+    'jquery.chosen': 'libs/jquery/jquery.chosen.min',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
     modernizr: 'libs/modernizr/modernizr',
@@ -24,6 +25,10 @@ require.config({
     },
 
     'jquery.serialize-object': {
+      deps: ['jquery']
+    },
+
+    'jquery.chosen': {
       deps: ['jquery']
     },
 

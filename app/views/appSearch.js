@@ -3,7 +3,8 @@ define([
   'mediator',
   'views/base',
   'text!templates/appSearch.html',
-  'jquery.infieldlabel'
+  'jquery.infieldlabel',
+  'jquery.chosen'
 ], function(_, mediator, BaseView, AppSearchTemplate) {
 
   var AppSearchView = BaseView.extend({
@@ -17,6 +18,9 @@ define([
     render: function() {
       BaseView.prototype.render.call(this);
       this.$('label').inFieldLabels();
+      this.$('select').chosen({
+        disable_search: true
+      });
     },
 
     submit: function(event) {
