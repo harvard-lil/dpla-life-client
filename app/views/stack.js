@@ -5,6 +5,8 @@ define([
   'text!templates/stackview-book.html',
   'stackview'
 ], function(_, BaseView, StackTemplate, StackViewBookTemplate) {
+  
+  window.StackView.defaults.book.min_height_percentage = 66;
 
   var StackView = BaseView.extend({
     template: _.template(StackTemplate),

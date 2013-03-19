@@ -224,16 +224,16 @@ a, .button {
   background: url(images/loading.gif); }
 
 .layout-wrapper {
-  width: 640px;
+  width: 720px;
   margin: 0 auto; }
 
 .layout-full-width {
-  width: 620px;
+  width: 700px;
   padding: 0 10px; }
 
 .layout-column {
   float: left;
-  width: 300px;
+  width: 340px;
   padding: 0 10px; }
 
 .app-confirm {
@@ -262,7 +262,7 @@ a, .button {
       background: rgba(17, 51, 85, 0.3); }
 
 .modal-container .signup-form, .modal-container .login-form {
-  width: 180px; }
+  width: 200px; }
 
 .app-notify {
   position: fixed;
@@ -345,6 +345,9 @@ a, .button {
   color: rgba(17, 51, 85, 0.7); }
 .book-page p {
   margin-bottom: 16px; }
+
+.book-main {
+  width: 420px; }
 
 .book-meta {
   float: right;
@@ -662,7 +665,7 @@ a, .button {
     padding: 15px 5px 5px 5px; }
 
 .user-settings {
-  width: 180px; }
+  width: 200px; }
   .user-settings .modal-footer {
     padding: 0 0 0 60px; }
   .user-settings .delete-user {
