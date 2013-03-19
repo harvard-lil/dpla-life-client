@@ -46,13 +46,14 @@
 
       <% var subjects = model.get('subjects') %>
       <% if (subjects && subjects.length) { %>
-        <p class="book-subjects">
-          <strong>Subjects:</strong>
-          <% _.each(subjects, function(subject, index) { %>
-            <a href="#search/subject/<%= subject %>"><%= subject %></a>
-            <%= (index < subjects.length-1) ? '·' : '' %>
-          <% }); %>
-        </p>
+        <div class="book-subjects">
+          <h3>Subject Shelves</h3>
+          <ul>
+            <% _.each(subjects, function(subject, index) { %>
+              <li><a href="#search/subject/<%= subject %>" class="button"><%= subject %></a></li>
+            <% }); %>
+          </ul>
+        </div>
       <% } %>
     </div>
   </div>

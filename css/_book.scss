@@ -55,3 +55,21 @@
   width:600px;
   height:400px;
 }
+
+.book-subjects {
+  @extend .clearfix;
+
+  h3 {
+    background:$bookSubjectsHeaderBackground;
+    font-size:16px;
+    font-weight:700;
+    width:100%;
+    padding:4px 10px;
+    margin:12px 0 8px -10px;
+  }
+
+  li {
+    float:left;
+    margin:4px 4px 0 0;
+  }
+}

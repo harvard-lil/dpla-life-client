@@ -143,12 +143,12 @@ input[type="submit"], button {
 a {
   color: #007acc; }
 
-.clearfix, .layout-wrapper, .stack-layout-options {
+.clearfix, .layout-wrapper, .book-subjects, .stack-layout-options {
   *zoom: 1; }
-  .clearfix:before, .layout-wrapper:before, .stack-layout-options:before, .clearfix:after, .layout-wrapper:after, .stack-layout-options:after {
+  .clearfix:before, .layout-wrapper:before, .book-subjects:before, .stack-layout-options:before, .clearfix:after, .layout-wrapper:after, .book-subjects:after, .stack-layout-options:after {
     content: " ";
     display: table; }
-  .clearfix:after, .layout-wrapper:after, .stack-layout-options:after {
+  .clearfix:after, .layout-wrapper:after, .book-subjects:after, .stack-layout-options:after {
     clear: both; }
 
 .app-container {
@@ -374,6 +374,17 @@ a, .button {
   display: block;
   width: 600px;
   height: 400px; }
+
+.book-subjects h3 {
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  padding: 4px 10px;
+  margin: 12px 0 8px -10px; }
+.book-subjects li {
+  float: left;
+  margin: 4px 4px 0 0; }
 
 .dropdown {
   position: relative; }
