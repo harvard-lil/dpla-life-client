@@ -40,10 +40,7 @@
       
       <% if (model.get('source_url')) { %>
         <p class="book-source">
-          <strong>Source:</strong>
-          <a href="<%= model.get('source_url') %>">
-            <%= model.get('source_url') %>
-          </a>
+          <strong>Source:</strong>&nbsp;<a href="<%= model.get('source_url') %>"><%= model.get('source_url') %></a>
         </p>
       <% } %>
 

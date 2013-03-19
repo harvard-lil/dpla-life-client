@@ -354,7 +354,8 @@ a, .button {
   width: 240px;
   padding: 10px;
   background: rgba(0, 122, 204, 0.3);
-  border-radius: 3px; }
+  border-radius: 3px;
+  word-wrap: break-word; }
   .book-meta .cover_large {
     display: block;
     width: 100%;
