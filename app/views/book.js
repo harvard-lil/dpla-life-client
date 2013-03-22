@@ -8,6 +8,7 @@ define([
   'views/base',
   'views/reviews',
   'views/bookReader',
+  'views/bookRelateds',
   'views/appNotify',
   'text!templates/book.html'
 ], function(
@@ -20,6 +21,7 @@ define([
   BaseView,
   ReviewsView,
   BookReaderView,
+  BookRelatedsView,
   appNotify,
   BookTemplate
 ) {
@@ -55,6 +57,11 @@ define([
           });
         }
       });
+
+      this.subviews.push(new BookRelatedsView({
+        el: '.book-relateds',
+        model: this.model
+      }));
     },
 
     addBookToShelf: function(event) {
@@ -68,7 +75,7 @@ define([
       $.ajax({
         type: 'post',
         url: settings.get('shelfPushURL', shelfID),
-        data: { book_id: bookID },
+        data: { id: bookID },
         headers: {
           'Authorization': 'Token token=' + userToken
         },

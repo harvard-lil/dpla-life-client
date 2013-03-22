@@ -386,6 +386,15 @@ a, .button {
   float: left;
   margin: 4px 4px 0 0; }
 
+.book-relateds {
+  margin-top: 16px;
+  border-top: 1px solid rgba(0, 122, 204, 0.3); }
+  .book-relateds .layout-column {
+    padding-top: 16px; }
+  .book-relateds .stackview {
+    height: auto;
+    max-height: 520px; }
+
 .dropdown {
   position: relative; }
   .dropdown > ul {

@@ -58,6 +58,7 @@ define([
       var userToken = UserModel.currentUser().get('token');
 
       event.preventDefault();
+      event.stopPropagation();
       if (!shelfObject.name) return;
 
       this.options.collection.create(shelfObject, {

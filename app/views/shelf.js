@@ -120,13 +120,13 @@ define([
     removeFromShelf: function(event) {
       var self = this;
       var $target = $(event.target).closest('.stack-item');
-      var id = $target.data('stackviewItem')['source_id'];
+      var bookID = $target.data('stackviewItem')['source_id'];
       var userToken = UserModel.currentUser().get('token');
 
       var onConfirm = function() {
-        self.model.save({
-          book_ids: _.without(self.model.get('book_ids'), id)
-        }, {
+        $.ajax({
+          type: 'delete',
+          url: settings.get('shelfRemoveURL', self.model.get('id'), bookID),
           headers: {
             'Authorization': 'Token token=' + userToken
           },
@@ -140,7 +140,7 @@ define([
             });
           }
         });
-      }
+      };
 
       appConfirm({
         message: 'Are you sure you want to take that book off the shelf?',

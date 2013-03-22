@@ -36,6 +36,9 @@ define(['underscore'], function(_) {
     indexStackURL: function() {
       return settings.apiRoot + '/search';
     },
+    neighborsURL: function(bookID) {
+      return [settings.bookURL(), bookID, 'neighbors'].join('/');
+    },
     reviewURL: function() {
       return settings.apiRoot + '/reviews';
     },
@@ -44,6 +47,9 @@ define(['underscore'], function(_) {
     },
     shelfPushURL: function(shelfID) {
       return [settings.shelfURL(), shelfID, 'books'].join('/');
+    },
+    shelfRemoveURL: function(shelfID, bookID) {
+      return [settings.shelfURL(), shelfID, 'books', bookID].join('/');
     },
     searchURL: function() {
       return settings.apiRoot + '/search';
@@ -76,7 +82,7 @@ define(['underscore'], function(_) {
     get: function(key) {
       var setting = settings[key];
       if (_.isFunction(setting)) {
-        return setting(Array.prototype.slice.call(arguments, 1));
+        return setting.apply(null, Array.prototype.slice.call(arguments, 1));
       }
       return setting;
     }
