@@ -12,6 +12,7 @@ define([
     initialize: function(options) {
       BaseView.prototype.initialize.call(this, options);
       this.loadNeighbors();
+      this.loadSubjectUnion();
     },
 
     loadNeighbors: function() {
@@ -35,6 +36,16 @@ define([
         success: onSuccess,
         error: onError
       });
+    },
+
+    loadSubjectUnion: function() {
+      this.subviews.push(new StackView({
+        el: '.subject-union',
+        url: settings.get('searchURL'),
+        search_type: 'subject_union',
+        query: this.model.get('source_id'),
+        ribbon: 'Subject Union'
+      }));
     }
   });
 

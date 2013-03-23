@@ -24,7 +24,7 @@ passed as additional arguments to .get:
 define(['underscore'], function(_) {
   // Environment agnostic settings
   var settings = {
-    indexSearchTerm: 'foo',
+    indexSearchTerm: 'science',
     indexStackRibbon: 'Index Stack',
 
     bookURL: function() {

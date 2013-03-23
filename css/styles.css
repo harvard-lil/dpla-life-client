@@ -391,9 +391,6 @@ a, .button {
   border-top: 1px solid rgba(0, 122, 204, 0.3); }
   .book-relateds .layout-column {
     padding-top: 16px; }
-  .book-relateds .stackview {
-    height: auto;
-    max-height: 520px; }
 
 .dropdown {
   position: relative; }
