@@ -47,18 +47,6 @@
           <a href="<%= model.get('source_url') %>"><%= model.get('source_url') %></a>
         </p>
       <% } %>
-
-      <% var subjects = model.get('subjects') %>
-      <% if (subjects && subjects.length) { %>
-        <div class="book-subjects">
-          <h3>Subject Shelves</h3>
-          <ul>
-            <% _.each(subjects, function(subject, index) { %>
-              <li><a href="#search/subject/<%= subject %>" class="button"><%= subject %></a></li>
-            <% }); %>
-          </ul>
-        </div>
-      <% } %>
     </div>
   </div>
 

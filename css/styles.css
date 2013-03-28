@@ -143,12 +143,12 @@ input[type="submit"], button {
 a {
   color: #007acc; }
 
-.clearfix, .layout-wrapper, .book-subjects, .stack-layout-options {
+.clearfix, .layout-wrapper, .stack-layout-options {
   *zoom: 1; }
-  .clearfix:before, .layout-wrapper:before, .book-subjects:before, .stack-layout-options:before, .clearfix:after, .layout-wrapper:after, .book-subjects:after, .stack-layout-options:after {
+  .clearfix:before, .layout-wrapper:before, .stack-layout-options:before, .clearfix:after, .layout-wrapper:after, .stack-layout-options:after {
     content: " ";
     display: table; }
-  .clearfix:after, .layout-wrapper:after, .book-subjects:after, .stack-layout-options:after {
+  .clearfix:after, .layout-wrapper:after, .stack-layout-options:after {
     clear: both; }
 
 .app-container {
@@ -375,22 +375,45 @@ a, .button {
   width: 600px;
   height: 400px; }
 
-.book-subjects h3 {
-  background: rgba(255, 255, 255, 0.3);
-  font-size: 16px;
-  font-weight: 700;
-  width: 100%;
-  padding: 4px 10px;
-  margin: 12px 0 8px -10px; }
-.book-subjects li {
-  float: left;
-  margin: 4px 4px 0 0; }
-
 .book-relateds {
-  margin-top: 16px;
-  border-top: 1px solid rgba(0, 122, 204, 0.3); }
-  .book-relateds .layout-column {
-    padding-top: 16px; }
+  margin-top: 16px; }
+  .book-relateds .stack-wrapper {
+    margin-top: 24px; }
+    .book-relateds .stack-wrapper > p {
+      line-height: 1.2; }
+  .book-relateds .app-preview {
+    margin-top: 24px; }
+
+.related-stacks-nav h2 {
+  border-top: 1px solid rgba(0, 122, 204, 0.3);
+  padding-top: 16px;
+  font-size: 26px;
+  font-weight: 100; }
+
+.related-category {
+  margin: 8px 0; }
+  .related-category h3 {
+    display: inline;
+    font-size: 14px;
+    font-weight: 700;
+    vertical-align: middle; }
+  .related-category ul {
+    display: inline; }
+  .related-category li {
+    display: inline-block; }
+  .related-category a {
+    font-size: 11px;
+    text-transform: capitalize;
+    font-weight: 700; }
+    .related-category a.active {
+      background: #ff6600;
+      pointer-events: none;
+      cursor: default; }
+
+.subject-divider {
+  font-weight: 100;
+  padding: 0 5px;
+  color: rgba(0, 122, 204, 0.3); }
 
 .dropdown {
   position: relative; }
