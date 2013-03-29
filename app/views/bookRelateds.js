@@ -28,6 +28,13 @@ define([
       'click .stack-item-link': 'loadPreview'
     },
 
+    render: function() {
+      BaseView.prototype.render.call(this);
+      _.delay(_.bind(function() {
+        self.$('.single-subject').first().trigger('click')
+      }, this), 10);
+    },
+
     loadNeighbors: function() {
       var self = this;
 
