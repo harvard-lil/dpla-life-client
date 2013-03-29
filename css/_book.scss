@@ -20,12 +20,15 @@
   width:420px;
 }
 
+.book-aside {
+  width:260px;
+}
+
 .book-meta {
-  float:right;
-  width:240px;
   padding:10px;
   background:$bookMetaBackground;
   border-radius:3px;
+  margin-bottom:12px;
   word-wrap:break-word;
 
   .cover_large {

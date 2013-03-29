@@ -12,6 +12,31 @@
           <a href="<%= model.get('viewer_url') %>" target="_blank" class="button">Read Book</a>
         </p>
       <% } %>
+    </div>
+
+    <div class="layout-column book-aside">
+      <div class="book-meta">
+        <% if (model.get('cover_large')) { %>
+          <img src="<%= model.get('cover_large') %>" alt="" class="cover_large">
+        <% } %>
+
+        <% if (model.get('publisher')) { %>
+          <p class="book-published">
+            <strong>Published by:</strong>
+            <%= model.get('publisher') %>
+          </p>
+        <% } %>
+        
+        <% if (model.get('source_url')) { %>
+          <p class="book-source">
+            <strong>Source:</strong>
+            <% if (model.get('source_library')) { %>
+              <span><%= model.get('source_library') %></span>
+            <% } %>
+            <a href="<%= model.get('source_url') %>"><%= model.get('source_url') %></a>
+          </p>
+        <% } %>
+      </div>
 
       <% if (currentUser) { %>
         <form action="#" method="post" class="add-to-shelf-form">
@@ -23,29 +48,6 @@
           </select>
           <input type="submit" value="Add" class="button">
         </form>
-      <% } %>
-    </div>
-
-    <div class="book-meta layout-column">
-      <% if (model.get('cover_large')) { %>
-        <img src="<%= model.get('cover_large') %>" alt="" class="cover_large">
-      <% } %>
-
-      <% if (model.get('publisher')) { %>
-        <p class="book-published">
-          <strong>Published by:</strong>
-          <%= model.get('publisher') %>
-        </p>
-      <% } %>
-      
-      <% if (model.get('source_url')) { %>
-        <p class="book-source">
-          <strong>Source:</strong>
-          <% if (model.get('source_library')) { %>
-            <span><%= model.get('source_library') %></span>
-          <% } %>
-          <a href="<%= model.get('source_url') %>"><%= model.get('source_url') %></a>
-        </p>
       <% } %>
     </div>
   </div>
