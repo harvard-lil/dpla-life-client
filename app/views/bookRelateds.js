@@ -23,9 +23,14 @@ define([
       'click .single-subject': 'loadSingleSubject',
       'click .subject-union': 'loadSubjectUnion',
       'click .subject-intersection': 'loadSubjectIntersection',
-      'click .neighbors': 'loadNeighbors',
+      'click .neighbors.enabled': 'loadNeighbors',
       'click .related-category a': 'setActiveButton',
       'click .stack-item-link': 'loadPreview'
+    },
+
+    initialize: function(options) {
+      BaseView.prototype.initialize.call(this, options);
+      this.loadNeighborData();
     },
 
     render: function() {
@@ -35,28 +40,28 @@ define([
       }, this), 10);
     },
 
-    loadNeighbors: function() {
-      var self = this;
+    loadNeighborData: function() {
+      var onError = _.bind(function() {
+        this._neighborData = null;
+      }, this);
 
-      var onError = function() {
-        self.loadStack({
-          data: { num_found:0, docs: [] },
-          ribbon: 'Shelf Neighbors'
-        });
-      };
-
-      var onSuccess = function(data) {
-        self.loadStack({
-          data: data,
-          ribbon: 'Shelf Neighbors'
-        });
-      };
+      var onSuccess = _.bind(function(data) {
+        this._neighborData = data;
+        this.$('.neighbors').removeClass('disabled').addClass('enabled');
+      }, this);
 
       $.ajax({
         url: settings.get('neighborsURL', this.model.get('source_id')),
         datatype: 'json',
         success: onSuccess,
         error: onError
+      });
+    },
+
+    loadNeighbors: function(event) {
+      this.loadStack({
+        data: this._neighborData,
+        ribbon: 'Shelf Neighbors'
       });
     },
 

@@ -417,6 +417,12 @@ a, .button {
   padding: 0 5px;
   color: rgba(0, 122, 204, 0.3); }
 
+.neighbors.disabled {
+  pointer-events: none;
+  cursor: default;
+  background: #aaa;
+  border-color: #999; }
+
 .dropdown {
   position: relative; }
   .dropdown > ul {

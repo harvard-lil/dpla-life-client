@@ -59,3 +59,10 @@
   padding:0 5px;
   color:$subjectDividerColor;
 }
+
+.neighbors.disabled {
+  pointer-events:none;
+  cursor:default;
+  background:#aaa;
+  border-color:#999;
+}
