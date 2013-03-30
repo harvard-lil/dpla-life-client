@@ -4,7 +4,20 @@
   }
 }
 
-.welcome-header {
-  font-size:28px;
-  margin-bottom:16px;
+.index-welcome {
+  .welcome-header {
+    font-size:28px;
+    margin-bottom:16px;
+    line-height:1.143;
+  }
+
+  p {
+    font-size:14px;
+  }
+
+  .welcome-footer {
+    font-size:12px;
+    padding-top:12px;
+    border-top:1px solid $welcomeFooterBorder;
+  }
 }

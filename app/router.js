@@ -6,12 +6,15 @@ define([
   'models/user',
   'models/shelf',
   'collections/shelves',
+  'views/base',
   'views/index',
   'views/searchResults',
   'views/book',
   'views/shelves',
   'views/shelf',
-  'views/appNotify'
+  'views/appNotify',
+  'text!templates/faq.html',
+  'text!templates/privacy.html'
 ], function(
   _,
   Backbone,
@@ -20,12 +23,15 @@ define([
   UserModel,
   ShelfModel,
   ShelfCollection,
+  BaseView,
   IndexView,
   SearchResultsView,
   BookView,
   ShelvesView,
   ShelfView,
-  appNotify
+  appNotify,
+  FaqTemplate,
+  PrivacyTemplate
 ) {
   var mainView;
 
@@ -42,7 +48,9 @@ define([
       'search/:type/:term': 'search',
       'books/:id': 'showBook',
       'shelves/': 'showShelves',
-      'shelves/:id': 'showShelf'
+      'shelves/:id': 'showShelf',
+      'faq/': 'showFaq',
+      'privacy/': 'showPrivacy'
     },
 
     index: function() {
@@ -108,6 +116,20 @@ define([
             message: 'Something went wrong trying to load that shelf.'
           });
         }
+      });
+    },
+
+    showFaq: function() {
+      switchMain(BaseView, {
+        el: '.app-main',
+        template: _.template(FaqTemplate)
+      });
+    },
+
+    showPrivacy: function() {
+      switchMain(BaseView, {
+        el: '.app-main',
+        template: _.template(PrivacyTemplate)
       });
     }
   });

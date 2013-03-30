@@ -8,16 +8,6 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'RedactedScript';
-  src: url('font/redacted-script.eot?v=0');
-  src: url('font/redacted-script.eot?#iefix&v=0') format('embedded-opentype'),
-    url('font/redacted-script.woff?v=0') format('woff'),
-    url('font/redacted-script.ttf?v=0') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 $sansFontStack: 'Roboto', sans-serif;
 $appGutterWidth: 40px;
 
