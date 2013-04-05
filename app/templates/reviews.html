@@ -2,15 +2,31 @@
 
 <div class="reviews-list">
   <h2 data-reviewcount="<%= collection.length %>">Reviews</h2>
+  <div class="star-rating average-rating" title="Average Rating">
+    <% var averageRating = helpers.averageRating() %>
+    <% if (averageRating) { %>
+      <% var fullStars = Math.floor(averageRating) %>
+      <% var halfStar = averageRating !== fullStars %>
+      <% var emptyStars = 5 - Math.ceil(averageRating) %>
+
+      <% _.times(fullStars, function() { %>
+        <span class="star">&#xf005;</span>
+      <% }); %>
+      <% if (halfStar) { %> <span class="star">&#xf089;</span> <% } %>
+      <% _.times(emptyStars, function() { %>
+        <span class="star">&#xf006;</span>
+      <% }); %>
+    <% } %>
+  </div>
   <% collection.each(function(review) { %>
     <div class="review" data-reviewid="<%= review.id %>">
       <% if (review.get('rating')) { %>
         <div class="star-rating">
           <% _.times(review.get('rating'), function() { %>
-            &#xf005;
+            <span class="star">&#xf005;</span>
           <% }); %>
           <% _.times(5 - review.get('rating'), function() { %>
-            &#xf006;
+            <span class="star">&#xf006;</span>
           <% }); %>
         </div>
       <% } %>

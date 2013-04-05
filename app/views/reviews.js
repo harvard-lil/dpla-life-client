@@ -35,6 +35,8 @@ define([
     },
 
     initialize: function(options) {
+      var self = this;
+
       this.helpers = {
         currentUser: function() {
           return UserModel.currentUser();
@@ -46,6 +48,26 @@ define([
               return review.get('user').id === user.id;
             });
           }
+        },
+        reviewsWithComments: function() {
+          return options.collection.filter(function(review) {
+            return review.get('comment');
+          });
+        },
+        averageRating: function() {
+          var reviews = options.collection.reject(function(review) {
+            return review.get('rating') == null;
+          });
+          var total = reviews.reduce(function(memo, review) {
+            return memo + review.get('rating');
+          }, 0);
+          var avg;
+
+          if (reviews.length) {
+            avg = total / reviews.length;
+            return Math.round(avg * 2) / 2;
+          }
+          return null; // No reviews with ratings
         }
       };
       BaseView.prototype.initialize.call(this, options);

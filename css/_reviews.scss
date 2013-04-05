@@ -2,6 +2,7 @@
   padding-top:16px;
   margin:16px 0;
   border-top:1px solid $reviewsListBorder;
+  position:relative;
 
   h2 {
     font-size:26px;
@@ -45,6 +46,18 @@
 
 .star-rating {
   font-family:'FontAwesome';
+
+  .star {
+    width:15px;
+    display:inline-block;
+  }
+}
+
+.average-rating {
+  position:absolute;
+  top:30px;
+  right:10px;
+  opacity:0.5;
 }
 
 .review-comment {
