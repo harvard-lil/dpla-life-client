@@ -77,6 +77,11 @@ define(['underscore'], function(_) {
       apiRoot: 'http://dpla-life-service-dev.herokuapp.com'
     });
   }
+  else if (window.location.host.indexOf('law.harvard.edu')) {
+    _.extend(settings, {
+      apiRoot: 'http://stacklife-dpla.law.harvard.edu'
+    });
+  }
 
   return {
     get: function(key) {
