@@ -366,9 +366,7 @@ a, .button {
   font-size: 12px; }
 
 .book-reader {
-  display: block;
-  width: 600px;
-  height: 400px; }
+  display: block; }
 
 .book-relateds {
   margin-top: 16px; }
@@ -480,7 +478,7 @@ a, .button {
   background: white;
   padding: 40px 30px 10px 30px;
   border-radius: 5px;
-  box-shadow: 0 0 300px 10px white; }
+  box-shadow: 0 0 300px 10px #fff; }
   .modal-wrapper > .modal-close {
     position: absolute;
     z-index: 9;
