@@ -4,7 +4,7 @@
       <span class="spine-title"><%= title %></span>
       <span class="spine-author"><%= author %></span>
     </span>
-    <span class="spine-year"><%= year %></span>
+    <% if (year) { %><span class="spine-year"><%= year %></span><% } %>
     <span class="stack-pages"></span>
     <span class="stack-cover"></span>
   </a>
