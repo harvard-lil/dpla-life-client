@@ -1,10 +1,11 @@
 define([
   'underscore',
+  'jquery',
   'views/base',
   'text!templates/stackview.html',
   'text!templates/stackview-book.html',
   'stackview'
-], function(_, BaseView, StackTemplate, StackViewBookTemplate) {
+], function(_, $, BaseView, StackTemplate, StackViewBookTemplate) {
   
   window.StackView.defaults.book.min_height_percentage = 66;
 
@@ -19,6 +20,9 @@ define([
         options.bookTemplate = StackViewBookTemplate;
       }
       BaseView.prototype.initialize.call(this, options);
+      if (options.fullHeight) {
+        $(window).resize(_.bind(this._resize, this));
+      }
     },
 
     render: function() {
@@ -30,6 +34,18 @@ define([
         }, this));
       }
       this.$('.stackview').stackView(this.options);
+      if (this.options.fullHeight) {
+        this._resize();
+      }
+    },
+
+    _resize: function() {
+      var $stack = this.$('.stackview');
+      var windowHeight = window.innerHeight ?
+                         window.innerHeight :
+                         $(window).height();
+      var targetHeight = Math.max(windowHeight - $stack.offset().top, 520);
+      $stack.height(targetHeight);
     }
   });
 

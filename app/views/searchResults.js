@@ -36,7 +36,8 @@ define([
           query: this.options.query,
           ribbon: this.options.query,
           search_type: this.options.type,
-          selectFirstBook: true
+          selectFirstBook: true,
+          fullHeight: true
         })
       ];
     },

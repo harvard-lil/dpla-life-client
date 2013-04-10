@@ -34,7 +34,8 @@ define([
           url: settings.get('indexStackURL'),
           query: settings.get('indexSearchTerm'),
           jsonp: true,
-          ribbon: settings.get('indexStackRibbon')
+          ribbon: settings.get('indexStackRibbon'),
+          fullHeight: true
         })
       ];
     },

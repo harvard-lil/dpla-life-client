@@ -69,7 +69,8 @@ define([
           el: '.stack-wrapper',
           data: data,
           ribbon: this.model.get('name'),
-          bookTemplate: bookTemplate
+          bookTemplate: bookTemplate,
+          fullHeight: true
         }));
         if (owned) {
           this.makeShelfSortable();
