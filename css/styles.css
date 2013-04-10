@@ -98,8 +98,9 @@ body {
   background: white; }
 
 h1 {
-  font-size: 36px;
-  font-weight: 700; }
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 4px; }
 
 h2 {
   font-weight: 700; }
@@ -238,8 +239,7 @@ a, .button {
 .app-nav {
   color: white;
   float: right;
-  height: 100%;
-  margin-left: 8px; }
+  height: 50px; }
   .app-nav > li {
     float: left;
     margin: 0;
@@ -249,7 +249,7 @@ a, .button {
     text-decoration: none;
     display: block;
     height: 100%;
-    line-height: 54px;
+    line-height: 50px;
     padding: 0 8px; }
     .app-nav a:hover, .app-nav a:focus {
       background: rgba(17, 51, 85, 0.3); }
@@ -285,24 +285,27 @@ a, .button {
       color: white; }
 
 .app-search {
-  position: relative; }
+  position: relative;
+  float: left;
+  margin: 13px 0 0 15px; }
   .app-search > form {
     float: left;
     background: #007acc;
     color: #113355;
-    padding: 5px 10px 8px 10px;
-    height: 26px;
+    height: 24px;
     border-radius: 0 0 5px 5px; }
   .app-search .infield {
     color: #113355;
-    padding: 5px 6px; }
+    padding: 4px 5px;
+    font-size: 14px; }
   .app-search select {
     float: left;
     width: 90px; }
   .app-search input[type="search"] {
     float: left;
-    width: 218px;
+    width: 120px;
     height: 100%;
+    font-size: 14px;
     border-right-width: 0;
     border-left-width: 0;
     border-radius: 3px 0 0 3px; }
@@ -319,10 +322,10 @@ a, .button {
 
 #id_type_chzn {
   float: left;
-  height: 26px; }
+  height: 24px; }
   #id_type_chzn > a {
     display: block;
-    height: 26px;
+    height: 24px;
     border: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.7);
     border-right: 0;
