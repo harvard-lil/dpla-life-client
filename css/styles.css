@@ -478,7 +478,7 @@ a, .button {
   background: white;
   padding: 40px 30px 10px 30px;
   border-radius: 5px;
-  box-shadow: 0 0 300px 10px #fff; }
+  box-shadow: 0 0 400px 20px rgba(255, 255, 255, 0.4); }
   .modal-wrapper > .modal-close {
     position: absolute;
     z-index: 9;
