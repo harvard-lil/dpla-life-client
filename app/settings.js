@@ -24,8 +24,8 @@ passed as additional arguments to .get:
 define(['underscore'], function(_) {
   // Environment agnostic settings
   var settings = {
-    indexSearchTerm: 'science',
-    indexStackRibbon: 'Index Stack',
+    indexSearchTerm: 'evolution',
+    indexStackRibbon: 'Evolution',
 
     bookURL: function() {
       return settings.apiRoot + '/books';
