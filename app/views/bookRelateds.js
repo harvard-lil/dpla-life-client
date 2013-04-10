@@ -97,7 +97,8 @@ define([
     loadStack: function(options) {
       _.invoke(this.subviews, 'clear');
       this.subviews = [new StackView(_.extend({
-        el: '.book-relateds .stack-wrapper'
+        el: '.book-relateds .stack-wrapper',
+        pivot: this.model.get('source_id')
       }, options))];
     },
 
@@ -110,6 +111,10 @@ define([
     loadPreview: function(event) {
       var $target = $(event.target).closest('.stack-item');
       var id = $target.data('stackviewItem')['source_id'];
+
+      if ($target.is('.stack-pivot, .stack-current')) {
+        return event.preventDefault();
+      }
 
       mediator.trigger('preview:load', id);
       event.preventDefault();

@@ -23,6 +23,8 @@ define([
       if (options.fullHeight) {
         $(window).resize(_.bind(this._resize, this));
       }
+      this.$('.stackview')
+        .on('stackview.pageload', _.bind(this._highlightCurrent, this));
     },
 
     render: function() {
@@ -46,6 +48,15 @@ define([
                          $(window).height();
       var targetHeight = Math.max(windowHeight - $stack.offset().top, 520);
       $stack.height(targetHeight);
+    },
+
+    _highlightCurrent: function() {
+      var pivot = this.options.pivot
+      if (!pivot) return;
+
+      this.$('.stack-item').filter(function() {
+        return $(this).data('stackviewItem').source_id === pivot;
+      }).addClass('stack-pivot');
     }
   });
 

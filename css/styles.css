@@ -737,6 +737,19 @@ a, .button {
 .static-page p {
   margin-top: 12px; }
 
+.stackview .stack-pivot a {
+  background-color: #ff6600;
+  text-shadow: 0 -1px #993d00;
+  border-color: #993d00;
+  cursor: default; }
+.stackview .stack-pivot .stack-pages {
+  border-color: #993d00; }
+  .stackview .stack-pivot .stack-pages:after {
+    border-bottom-color: #ffa366; }
+.stackview .stack-pivot .stack-cover {
+  background-color: #ff6600;
+  border-color: #993d00; }
+
 .user-settings {
   width: 200px; }
   .user-settings .modal-footer {
