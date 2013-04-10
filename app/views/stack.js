@@ -24,6 +24,11 @@ define([
     render: function() {
       BaseView.prototype.render.call(this);
       window.StackView.get_types().book.template = this.options.bookTemplate;
+      if (this.options.selectFirstBook) {
+        this.$('.stackview').one('stackview.pageload', _.bind(function() {
+          this.$('.stack-item-link').first().click();
+        }, this));
+      }
       this.$('.stackview').stackView(this.options);
     }
   });

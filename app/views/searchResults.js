@@ -35,7 +35,8 @@ define([
           jsonp: true,
           query: this.options.query,
           ribbon: this.options.query,
-          search_type: this.options.type
+          search_type: this.options.type,
+          selectFirstBook: true
         })
       ];
     },
