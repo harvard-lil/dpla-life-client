@@ -384,16 +384,19 @@ a, .button {
   font-weight: 100; }
 
 .related-category {
-  margin: 8px 0; }
+  margin: 8px 0;
+  padding-left: 80px; }
   .related-category h3 {
-    display: inline;
+    float: left;
+    margin: 2px 0 0 -80px;
+    width: 80px;
     font-size: 14px;
-    font-weight: 700;
-    vertical-align: middle; }
+    font-weight: 700; }
   .related-category ul {
     display: inline; }
   .related-category li {
-    display: inline-block; }
+    display: inline-block;
+    margin-bottom: 5px; }
   .related-category a {
     font-size: 11px;
     text-transform: capitalize;

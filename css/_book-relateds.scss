@@ -25,12 +25,14 @@
 
 .related-category {
   margin:8px 0;
+  padding-left:80px;
 
   h3 {
-    display:inline;
+    float:left;
+    margin:2px 0 0 -80px;
+    width:80px;
     font-size:14px;
     font-weight:700;
-    vertical-align:middle;
   }
 
   ul {
@@ -39,6 +41,7 @@
 
   li {
     display:inline-block;
+    margin-bottom:5px;
   }
 
   a {
