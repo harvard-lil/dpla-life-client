@@ -22,4 +22,24 @@
     width:100px;
     margin:0 0 5px 10px;
   }
+
+  .book-preview-actions {
+    list-style:none;
+    width:100%;
+    overflow:hidden;
+
+    > li {
+      float:left;
+      margin-right:5px;
+    }
+  }
+
+  .read-book {
+    background:$readBookBackground;
+    border-color:$readBookBackgroundHover;
+
+    &:hover, &:focus {
+      background:$readBookBackgroundHover;
+    }
+  }
 }

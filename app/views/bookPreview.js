@@ -4,19 +4,34 @@ define([
   'models/book',
   'views/base',
   'views/appNotify',
+  'views/bookReader',
   'text!templates/bookPreview.html'
-], function(_, mediator, BookModel, BaseView, appNotify, BookPreviewTemplate) {
+], function(
+  _,
+  mediator,
+  BookModel,
+  BaseView,
+  appNotify,
+  BookReaderView,
+  BookPreviewTemplate
+) {
 
   var BookPreviewView = BaseView.extend({
     el: '.app-preview',
     template: _.template(BookPreviewTemplate),
 
     events: {
-      'click .view-book': 'navigateToBook'
+      'click .view-book': 'navigateToBook',
+      'click .read-book': 'loadBookReader'
     },
 
     navigateToBook: function(event) {
       mediator.trigger('navigate:book', this.model.get('source_id'));
+      event.preventDefault();
+    },
+
+    loadBookReader: function(event) {
+      mediator.trigger('modal:show', BookReaderView, { model: this.model });
       event.preventDefault();
     }
   });

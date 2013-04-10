@@ -7,5 +7,10 @@
 
   <p><%= model.get('description') %></p>
 
-  <p><a href="#books/<%= model.get('source_id') %>" class="button view-book">More Info</a></p>
+  <ul class="book-preview-actions">
+    <li><a href="#books/<%= model.get('source_id') %>" class="button view-book">More Info</a></li>
+    <% if (model.get('viewer_url')) { %>
+      <li><a href="<%= model.get('viewer_url') %>" class="button read-book">Read Book</a></li>
+    <% } %>
+  </ul>
 </div>
