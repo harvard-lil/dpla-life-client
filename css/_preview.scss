@@ -33,13 +33,4 @@
       margin-right:5px;
     }
   }
-
-  .read-book {
-    background:$readBookBackground;
-    border-color:$readBookBackgroundHover;
-
-    &:hover, &:focus {
-      background:$readBookBackgroundHover;
-    }
-  }
 }

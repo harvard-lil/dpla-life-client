@@ -32,7 +32,7 @@ define([
 
     events: {
       'submit .add-to-shelf-form': 'addBookToShelf',
-      'click .book-viewer a': 'loadBookReader'
+      'click .read-book': 'loadBookReader'
     },
 
     initialize: function(options) {

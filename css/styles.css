@@ -369,11 +369,13 @@ a, .button {
 
 .book-reader {
   display: block; }
-  .book-reader a {
-    background: rgba(47, 189, 5, 0.7);
+
+.read-book {
+  background: rgba(47, 189, 5, 0.7);
+  border-color: #2fbd05; }
+  .read-book:hover, .read-book:focus {
+    background: #2fbd05;
     border-color: #2fbd05; }
-    .book-reader a:hover, .book-reader a:focus {
-      background: #2fbd05; }
 
 .book-relateds {
   margin-top: 16px; }
@@ -555,11 +557,6 @@ a, .button {
   .book-preview .book-preview-actions > li {
     float: left;
     margin-right: 5px; }
-.book-preview .read-book {
-  background: rgba(47, 189, 5, 0.7);
-  border-color: #2fbd05; }
-  .book-preview .read-book:hover, .book-preview .read-book:focus {
-    background: #2fbd05; }
 
 .reviews-list {
   padding-top: 16px;
@@ -742,6 +739,9 @@ a, .button {
   .cover-text span {
     display: block;
     padding: 15px 5px 5px 5px; }
+
+.shelf-preview {
+  margin-top: 45px; }
 
 .static-page h2 {
   font-size: 26px;

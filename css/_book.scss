@@ -55,14 +55,14 @@
 
 .book-reader {
   display:block;
-
-  a {
-    background:$readBookBackground;
-    border-color:$readBookBackgroundHover;
-
-    &:hover, &:focus {
-      background:$readBookBackgroundHover;
-    }
-  }
 }
 
+.read-book {
+  background:$readBookBackground;
+  border-color:$readBookBackgroundHover;
+
+  &:hover, &:focus {
+    background:$readBookBackgroundHover;
+    border-color:$readBookBackgroundHover;
+  }
+}
