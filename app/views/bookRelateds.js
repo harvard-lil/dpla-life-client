@@ -64,7 +64,7 @@ define([
     loadNeighbors: function(event) {
       this.loadStack({
         data: this._neighborData,
-        ribbon: 'Shelf Neighbors'
+        ribbon: 'User Shelves'
       });
     },
 
