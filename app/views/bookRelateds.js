@@ -45,6 +45,7 @@ define([
     loadNeighborData: function() {
       var onError = _.bind(function() {
         this._neighborData = null;
+        this.$('.neighbors').closest('.related-category').remove();
       }, this);
 
       var onSuccess = _.bind(function(data) {
