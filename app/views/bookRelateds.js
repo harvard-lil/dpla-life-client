@@ -5,7 +5,8 @@ define([
   'mediator',
   'views/base',
   'views/stack',
-  'text!templates/bookRelateds.html'
+  'text!templates/bookRelateds.html',
+  'jquery.qtip'
 ], function(
   _,
   $,
@@ -38,6 +39,7 @@ define([
       _.delay(_.bind(function() {
         self.$('.single-subject').first().trigger('click')
       }, this), 10);
+      this.$('.related-category .button').qtip();
     },
 
     loadNeighborData: function() {

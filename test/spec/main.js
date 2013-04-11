@@ -9,6 +9,7 @@ require.config({
     'jquery.chosen': 'libs/jquery/jquery.chosen.min',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
+    'jquery.qtip': 'libs/jquery/jquery.qtip.min',
     underscore: 'libs/underscore/underscore',
     backbone: 'libs/backbone/backbone',
     text: 'libs/require/text',

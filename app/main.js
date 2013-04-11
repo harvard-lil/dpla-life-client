@@ -7,6 +7,7 @@ require.config({
     'jquery.chosen': 'libs/jquery/jquery.chosen.min',
     'jquery.cookie': 'libs/jquery/jquery.cookie',
     'jquery.infieldlabel': 'libs/jquery/jquery.infieldlabel',
+    'jquery.qtip': 'libs/jquery/jquery.qtip.min',
     modernizr: 'libs/modernizr/modernizr',
     JSON: 'libs/json2/json2',
     stackview: 'libs/stackview/stackview',

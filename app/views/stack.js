@@ -24,7 +24,8 @@ define([
         $(window).resize(_.bind(this._resize, this));
       }
       this.$('.stackview')
-        .on('stackview.pageload', _.bind(this._highlightCurrent, this));
+        .on('stackview.pageload', _.bind(this._highlightCurrent, this))
+        .on('stackview.pageload', _.bind(this._qtipify, this));
     },
 
     render: function() {
@@ -57,6 +58,10 @@ define([
       this.$('.stack-item').filter(function() {
         return $(this).data('stackviewItem').source_id === pivot;
       }).addClass('stack-pivot');
+    },
+
+    _qtipify: function() {
+      this.$('.stack-item-link:not(.qtipped)').addClass('qtipped').qtip();
     }
   });
 
