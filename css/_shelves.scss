@@ -43,12 +43,10 @@
   }
 }
 
-.shelf-overview-header {
-  margin-bottom:8px;
-  position:relative;
-
-  > h3 > a {
-    display:block;
+.shelf-overview-content {
+  
+  > h3 {
+    margin-bottom:8px;
     font-size:18px;
     line-height:1;
     font-weight:bold;
@@ -57,25 +55,27 @@
     color:$shelfOverviewHeaderColor;
     padding:8px 50px 8px 8px;
     border-radius:3px;
-
-    &:hover, &:focus {
-      background:$shelfOverviewHeaderHoverBackground;
-    }
   }
 }
 
 .shelf-actions {
-  position:absolute;
-  right:0;
+  float:right;
   top:6px;
   z-index:3;
+  padding:5px 10px;
+  font-size:12px;
+  padding-left:10px;
+  background:$thinBlue;
+  border-radius:3px;
+  margin:0 0 5px 5px;
 
-  li {
-    float:right;
-    margin-right:5px;
+  span {
+    width:18px;
+    display:inline-block;
   }
 
   a {
+    display:block;
     font-family:'FontAwesome';
     color:$shelfActionsColor;
     text-decoration:none;
@@ -98,8 +98,9 @@
 .stackview .stack-item-delete {
   font-family:'FontAwesome';
   position:absolute;
+  z-index:4;
   display:block;
-  right:-24px;
+  right:-15px;
   top:50%;
   margin-top:-12px;
   cursor:pointer;

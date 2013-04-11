@@ -645,36 +645,37 @@ a, .button {
   .shelf-overview.editing .update-shelf-form {
     display: block; }
 
-.shelf-overview-header {
+.shelf-overview-content > h3 {
   margin-bottom: 8px;
-  position: relative; }
-  .shelf-overview-header > h3 > a {
-    display: block;
-    font-size: 18px;
-    line-height: 1;
-    font-weight: bold;
-    text-decoration: none;
-    background: rgba(0, 122, 204, 0.7);
-    color: white;
-    padding: 8px 50px 8px 8px;
-    border-radius: 3px; }
-    .shelf-overview-header > h3 > a:hover, .shelf-overview-header > h3 > a:focus {
-      background: #007acc; }
+  font-size: 18px;
+  line-height: 1;
+  font-weight: bold;
+  text-decoration: none;
+  background: rgba(0, 122, 204, 0.7);
+  color: white;
+  padding: 8px 50px 8px 8px;
+  border-radius: 3px; }
 
 .shelf-actions {
-  position: absolute;
-  right: 0;
+  float: right;
   top: 6px;
-  z-index: 3; }
-  .shelf-actions li {
-    float: right;
-    margin-right: 5px; }
+  z-index: 3;
+  padding: 5px 10px;
+  font-size: 12px;
+  padding-left: 10px;
+  background: rgba(0, 122, 204, 0.3);
+  border-radius: 3px;
+  margin: 0 0 5px 5px; }
+  .shelf-actions span {
+    width: 18px;
+    display: inline-block; }
   .shelf-actions a {
+    display: block;
     font-family: 'FontAwesome';
-    color: rgba(255, 255, 255, 0.7);
+    color: #113355;
     text-decoration: none; }
     .shelf-actions a:hover, .shelf-actions a:focus {
-      color: white; }
+      color: #007acc; }
   .shelf-actions .delete-shelf {
     position: relative;
     top: -1px; }
@@ -684,8 +685,9 @@ a, .button {
 .stackview .stack-item-delete {
   font-family: 'FontAwesome';
   position: absolute;
+  z-index: 4;
   display: block;
-  right: -24px;
+  right: -15px;
   top: 50%;
   margin-top: -12px;
   cursor: pointer;
@@ -767,7 +769,8 @@ a, .button {
   background-color: #ff6600;
   border-color: #993d00; }
 .stackview .stack-items {
-  padding-top: 6px; }
+  padding-top: 6px;
+  overflow-y: scroll; }
 .stackview:before {
   content: '';
   display: block;

@@ -17,13 +17,12 @@
     <div class="layout-column">
       <div class="shelf-overview" data-shelfid="<%= shelf.get('id') %>">
         <div class="shelf-overview-content">
-          <div class="shelf-overview-header">
-            <h3><a href="#shelves/<%= shelf.get('id') %>" class="view-shelf"><%= shelf.get('name') %></a></h3>
-            <ul class="shelf-actions">
-              <li><a href="#" class="edit-shelf" title="Edit">&#xf044;</a></li>
-              <li><a href="#" class="delete-shelf" title="Delete">&#xf056;</a></li>
-            </ul>
-          </div>
+          <h3><%= shelf.get('name') %></h3>
+          <ul class="shelf-actions">
+            <li><a href="#shelves/<%= shelf.get('id') %>" class="view-shelf"><span>&#xf06e;</span> View</a></li>
+            <li><a href="#" class="edit-shelf"><span>&#xf044;</span> Edit</a></li>
+            <li><a href="#" class="delete-shelf"><span>&#xf056;</span> Delete</a></li>
+          </ul>
           <p><%= helpers.shelfDescription(shelf) %></p>
         </div>
 
