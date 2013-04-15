@@ -99,7 +99,8 @@ define([
           datatype: 'json',
           data: { ids: this.model.get('book_ids') },
           success: _.bind(this.renderStack, this),
-          error: onError
+          error: onError,
+          limit: 100
         });
       }
       else {
