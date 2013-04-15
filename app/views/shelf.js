@@ -97,10 +97,12 @@ define([
         $.ajax({
           url: settings.get('searchURL'),
           datatype: 'json',
-          data: { ids: this.model.get('book_ids') },
+          data: {
+            ids: this.model.get('book_ids'),
+            limit: 100
+          },
           success: _.bind(this.renderStack, this),
-          error: onError,
-          limit: 100
+          error: onError
         });
       }
       else {
