@@ -1,59 +1,77 @@
 <div class="static-page layout-full-width">
-  <h2>StackLife FAQ</h2>
 
-  <h3>Is this a DPLA project?</h3>
+<h1>StackLife FAQ</h1>
 
-  <p>No, although the DPLA generously funded its development. StackLife was. StackLife was developed independently of the DPLA as an example of how anyone can create her or his own "front end" to the DPLA's collection. That makes the DPLA especially useful, since it doesn't have to supply the single way of accessing its data. If you want to create a DPLA browser that focuses on, say, works for kids, or works about France, or works about people with your first name, the DPLA's architecture should allow that.</p>
+<h3>Is this a DPLA project?</h3>
 
-  <h3>So, what is StackLife?</h3>
+<p>The <a href="http://dp.la">DPLA</a> generously funded its development, but StackLife was developed independently of the DPLA as an example of how people can create their own "front end" to the DPLA's collection, mashing it up with other collections. That makes the DPLA especially useful, since it doesn't have to supply the one and only way of accessing its data. If you want to create a DPLA browser that focuses on, say, works for kids, or content about the Civil War, or works about people with your first name, the DPLA's architecture allows that. If you want the application or Web site you're creating to draw on information not only from the DPLA but from other sources, you can do that too. And that's what StackLife does.
 
-  <p>It’s a way of browsing books that always shows you books in the context of other books — or, as we usually call them, shelves. We turn the shelves sideways so you can read the spines.</p>
+<h3>So, what is StackLife?</h3>
 
-  <p>The initial shelf is the one you might see in a physical library. (We use the Library of Congress classification numbers to arrange them.) But StackLife also shows you all the categories the Library of Congress’ librarians have assigned the book to. Click on one of those categories and you’ll see the book with all the other books in that category.</p>
+<p>It&#8217;s a way of browsing books that always shows you books in the context of other books &mdash; or, as we usually call them, shelves. We turn the shelves sideways so you can read the spines.</p>
 
-  <h3>What does the color mean? And the shape?</h3>
+<p>When you click on a book spine and then the "more info" button, the initial stack is the one you might see in a physical library. (We use the Library of Congress classification numbers to arrange them.) But StackLife also shows you all the categories the collection's professional cataloguers have assigned the book to. Click on one of those categories and you&#8217;ll see the book with all the other books in that category.</p>
 
-  <p>The deeper the color blue, the more often the work has been downloaded. This gives you a rough measure of how popular the work is. The horizontal length of the work tells you roughly how old it is: the longer the book, the longer ago it was published. The thickness of the book tells you comparatively how many pages are in it. When we don't have this information, we just use a default size.</p>
+<h3>Where do the books come from?</h3>
 
-  <h3>How many books are in this collection?</h3>
+<p>StackLife doesn't have any books. Rather, it has information about the books in several different collections. The same is true of the DPLA. Such information is similar to what you would see in an old card catalog, but with more detail. Technically, this sort of information is known as a "metadata." The three collections currently mashed together in StackLife are: the 107,990 items from the <a href="http://http://www.biodiversitylibrary.org/">Biodiversity Heritage Library</a> that are in the DPLA's collection, 541,305 volumes from the <a href="http://archive.org">Internet Archive</a>'s <a href="http://openlibrary.org">Open Library</a>, and 1,094,245 volumes from <a href="http://www.hathitrust.org">The Hathi Trust</a>. We are <em>huge</em> fans of all three of these organizations, each of which is devoted to making works of culture, heritage and science openly available to the world.</p>
 
-  <p style="color:red; font-size:64px;">Over 800,000.</p>
+<h3>Not from just use the DPLA's collection?</h3>
 
-  <h3>Where do the books come from?</h3>
+<p>For a couple of reasons. First, the DPLA is designed from the start to be a superb open player in the Net's ecosystem, and we wanted to show that by mashing it up with other paragons of openness. Second, the DPLA  plans on ingesting information about books, but it has begun by bringing in metadata from some of the superb collections of cultural and heritage items that are not focused on books. Likewise, we&#8217;re using an early, extended version of the DPLA API (an API is the way an application like ours talks to the DPLA&#8217;s data) so that we would have it ready for the DPLA launch. </p>
 
-  <p>From the collections gathered and presented freely to the world by the <a href="http://www.hathitrust.org" target="_blank">Hathi Trust</a> and <a href="http://www.openlibrary.org" target="_blank">Open Library</a>. Thank you, Hathi and Open Library!</p>
+<h3>How many books are in this collection total?</h3>
 
-  <h3>Not from the DPLA?</h3>
+<p>107,990 from the DPLA's set of Biodiversity Heritage Library + 1,094,245 from Hathi Trust + 541,305 from Open Library = 1,743,540 </p>
 
-  <p>It’s slightly complicated. The DPLA is in the process of taking in information about various collections of cultural and heritage items. It plans on ingesting information about books, but it has only just begun. So, for this prototype, we gathered that data ourselves. Likewise, we’re using an early version of the DPLA API (an API is the way an application like ours talks to the DPLA’s data) so that we would have it ready for the DPLA launch.</p>
+<h3>What does the color of the spines mean? And the shape?</h3>
 
-  <h3>Are these books protected by copyright?</h3>
+<p>The deeper the color blue, the more often the work has been downloaded from its original collection. This gives you a rough measure of how popular the work is. The horizontal length of the work tells you roughly how old it is: the longer the book, the longer ago it was published. The thickness of the book tells you comparatively how many pages are in it. When we don't have this information, we just use a default size. 
 
-  <p>No. The works accessible are copyright free. Feel free to read them, cite them, copy from them, etc. Hathi Trust, Open Library and the DPLA deserve our thanks for putting together such great collections.</p>
+<h3>How do you calculate the color?</h3>
 
-  <h3>Do I have to register to use StackLife?</h3>
+<p>We create a "StackScore" for each work by computing the percentile of its usage within its own library. There are ten shades of blue, each representing which tenth the percentile is in. In order to account for the differences in overall usage of each library, the actual number of views or downloads across libraries may vary. For example, imagine Library A is insanely popular, with tens of millions of views, while Library B is of equally high quality but is much less visited, perhaps because it is more specialized. For Library A, getting into the top tenth might require hundreds of thousands of views, while getting into the top tenth of Library B might take only a handful of views. The works in the top percentiles of each would have the same color blue. On the one hand, this is misleading. On the other, it helps people find worthy works that otherwise would be washed out by the mighty Library A.</p>
 
-  <p>Not at all. You only have to register if you want to leave a review or rating, or if you want to create your own shelf of books.</p>
+ <p>And here is an important point: Because we don't yet have usage data for the Biodiversity Heritage Library (which is a <em>wonderful</em> collection), we have assigned random StackScores to its volumes so that it would not be undeservedly washed to the bottom of every stack. It's an imperfect solution, but we didn't see any perfect ones.</p> 
 
-  <h3>How can I create a shelf?</h3>
+<h3>What&#8217;s with the "focus" and "expand" buttons</h3>
 
-  <p>Register. Then click on the “Shelves” link at the top right. Give it a name, and maybe a description, and add boks.</p>
+<p>"Focus" makes a  stack  of any books that are in <em>all</em> the categories listed for the selected book. Often that will only be the selected book itself. But when there's more than one book in all those categories, you've found some books that are deeply similar to the selected one.</p>
 
-  <p style="color:red; font-size:64px;">Note that you can make your shelves public, which means everyone (registered or not) can see your shelves.</p>
+<p>"Expand" makes a  stack  of all the books that are in <em>any</em> of the categories listed for the selected book. Those are books that are related in their subject matter, but sometimes quite loosely so. For example, if it's a Jane Austen book and one of the subject categories is "fiction," you'll get quite a long stack.</p>
 
-  <h3>When I read a book, am I using the StackLife book readers?</h3>
 
-  <p>No, you’re using the book reader from the site where we got the information about the book. StackLife just pops that reader into a floating window.</p>
+<h3>Are the books listed in StackLife protected by copyright?</h3>
 
-  <h3>I see that I can add books to a shelf. Are those shelves private?</p>
+<p>They come from collections of openly available works that can be read without fear of copyright reprisals (although, as with the Spanish Inquisition, you never know when you're fully safe). The Hathi Trust, Biodiversity Heritage Library, Open Library and the DPLA deserve our thanks for putting together such great collections.</p>
 
-  <p style="color:red; font-size:64px;">You can make them private, but if you leave them public, then others will be able to learn from your example.</p>
+<h3>Do I have to register to use StackLife?</h3>
 
-  <h3>What are the long term plans for StackLife?</h3>
+<p>Not at all. You only have to register if you want to leave a review or rating, or if you want to create your own shelf of books.</p>
 
-  <p>StackLife is an experiment and a prototype. The main aim is to show the power of the DPLA’s architecture: Anyone can write a new way of browsing the DPLA without asking permission. This makes the DPLA’s collection an open-ended resource for innovation.</p>
+<h3>Is my information private</h3>
 
-  <h3>What is the Harvard Library Innovation Lab?</h3>
+<p>As our <a href="http://stacklife-dpla.law.harvard.edu/#privacy/">privacy statement</a> says, we will not sell or give away your private information ever. StackLife is a product of the Harvard Library Innovation Lab, which is part of Harvard Law School. We are not a commercial entity and never will be. We believe strongly in protecting the privacy of our users. Any reviews and ratings you create, however, are public, and you can designate any personal shelf you create as public or private.</p>
 
-  <p>We’re a small group of developers in the basement of the Harvard Law Library that gets to work on interesting, productive, and just plain cool projects that push on the edges of libraries. There’s more about us <a href="http://librarylab.law.harvard.edu/" target="_blank">here</a>. If you want to know more, you can contact us at <a href="mailto:lil@librarylab.law.harvard.edu">lil@librarylab.law.harvard.edu</a>.
+<h3>How can I create a shelf?</h3>
+
+<p>Register. Then click on the &#8220;Shelves&#8221; link at the top right. Give it a name, and maybe a description. Add books by clicking on the "Add to Shelf" button on a book's "more info" page. </p>
+
+<p>Note that you can make your shelves public, which means everyone (registered or not) can see your shelves.</p>
+
+<h3>When I read a book, am I using the StackLife book readers?</h3>
+
+<p>No, you&#8217;re using the book reader from the site where we got the metadata about the book. StackLife just pops that reader into a floating window. That's why the book-reading interfaces are different.</p>
+
+<h3>What are the long term plans for StackLife?</h3>
+
+<p>StackLife is an experiment and a prototype. The main aim is to show the power of the DPLA&#8217;s architecture: Anyone can write a new way of browsing the DPLA without asking permission. This makes the DPLA&#8217;s collection an open-ended resource for innovation. </p>
+
+<h3>What is the relation between StackLife DPLA and StackLife Harvard?</h3>
+
+<p><a href="http://stacklife.law.harvard.edu">StackLife Harvard</a> assumes the user is a researcher, teacher, or student; we designed it with the Harvard Community in mind. There are some substantial differences between the two versions. StackLife Harvard includes works not available digitally. In fact, the vast majority of the 12.3 million works browsable through StackLife Harvard are not available for online reading, although they are available in paper form via the Harvard Library (for those with a Harvard Library card). The Harvard version allows for more sophisticated and complex searching and faceting. StackLife Harvard also has more usage data available to it through the Harvard Library system. It does not allow anyone to register, and thus does not have reviews, ratings, or shelves at this point.
+
+<h3>What is the Harvard Library Innovation Lab?</h3>
+
+<p>We&#8217;re a small group of developers in the basement of the Harvard Law Library that gets to work on interesting, productive, and just plain cool projects that push on the edges of libraries. There&#8217;s more about us <a href="http://librarylab.law.harvard.edu">here</a>. If you want to know more, you can contact us at lil@law.harvard.edu.</p>
 </div>
