@@ -79,7 +79,7 @@ define(['underscore'], function(_) {
   }
   else if (window.location.host.indexOf('law.harvard.edu')) {
     _.extend(settings, {
-      apiRoot: 'http://stacklife-dpla.law.harvard.edu'
+      apiRoot: ''
     });
   }
 
