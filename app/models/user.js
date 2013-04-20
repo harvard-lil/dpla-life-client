@@ -48,7 +48,7 @@ define([
   mediator.on('user:login', function(user) {
     user.unset('password').unset('password_confirmation');
     appUser = user;
-    $.cookie('user', user);
+    $.cookie('user', user, { secure: true });
   });
 
   mediator.on('user:logout', function() {
@@ -101,7 +101,7 @@ define([
       },
 
       success: function() {
-        $.cookie('user', appUser);
+        $.cookie('user', appUser, { secure: true });
         appNotify.notify({
           type: 'success',
           message: 'Settings updated.'
