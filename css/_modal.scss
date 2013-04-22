@@ -26,6 +26,7 @@
 
     &.showing {
       -webkit-transform:scale(1);
+      transform:scale(1);
       opacity:1;
       pointer-events:auto;
     }

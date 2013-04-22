@@ -120,6 +120,7 @@ input[type="email"],
 input[type="password"],
 input[type="search"],
 textarea {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
   padding: 5px;
@@ -482,6 +483,7 @@ a, .button {
     pointer-events: none; }
     .csstransitions .app-modal.showing {
       -webkit-transform: scale(1);
+      transform: scale(1);
       opacity: 1;
       pointer-events: auto; }
 
