@@ -38,9 +38,6 @@ define([
       var self = this;
 
       this.helpers = {
-        currentUser: function() {
-          return UserModel.currentUser();
-        },
         userHasReview: function() {
           var user = UserModel.currentUser();
           if (user) {
@@ -71,7 +68,6 @@ define([
         }
       };
       BaseView.prototype.initialize.call(this, options);
-      mediator.on('user:login user:logout', _.bind(this.redraw, this));
       options.collection.on('remove change', _.bind(this.redraw, this));
     },
 

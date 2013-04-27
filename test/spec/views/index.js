@@ -1,23 +1,24 @@
 define([
-  'views/index'
-], function(IndexView) {
+  'views/index',
+  'mediator'
+], function(IndexView, mediator) {
 
   describe('Index View', function() {
-    var index;
+    var index, spy;
 
     beforeEach(function() {
-      setFixtures('<div class="app-main" />');
+      spy = jasmine.createSpy('on stack load');
+      setFixtures('<div class="app-preview" />');
+      mediator.on('stack:load', spy);
       index = new IndexView();
     });
 
     it('renders the index template', function() {
-      expect(index.$('.stack-wrapper')).toExist();
+      expect(index.$('.index-welcome')).toExist();
     });
 
     it('creates the default homepage StackView', function() {
-      waitsFor(function() {
-        return index.$('.stackview li').length;
-      }, 'StackView items to load');
+      expect(spy).toHaveBeenCalled();
     });
   });
 });

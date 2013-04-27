@@ -1,7 +1,8 @@
 define([
   'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/user'
+], function(_, Backbone, UserModel) {
 
   var BaseView = Backbone.View.extend({
     initialize: function(options) {
@@ -14,10 +15,15 @@ define([
     },
 
     render: function() {
+      var helpers = _.extend({
+        currentUser: function() {
+          return UserModel.currentUser();
+        }
+      }, this.helpers);
       var data = {
         model: this.model ? this.model : {},
         collection: this.collection ? this.collection : {},
-        helpers: this.helpers ? this.helpers: {}
+        helpers: helpers
       };
       this.$el.html(this.template(data));
     },

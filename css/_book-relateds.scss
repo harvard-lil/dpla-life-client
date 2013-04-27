@@ -1,39 +1,18 @@
 .book-relateds {
   margin-top:16px;
-
-  .stack-wrapper {
-    margin-top:24px;
-
-    > p {
-      line-height:1.2;
-    }
-  }
-
-  .app-preview {
-    margin-top:24px;
-  }
+  border-top:1px solid $reviewsListBorder;
 }
 
 .related-stacks-nav {
   h2 {
-    border-top:1px solid $relatedsBorder;
-    padding-top:16px;
-    font-size:26px;
+    padding-top:8px;
+    font-size:24px;
     font-weight:100;
   }
 }
 
 .related-category {
   margin:8px 0;
-  padding-left:80px;
-
-  h3 {
-    float:left;
-    margin:2px 0 0 -80px;
-    width:80px;
-    font-size:14px;
-    font-weight:700;
-  }
 
   ul {
     display:inline;

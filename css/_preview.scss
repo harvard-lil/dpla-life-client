@@ -1,20 +1,16 @@
 .book-preview {
-  h2 {
+  > h2 {
     font-size:24px;
     font-weight:bold;
     margin-bottom:4px;
     line-height:1;
   }
 
-  h3 {
+  > h3 {
     font-size:16px;
     font-style:italic;
     margin-bottom:16px;
     color:$bookPreviewAuthorColor;
-  }
-
-  p {
-    margin-bottom:16px;
   }
 
   > img {
@@ -25,12 +21,60 @@
 
   .book-preview-actions {
     list-style:none;
-    width:100%;
     overflow:hidden;
+    margin:16px 0;
 
     > li {
       float:left;
       margin-right:5px;
     }
+  }
+}
+
+.book-meta {
+  padding:10px;
+  background:$bookMetaBackground;
+  border-radius:3px;
+  margin-top:16px;
+  word-wrap:break-word;
+
+  .book-published, .book-source, .book-pub-date, .book-page-count {
+    font-size:12px;
+    margin-bottom:2px;
+  }
+}
+
+.add-to-shelf-form {
+  margin-top:8px;
+
+  label {
+    float:left;
+    position:relative;
+    top:2px;
+    margin-right:5px;
+  }
+}
+
+#push_shelf_id {
+  max-width:195px;
+}
+
+.add-to-shelf-form {
+  .button {
+    font-size:12px;
+  }
+}
+
+.book-reader {
+  display:block;
+}
+
+.read-book {
+  background:$readBookBackground;
+  border-color:$readBookBackgroundHover;
+
+  &:hover, &:focus {
+    background:$readBookBackgroundHover;
+    border-color:$readBookBackgroundHover;
   }
 }

@@ -73,7 +73,6 @@ require([
   'spec/views/appNav',
   'spec/views/appSearch',
   'spec/views/base',
-  'spec/views/book',
   'spec/views/bookPreview',
   'spec/views/bookReader',
   'spec/views/covers',
@@ -81,9 +80,7 @@ require([
   'spec/views/login',
   'spec/views/modal',
   'spec/views/reviews',
-  'spec/views/searchResults',
   'spec/views/shelf',
-  'spec/views/shelves',
   'spec/views/signup',
   'spec/views/stack',
   'spec/views/userSettings'

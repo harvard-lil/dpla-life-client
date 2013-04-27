@@ -18,34 +18,18 @@ define([
 ) {
 
   var IndexView = BaseView.extend({
-    el: '.app-main',
+    el: '.app-preview',
     template: _.template(IndexTemplate),
-
-    events: {
-      'click .stack-item-link': 'loadPreview'
-    },
 
     render: function() {
       BaseView.prototype.render.call(this);
-      _.invoke(this.subviews, 'clear');
-      this.subviews = [
-        new StackView({
-          el: '.stack-wrapper',
-          url: settings.get('indexStackURL'),
-          query: settings.get('indexSearchTerm'),
-          jsonp: true,
-          ribbon: settings.get('indexStackRibbon'),
-          fullHeight: true
-        })
-      ];
-    },
-
-    loadPreview: function(event) {
-      var $target = $(event.target).closest('.stack-item');
-      var id = $target.data('stackviewItem')['source_id'];
-
-      mediator.trigger('preview:load', id);
-      event.preventDefault();
+      mediator.trigger('stack:load', {
+        url: settings.get('indexStackURL'),
+        query: settings.get('indexSearchTerm'),
+        jsonp: true,
+        ribbon: settings.get('indexStackRibbon'),
+        fullHeight: true
+      });
     }
   });
 

@@ -1,0 +1,19 @@
+<form action="#" method="post" class="shelf-form">
+  <h2 class="modal-header"><%= helpers.header() %></h2>
+
+  <ul class="form-errors"></ul>
+
+  <div class="form-row">
+    <label for="shelf_name">Name</label>
+    <input type="text" name="shelf[name]" id="shelf_name" value="<%= model.get('name') %>">
+  </div>
+
+  <div class="form-row">
+    <label for="shelf_description">Description</label>
+    <textarea name="shelf[description]" id="shelf_description"><%= model.get('description') %></textarea>
+  </div>
+
+  <div class="form-row">
+    <input type="submit" value="Save" class="button">
+  </div>
+</form>

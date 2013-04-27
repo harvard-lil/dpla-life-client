@@ -4,9 +4,8 @@ define([
   'mediator',
   'jquery',
   'JSON',
-  'views/appNotify',
   'jquery.cookie'
-], function(Backbone, settings, mediator, $, JSON, appNotify) {
+], function(Backbone, settings, mediator, $, JSON) {
   var appUser;
   var UserModel = Backbone.Model.extend({
     urlRoot: settings.get('userURL')
@@ -48,7 +47,7 @@ define([
   mediator.on('user:login', function(user) {
     user.unset('password').unset('password_confirmation');
     appUser = user;
-    $.cookie('user', user, { secure: true });
+    $.cookie('user', user, { secure: settings.get('secure') });
   });
 
   mediator.on('user:logout', function() {
@@ -82,7 +81,7 @@ define([
           },
 
           error: function() {
-            appNotify.notify({
+            mediator.trigger('app:notify', {
               type: 'error',
               message: 'Something went wrong trying to delete your account.'
             });
@@ -101,15 +100,15 @@ define([
       },
 
       success: function() {
-        $.cookie('user', appUser, { secure: true });
-        appNotify.notify({
+        $.cookie('user', appUser, { secure: settings.get('secure') });
+        mediator.trigger('app:notify', {
           type: 'success',
           message: 'Settings updated.'
         });
       },
 
       error: function() {
-        appNotify.notify({
+        mediator.trigger('app:notify', {
           type: 'error',
           message: 'Something went wrong trying to update your settings.'
         });

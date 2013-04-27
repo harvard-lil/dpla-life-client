@@ -10,12 +10,8 @@ define([
     var shelfView;
 
     beforeEach(function() {
-      setFixtures('<div class="app-main" />');
+      setFixtures('<div class="stack-wrapper" />');
       shelfView = new ShelfView({ model: shelfModel });
-    });
-
-    it('renders the shelf template', function() {
-      expect(shelfView.$('.stack-wrapper')).toExist();
     });
   });
 });

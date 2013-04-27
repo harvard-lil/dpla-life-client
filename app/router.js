@@ -2,44 +2,51 @@ define([
   'underscore',
   'backbone',
   'mediator',
+  'settings',
   'models/book',
   'models/user',
   'models/shelf',
   'collections/shelves',
   'views/base',
   'views/index',
-  'views/searchResults',
-  'views/book',
-  'views/shelves',
   'views/shelf',
+  'views/stackedMain',
   'views/appNotify',
   'text!templates/faq.html',
-  'text!templates/privacy.html'
+  'text!templates/privacy.html',
+  'text!templates/stackview-book.html',
+  'text!templates/stackview-shelf-book.html'
 ], function(
   _,
   Backbone,
   mediator,
+  settings,
   BookModel,
   UserModel,
   ShelfModel,
   ShelfCollection,
   BaseView,
   IndexView,
-  SearchResultsView,
-  BookView,
-  ShelvesView,
   ShelfView,
+  StackedMainView,
   appNotify,
   FaqTemplate,
-  PrivacyTemplate
+  PrivacyTemplate,
+  SVBookTemplate,
+  SVOwnedTemplate
 ) {
   var mainView;
+  var inStackedMode = false;
+  var appRouter;
 
-  var switchMain = function(MainClass, options) {
-    if (mainView && mainView.clear) {
-      mainView.clear();
+  var setMain = function(MainClass, options) {
+    if (!inStackedMode || MainClass !== StackedMainView) {
+      if (mainView && mainView.clear) {
+        mainView.clear();
+      }
+      mainView = new MainClass(options);
     }
-    mainView = new MainClass(options);
+    inStackedMode = MainClass === StackedMainView;
   };
 
   var Router = Backbone.Router.extend({
@@ -47,60 +54,34 @@ define([
       '': 'index',
       'search/:type/:term': 'search',
       'books/:id': 'showBook',
-      'shelves/': 'showShelves',
       'shelves/:id': 'showShelf',
       'faq/': 'showFaq',
       'privacy/': 'showPrivacy'
     },
 
     index: function() {
-      switchMain(IndexView);
+      setMain(StackedMainView);
+      mainView.subviews.push(new IndexView());
     },
 
     search: function(type, term) {
       var decodedTerm = decodeURIComponent(term);
-      switchMain(SearchResultsView, {
+      var freshSearch = !inStackedMode;
+      setMain(StackedMainView);
+      mediator.trigger('stack:load', {
+        url: settings.get('searchURL'),
+        jsonp: true,
         query: decodedTerm,
-        type: type
+        ribbon: decodedTerm,
+        search_type: type,
+        selectFirstBook: freshSearch,
+        fullHeight: true
       });
     },
 
     showBook: function(id) {
-      var book = new BookModel({ id: id });
-
-      book.fetch({
-        success: function(model, response, options) {
-          switchMain(BookView, { model: model });
-        },
-        error: function(model, xhr, options) {
-          appNotify.notify({
-            type: 'error',
-            message: 'Something went wrong trying to load that book.'
-          });
-        }
-      });
-    },
-
-    showShelves: function() {
-      var user = UserModel.currentUser();
-      var shelves = new ShelfCollection();
-
-      if (!user) {
-        return mediator.trigger('navigate:index');
-      }
-
-      shelves.userID = user.id;
-      shelves.fetch({
-        success: function(collection, response, options) {
-          switchMain(ShelvesView, { collection: shelves });
-        },
-        error: function(collection, xhr, options) {
-          appNotify.notify({
-            type: 'error',
-            message: 'Something went wrong trying to load your shelves.'
-          });
-        }
-      });
+      setMain(StackedMainView);
+      mediator.trigger('preview:load', id);
     },
 
     showShelf: function(id) {
@@ -108,7 +89,28 @@ define([
 
       shelf.fetch({
         success: function(model, response, options) {
-          switchMain(ShelfView, { model: model });
+          var fresh = !inStackedMode;
+          var currentUser = UserModel.currentUser();
+          var shelfOwned = currentUser && 
+                           currentUser.get('id') === model.get('user_id');
+          var shelfTemplate = shelfOwned ? SVOwnedTemplate : SVBookTemplate;
+
+          setMain(StackedMainView);
+          mediator.trigger('stack:load', {
+            url: settings.get('searchURL'),
+            query: model.get('book_ids').join(','),
+            ribbon: model.get('name'),
+            jsonp: true,
+            search_type: 'ids',
+            fullHeight: true,
+            selectFirstBook: fresh,
+            bookTemplate: shelfTemplate,
+            sortable: shelfOwned,
+            model: model
+          });
+          mainView.subviews.push(new ShelfView({
+            model: model
+          }));
         },
         error: function(model, xhr, options) {
           appNotify.notify({
@@ -120,21 +122,21 @@ define([
     },
 
     showFaq: function() {
-      switchMain(BaseView, {
+      setMain(BaseView, {
         el: '.app-main',
         template: _.template(FaqTemplate)
       });
     },
 
     showPrivacy: function() {
-      switchMain(BaseView, {
+      setMain(BaseView, {
         el: '.app-main',
         template: _.template(PrivacyTemplate)
       });
     }
   });
 
-  var appRouter = new Router();
+  appRouter = new Router();
 
   // Let other modules trigger navigation changes without creating circular
   // dependencies, using the mediator object to pass events.
@@ -155,10 +157,6 @@ define([
       appRouter.navigate('books/' + id, { trigger: true });
     },
 
-    'navigate:shelves': function() {
-      appRouter.navigate('shelves/', { trigger: true });
-    },
-
     'navigate:shelf': function(id) {
       appRouter.navigate('shelves/' + id, { trigger: true });
     }
@@ -168,6 +166,19 @@ define([
   mediator.on('user:logout', function() {
     if (mainView && mainView.privateToUser) {
       mediator.trigger('navigate:index');
+    }
+  });
+
+  mediator.on('user:logout user:login', function() {
+    if (inStackedMode) {
+      mediator.trigger('stack:redraw');
+      mediator.trigger('preview:redraw');
+    }
+  });
+
+  mediator.on('stack:refresh', function() {
+    if (inStackedMode) {
+      mediator.trigger('stack:redraw');
     }
   });
 

@@ -27,5 +27,9 @@ define([
   });
   var appNotify = new AppNotifyView();
 
+  mediator.on('app:notify', function(options) {
+    appNotify.notify(options);
+  });
+
   return appNotify;
 });

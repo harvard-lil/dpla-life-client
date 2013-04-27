@@ -25,8 +25,7 @@ define([
       'click .subject-union': 'loadSubjectUnion',
       'click .subject-intersection': 'loadSubjectIntersection',
       'click .neighbors.enabled': 'loadNeighbors',
-      'click .related-category a': 'setActiveButton',
-      'click .stack-item-link': 'loadPreview'
+      'click .related-category a': 'setActiveButton'
     },
 
     initialize: function(options) {
@@ -36,28 +35,28 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
-      _.delay(_.bind(function() {
-        self.$('.single-subject').first().trigger('click')
-      }, this), 10);
       this.$('.related-category .button').qtip();
     },
 
     loadNeighborData: function() {
-      var onError = _.bind(function() {
-        this._neighborData = null;
-        this.$('.neighbors').closest('.related-category').remove();
-      }, this);
-
       var onSuccess = _.bind(function(data) {
         this._neighborData = data;
-        this.$('.neighbors').removeClass('disabled').addClass('enabled');
+        if (data) {
+          this.$('.neighbors').removeClass('disabled').addClass('enabled');  
+        }
+        else {
+          this.$('.neighbors').closest('.related-category').remove();
+        }
+
+        if (!$('.stackview').length) {
+          this.$('.button').first().click();
+        }
       }, this);
 
       $.ajax({
         url: settings.get('neighborsURL', this.model.get('source_id')),
         datatype: 'json',
-        success: onSuccess,
-        error: onError
+        success: onSuccess
       });
     },
 
@@ -75,7 +74,8 @@ define([
         url: settings.get('searchURL'),
         search_type: 'subject',
         query: subject,
-        ribbon: subject
+        ribbon: subject,
+        fullHeight: true
       });
     },
 
@@ -98,11 +98,9 @@ define([
     },
 
     loadStack: function(options) {
-      _.invoke(this.subviews, 'clear');
-      this.subviews = [new StackView(_.extend({
-        el: '.book-relateds .stack-wrapper',
+      mediator.trigger('stack:load', _.extend({
         pivot: this.model.get('source_id')
-      }, options))];
+      }, options));
     },
 
     setActiveButton: function(event) {

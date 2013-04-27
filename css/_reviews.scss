@@ -5,13 +5,13 @@
   position:relative;
 
   h2 {
-    font-size:26px;
+    font-size:24px;
     font-weight:100;
     margin-bottom:8px;
 
     &:after {
       content: " (" attr(data-reviewcount) ")";
-      font-size:22px;
+      font-size:20px;
     }
   }
 }
@@ -70,7 +70,7 @@
   padding-top:16px;
 
   > h2 {
-    font-size:26px;
+    font-size:24px;
     font-weight:100;
   }
 

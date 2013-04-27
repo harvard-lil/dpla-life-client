@@ -1,0 +1,7 @@
+<a class="app-shelves">Shelves</a>
+<ul>
+  <% collection.each(function(shelf) { %>
+    <li><a href="#shelves/<%= shelf.get('id') %>"><%= shelf.get('name') %></a></li>
+  <% }); %>
+  <li class="new-shelf"><a href="#"><span>+</span> New Shelf</a></li>
+</ul>

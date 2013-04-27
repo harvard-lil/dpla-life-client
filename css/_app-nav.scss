@@ -23,6 +23,21 @@
   }
 }
 
+.app-shelves {
+  cursor:default;
+}
+
+.dropdown .new-shelf {
+  border-top:1px solid $thinWhite;
+  margin-top:8px;
+  padding-top:8px;
+
+  span {
+    font-weight:bold;
+    color:$thinWhite;
+  }
+}
+
 .modal-container {
   .signup-form, .login-form {
     width:200px;

@@ -1,16 +1,69 @@
+<% var currentUser = helpers.currentUser(); %>
+
 <div class="book-preview">
   <% if (model.get('cover_small')) { %>
     <img src="<%= model.get('cover_small') %>" class="cover_small" alt="">
   <% } %>
   <h2><%= model.get('title') %></h2>
-  <h3><%= model.get('creator') %></h3>
-
-  <p><%= model.get('description') %></p>
+  <% if (model.get('creator')) { %>
+    <h3><%= model.get('creator') %></h3>
+  <% } %>
 
   <ul class="book-preview-actions">
-    <li><a href="#books/<%= model.get('source_id') %>" class="button view-book">More Info</a></li>
     <% if (model.get('viewer_url')) { %>
       <li><a href="<%= model.get('viewer_url') %>" class="button read-book">Read Book</a></li>
     <% } %>
   </ul>
+
+  <% if (model.get('description')) { %>
+    <p><%= model.get('description') %></p>
+  <% } %>
+
+  <div class="book-meta">
+    <% if (model.get('publisher')) { %>
+      <p class="book-published">
+        <strong>Published by:</strong>
+        <%= model.get('publisher') %>
+      </p>
+    <% } %>
+
+    <% if (model.get('pub_date')) { %>
+      <p class="book-pub-date">
+        <strong>Year published:</strong>
+        <%= model.get('pub_date') %>
+      </p>
+    <% } %>
+
+    <% if (model.get('measurement_page_numeric')) { %>
+      <p class="book-page-count">
+        <strong>Pages:</strong>
+        <%= model.get('measurement_page_numeric') %>
+      </p>
+    <% } %>
+    
+    <% if (model.get('source_url')) { %>
+      <p class="book-source">
+        <strong>Source:</strong>
+        <% if (model.get('source_library')) { %>
+          <span><%= model.get('source_library') %></span>
+        <% } %>
+        <a href="<%= model.get('source_url') %>" target="_blank"><%= model.get('source_url') %></a>
+      </p>
+    <% } %>
+  </div>
+
+  <% if (currentUser && currentUser.get('shelves').length) { %>
+    <form action="#" method="post" class="add-to-shelf-form">
+      <label for="push_shelf_id">Add to Shelf</label>
+      <select name="shelf_id" id="push_shelf_id">
+        <% _.each(currentUser.get('shelves'), function(shelf) { %>
+          <option value="<%= shelf.id %>"><%= shelf.name %></option>
+        <% }); %>
+      </select>
+      <input type="submit" value="Add" class="button">
+    </form>
+  <% } %>
+
+  <div class="book-relateds"></div>
+  <div class="book-reviews"></div>
 </div>

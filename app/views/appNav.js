@@ -1,19 +1,27 @@
 define([
   'underscore',
   'mediator',
+  'models/user',
+  'collections/shelves',
   'views/base',
   'views/login',
   'views/signup',
   'views/userSettings',
+  'views/appNotify',
+  'views/shelvesDropdown',
   'text!templates/appNav-loggedOut.html',
   'text!templates/appNav-loggedIn.html'
 ], function(
   _,
   mediator,
+  UserModel,
+  ShelfCollection,
   BaseView,
   LoginView,
   SignupView,
   UserSettingsView,
+  appNotify,
+  ShelvesDropdownView,
   LoggedOutTemplate,
   LoggedInTemplate
 ) {
@@ -25,8 +33,35 @@ define([
       'click .app-login': 'showLoginModal',
       'click .app-signup': 'showSignupModal',
       'click .app-settings': 'showUserSettingsModal',
-      'click .app-logout': 'logout',
-      'click .app-shelves': 'showShelves'
+      'click .app-logout': 'logout'
+    },
+
+    initialize: function(options) {
+      BaseView.prototype.initialize.call(this, options);
+      if (this.model) {
+        this.loadShelvesDropdown();
+      }
+      mediator.on('shelves:refresh', _.bind(this.loadShelvesDropdown, this));
+    },
+
+    loadShelvesDropdown: function() {
+      var shelves = new ShelfCollection();
+      var self = this;
+
+      shelves.userID = this.model.get('id');
+      shelves.fetch({
+        success: function(collection, response, options) {
+          self.subviews.push(new ShelvesDropdownView({
+            collection: collection
+          }));
+        },
+        error: function(collection, xhr, options) {
+          appNotify.notify({
+            type: 'error',
+            message: 'Something went wrong trying to load your shelves.'
+          });
+        }
+      });
     },
 
     showLoginModal: function(event) {
@@ -48,11 +83,6 @@ define([
 
     logout: function(event) {
       mediator.trigger('user:logout');
-      event.preventDefault();
-    },
-
-    showShelves: function(event) {
-      mediator.trigger('navigate:shelves');
       event.preventDefault();
     }
   });

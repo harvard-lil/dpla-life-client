@@ -68,18 +68,21 @@ define(['underscore'], function(_) {
   // Dev settings
   if (window.location.host.indexOf('localhost') !== -1) {
     _.extend(settings, {
-      apiRoot: 'http://localhost:3000'
+      apiRoot: 'http://localhost:3000',
+      secure: false
     });
   }
   // GH staging settings
   else if (window.location.host.indexOf('imakewebthings.com') !== -1) {
     _.extend(settings, {
-      apiRoot: 'http://dpla-life-service-dev.herokuapp.com'
+      apiRoot: 'http://dpla-life-service-dev.herokuapp.com',
+      secure: false
     });
   }
   else if (window.location.host.indexOf('law.harvard.edu')) {
     _.extend(settings, {
-      apiRoot: ''
+      apiRoot: '',
+      secure: true
     });
   }
 

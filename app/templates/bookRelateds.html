@@ -1,36 +1,24 @@
-<div class="related-stacks layout-wrapper">
-  <div class="related-stacks-nav layout-full-width">
-    <h2>Related Books</h2>
+<div class="related-stacks-nav">
+  <h2>Subjects</h2>
 
-    <% var subjects = model.get('subjects') %>
-    <% if (subjects && subjects.length) { %>
-      <div class="related-category">
-        <h3>By Subject:</h3>
-        <ul>
-          <% _.each(subjects, function(subject, index) { %>
-            <li><a href="#" class="button single-subject" data-subject="<%= subject %>"><%= subject %></a></li>
-          <% }); %>
-          <% if (subjects.length > 1) { %>
-            <li class="subject-divider">|</li>
-            <li><a href="#" class="subject-union button" title="Books that share at least one subject with this book">Expand</a></li>
-            <li><a href="#" class="subject-intersection button" title="Books that share every subject with this book">Focus</a></li>
-          <% } %>
-        </ul>
-      </div>
-    <% } %>
+  <% var subjects = model.get('subjects') %>
+  <% if (subjects && subjects.length) { %>
     <div class="related-category">
-      <h3>By Shelves:</h3>
       <ul>
-        <li><a href="#" class="neighbors button disabled" title="Books that appear on user shelves alongside this book">User Shelves</a></li>
+        <% _.each(subjects, function(subject, index) { %>
+          <li><a href="#" class="button single-subject" data-subject="<%= subject %>"><%= subject %></a></li>
+        <% }); %>
+        <% if (subjects.length > 1) { %>
+          <li class="subject-divider">|</li>
+          <li><a href="#" class="subject-union button" title="Books that share at least one subject with this book">Expand</a></li>
+          <li><a href="#" class="subject-intersection button" title="Books that share every subject with this book">Focus</a></li>
+        <% } %>
       </ul>
     </div>
-  </div>
-  <div class="layout-column">
-    <div class="stack-wrapper">
-      <p>Choose a category above to view stacks of related books.</p>
-    </div>
-  </div>
-  <div class="layout-column">
-    <div class="app-preview"></div>
+  <% } %>
+  <div class="related-category">
+    <ul>
+      <li><a href="#" class="neighbors button disabled" title="Books that appear on user shelves alongside this book">User Shelves</a></li>
+    </ul>
   </div>
 </div>

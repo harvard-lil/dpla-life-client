@@ -4,20 +4,34 @@
   > ul {
     display:none;
     position:absolute;
-    right:-10px;
+    z-index:2;
+    left:-44px;
     top:100%;
     padding:10px;
-    min-width:100%;
+    max-width:240px;
     background:$dropdownBackground;
     color:$dropdownColor;
 
     > li {
       margin:0;
     }
+
+    a {
+      display:block;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      font-size:14px;
+      color:$dropdownColor;
+      padding:10px;
+      line-height:1;
+    }
   }
 
-  a {
-    color:$dropdownColor;
+  > a {
+    &:hover, &:focus {
+      background:$appHeaderBackground;
+    }
   }
 
   &:hover, &:focus {
