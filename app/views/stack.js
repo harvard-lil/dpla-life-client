@@ -26,6 +26,8 @@ define([
   
   window.StackView.defaults.book.min_height_percentage = 66;
 
+  var currentStack, pivotID;
+
   var StackView = BaseView.extend({
     el: '.stack-wrapper',
     template: _.template(StackTemplate),
@@ -46,7 +48,7 @@ define([
         $(window).resize(_.bind(this._resize, this));
       }
       this.$('.stackview')
-        .on('stackview.pageload', _.bind(this._highlightCurrent, this))
+        .on('stackview.pageload', _.bind(this.highlightPivot, this))
         .on('stackview.pageload', _.bind(this._qtipify, this));
       if (options.sortable) {
         this._makeShelfSortable();
@@ -58,7 +60,7 @@ define([
       window.StackView.get_types().book.template = this.options.bookTemplate;
       if (this.options.selectFirstBook) {
         this.$('.stackview').one('stackview.pageload', _.bind(function() {
-          var $first = this.$('.stack-item').first().addClass('stack-pivot');
+          var $first = this.$('.stack-item').first();
           if (!$first.length) { return; }
           var id = $first.data('stackviewItem').source_id;
           mediator.trigger('preview:load', id);
@@ -116,12 +118,9 @@ define([
       $stack.height(targetHeight);
     },
 
-    _highlightCurrent: function() {
-      var pivot = this.options.pivot;
-      if (!pivot) return;
-
-      this.$('.stack-item').filter(function() {
-        return $(this).data('stackviewItem').source_id === pivot;
+    highlightPivot: function() {
+      this.$('.stack-item').removeClass('stack-pivot').filter(function() {
+        return $(this).data('stackviewItem').source_id === pivotID;
       }).addClass('stack-pivot');
     },
 
@@ -187,7 +186,6 @@ define([
       });
     }
   });
-  var currentStack;
 
   mediator.on('stack:load', function(options) {
     if (currentStack) {
@@ -203,6 +201,17 @@ define([
       currentStack.clear();
       currentStack = new StackView(options);
     }
+  });
+
+  mediator.on('preview:load', function(id) {
+    pivotID = id;
+    if (currentStack) {
+      currentStack.highlightPivot();
+    }
+  });
+
+  mediator.on('preview:unload', function() {
+    pivotID = null;
   });
 
   return StackView;

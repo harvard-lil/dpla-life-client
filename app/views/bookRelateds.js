@@ -98,9 +98,7 @@ define([
     },
 
     loadStack: function(options) {
-      mediator.trigger('stack:load', _.extend({
-        pivot: this.model.get('source_id')
-      }, options));
+      mediator.trigger('stack:load', options);
     },
 
     setActiveButton: function(event) {

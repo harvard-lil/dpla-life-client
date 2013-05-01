@@ -662,6 +662,9 @@ a, .button {
   transition: left 200ms ease-in-out; }
 .stackview .stack-pivot {
   left: 8px; }
+  .stackview .stack-pivot .stack-item-link {
+    cursor: default;
+    pointer-events: none; }
 .stackview .stack-items {
   padding-top: 6px;
   overflow-y: scroll; }

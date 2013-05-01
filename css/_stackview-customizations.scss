@@ -11,6 +11,11 @@
 
   .stack-pivot {
     left:8px;
+
+    .stack-item-link {
+      cursor:default;
+      pointer-events:none;
+    }
   }
 
   .stack-items {

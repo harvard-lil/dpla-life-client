@@ -124,5 +124,11 @@ define([
     }
   });
 
+  mediator.on('preview:unload', function() {
+    if (currentPreview) {
+      currentPreview.clear();
+    }
+  });
+
   return BookPreviewView;
 });

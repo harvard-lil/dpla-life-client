@@ -23,6 +23,7 @@ define([
 
     render: function() {
       BaseView.prototype.render.call(this);
+      mediator.trigger('preview:unload');
       mediator.trigger('stack:load', {
         url: settings.get('indexStackURL'),
         query: settings.get('indexSearchTerm'),

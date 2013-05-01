@@ -47,6 +47,9 @@ define([
       mainView = new MainClass(options);
     }
     inStackedMode = MainClass === StackedMainView;
+    if (!inStackedMode) {
+      mediator.trigger('preview:unload');
+    }
   };
 
   var Router = Backbone.Router.extend({
