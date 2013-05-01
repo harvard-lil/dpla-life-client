@@ -66,7 +66,7 @@ define([
 
     search: function(type, term) {
       var decodedTerm = decodeURIComponent(term);
-      var freshSearch = !inStackedMode;
+      
       setMain(StackedMainView);
       mediator.trigger('stack:load', {
         url: settings.get('searchURL'),
@@ -74,7 +74,7 @@ define([
         query: decodedTerm,
         ribbon: decodedTerm,
         search_type: type,
-        selectFirstBook: freshSearch,
+        selectFirstBook: true,
         fullHeight: true
       });
     },
