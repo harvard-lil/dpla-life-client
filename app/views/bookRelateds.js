@@ -84,7 +84,7 @@ define([
         url: settings.get('searchURL'),
         search_type: 'subject_union',
         query: this.model.get('source_id'),
-        ribbon: 'Share Any Subject'
+        ribbon: 'Expanded'
       });
     },
 
@@ -93,7 +93,7 @@ define([
         url: settings.get('searchURL'),
         search_type: 'subject_intersection',
         query: this.model.get('source_id'),
-        ribbon: 'Share All Subjects'
+        ribbon: 'Focused'
       });
     },
 
