@@ -30,6 +30,9 @@ define(['underscore'], function(_) {
     bookURL: function() {
       return settings.apiRoot + '/books';
     },
+    bookReadingTrackURL: function(bookID) {
+      return [settings.bookURL(), bookID, 'readings'].join('/');
+    },
     bookReviewsURL: function(bookID) {
       return [settings.bookURL(), bookID, 'reviews'].join('/');
     },
