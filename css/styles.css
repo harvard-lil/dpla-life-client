@@ -656,18 +656,12 @@ a, .button {
 .stack-wrapper {
   position: relative; }
 
-.stackview .stack-pivot a {
-  background-color: #ff6600;
-  text-shadow: 0 -1px #993d00;
-  border-color: #993d00;
-  cursor: default; }
-.stackview .stack-pivot .stack-pages {
-  border-color: #993d00; }
-  .stackview .stack-pivot .stack-pages:after {
-    border-bottom-color: #ffa366; }
-.stackview .stack-pivot .stack-cover {
-  background-color: #ff6600;
-  border-color: #993d00; }
+.stackview .stack-item {
+  -webkit-transition: left 200ms ease-in-out;
+  -moz-transition: left 200ms ease-in-out;
+  transition: left 200ms ease-in-out; }
+.stackview .stack-pivot {
+  left: 8px; }
 .stackview .stack-items {
   padding-top: 6px;
   overflow-y: scroll; }

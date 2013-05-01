@@ -3,26 +3,14 @@
 }
 
 .stackview {
+  .stack-item {
+    -webkit-transition:left 200ms ease-in-out;
+    -moz-transition:left 200ms ease-in-out;
+    transition:left 200ms ease-in-out;
+  }
+
   .stack-pivot {
-    a {
-      background-color:$baseOrange;
-      text-shadow:0 -1px darken($baseOrange, 20%);
-      border-color:darken($baseOrange, 20%);
-      cursor:default;
-    }
-
-    .stack-pages {
-      border-color:darken($baseOrange, 20%);
-
-      &:after {
-        border-bottom-color:lighten($baseOrange, 20%);
-      }
-    }
-
-    .stack-cover {
-      background-color:$baseOrange;
-      border-color:darken($baseOrange, 20%);
-    }
+    left:8px;
   }
 
   .stack-items {
