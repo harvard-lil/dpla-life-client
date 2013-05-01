@@ -126,7 +126,17 @@ define([
     },
 
     _qtipify: function() {
-      this.$('.stack-item-link:not(.qtipped)').addClass('qtipped').qtip();
+      this.$('.stack-item-link:not(.qtipped)').addClass('qtipped').qtip({
+        events: {
+          show: function(event, api) {
+            var $stackItem = api.elements.target.closest('.stack-item');
+            if ($stackItem.hasClass('stack-pivot')) {
+              event.preventDefault();
+            }
+          }
+        },
+        hide: { event: 'click mouseleave'}
+      });
     },
 
     _makeShelfSortable: function() {
